@@ -16,6 +16,7 @@
 		8406CBAE2363614500029493 /* first_demoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8406CBAD2363614500029493 /* first_demoTests.swift */; };
 		8406CBB92363614500029493 /* first_demoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8406CBB82363614500029493 /* first_demoUITests.swift */; };
 		8406CBC723636BB700029493 /* CircleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8406CBC623636BB700029493 /* CircleImage.swift */; };
+		8406CBC923636E6C00029493 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8406CBC823636E6C00029493 /* MapView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		8406CBB82363614500029493 /* first_demoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = first_demoUITests.swift; sourceTree = "<group>"; };
 		8406CBBA2363614500029493 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8406CBC623636BB700029493 /* CircleImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImage.swift; sourceTree = "<group>"; };
+		8406CBC823636E6C00029493 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 				8406CBA42363614500029493 /* Info.plist */,
 				8406CB9E2363614500029493 /* Preview Content */,
 				8406CBC623636BB700029493 /* CircleImage.swift */,
+				8406CBC823636E6C00029493 /* MapView.swift */,
 			);
 			path = "first-demo";
 			sourceTree = "<group>";
@@ -272,6 +275,7 @@
 			files = (
 				8406CB972363614400029493 /* AppDelegate.swift in Sources */,
 				8406CBC723636BB700029493 /* CircleImage.swift in Sources */,
+				8406CBC923636E6C00029493 /* MapView.swift in Sources */,
 				8406CB992363614400029493 /* SceneDelegate.swift in Sources */,
 				8406CB9B2363614400029493 /* ContentView.swift in Sources */,
 			);

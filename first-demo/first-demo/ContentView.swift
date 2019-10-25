@@ -12,18 +12,30 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         // body 内只能有一个元素
-        VStack(alignment: .leading) {
-            Text("北京")
-                .font(.title) // 这样的方法被称之为 modifiers（修饰器）
-            HStack {
-                Text("万春亭")
-                    .font(.subheadline)
-                Spacer() // 间隔
-                Text("景山公园")
-                    .font(.subheadline)
+        VStack {
+            MapView()
+                .frame(height: 300)
+                .edgesIgnoringSafeArea(.top)
+            
+            CircleImage()
+                .offset(y: -150)
+                .padding(.bottom, -150)
+            
+            VStack(alignment: .leading) {
+                Text("北京")
+                    .font(.title) // 这样的方法被称之为 modifiers（修饰器）
+                HStack {
+                    Text("万春亭")
+                        .font(.subheadline)
+                    Spacer() // 间隔
+                    Text("景山公园")
+                        .font(.subheadline)
+                }
             }
+            .padding() // 内边距
+            
+            Spacer()
         }
-        .padding() // 内边距
         
     }
 }

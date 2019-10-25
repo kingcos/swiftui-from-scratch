@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "wan_chun_ting.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "wan_chun_ting.png",
       "scale" : "2x"
     },
     {
