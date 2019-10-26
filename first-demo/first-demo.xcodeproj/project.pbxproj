@@ -17,6 +17,15 @@
 		8406CBB92363614500029493 /* first_demoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8406CBB82363614500029493 /* first_demoUITests.swift */; };
 		8406CBC723636BB700029493 /* CircleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8406CBC623636BB700029493 /* CircleImage.swift */; };
 		8406CBC923636E6C00029493 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8406CBC823636E6C00029493 /* MapView.swift */; };
+		8406CBCD23640B5D00029493 /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8406CBCC23640B5D00029493 /* Scene.swift */; };
+		8406CBCF23640D6800029493 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8406CBCE23640D6800029493 /* Data.swift */; };
+		8406CBD223642A5D00029493 /* sampleData.json in Resources */ = {isa = PBXBuildFile; fileRef = 8406CBD123642A5D00029493 /* sampleData.json */; };
+		8406CBD423642C8B00029493 /* yuanmingyuan.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8406CBD323642C8B00029493 /* yuanmingyuan.jpg */; };
+		8406CBD823643D9D00029493 /* tiananmenguangchang.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8406CBD523643D9D00029493 /* tiananmenguangchang.jpg */; };
+		8406CBD923643D9D00029493 /* changcheng.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8406CBD623643D9D00029493 /* changcheng.jpg */; };
+		8406CBDA23643D9D00029493 /* yuyuantangongyuan.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8406CBD723643D9D00029493 /* yuyuantangongyuan.jpg */; };
+		8406CBDC23643F8400029493 /* SceneRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8406CBDB23643F8400029493 /* SceneRow.swift */; };
+		8406CBDE236442AE00029493 /* SceneList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8406CBDD236442AE00029493 /* SceneList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +62,15 @@
 		8406CBBA2363614500029493 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8406CBC623636BB700029493 /* CircleImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImage.swift; sourceTree = "<group>"; };
 		8406CBC823636E6C00029493 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		8406CBCC23640B5D00029493 /* Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
+		8406CBCE23640D6800029493 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
+		8406CBD123642A5D00029493 /* sampleData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = sampleData.json; sourceTree = "<group>"; };
+		8406CBD323642C8B00029493 /* yuanmingyuan.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = yuanmingyuan.jpg; sourceTree = "<group>"; };
+		8406CBD523643D9D00029493 /* tiananmenguangchang.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = tiananmenguangchang.jpg; sourceTree = "<group>"; };
+		8406CBD623643D9D00029493 /* changcheng.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = changcheng.jpg; sourceTree = "<group>"; };
+		8406CBD723643D9D00029493 /* yuyuantangongyuan.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = yuyuantangongyuan.jpg; sourceTree = "<group>"; };
+		8406CBDB23643F8400029493 /* SceneRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SceneRow.swift; path = "first-demo/Views/SceneRow.swift"; sourceTree = SOURCE_ROOT; };
+		8406CBDD236442AE00029493 /* SceneList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +121,9 @@
 		8406CB952363614400029493 /* first-demo */ = {
 			isa = PBXGroup;
 			children = (
+				8406CBD0236427D200029493 /* Resources */,
+				8406CBCB23640B0D00029493 /* Models */,
+				8406CBCA23640ADE00029493 /* Views */,
 				8406CB962363614400029493 /* AppDelegate.swift */,
 				8406CB982363614400029493 /* SceneDelegate.swift */,
 				8406CB9A2363614400029493 /* ContentView.swift */,
@@ -110,8 +131,6 @@
 				8406CBA12363614500029493 /* LaunchScreen.storyboard */,
 				8406CBA42363614500029493 /* Info.plist */,
 				8406CB9E2363614500029493 /* Preview Content */,
-				8406CBC623636BB700029493 /* CircleImage.swift */,
-				8406CBC823636E6C00029493 /* MapView.swift */,
 			);
 			path = "first-demo";
 			sourceTree = "<group>";
@@ -140,6 +159,38 @@
 				8406CBBA2363614500029493 /* Info.plist */,
 			);
 			path = "first-demoUITests";
+			sourceTree = "<group>";
+		};
+		8406CBCA23640ADE00029493 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8406CBDB23643F8400029493 /* SceneRow.swift */,
+				8406CBC623636BB700029493 /* CircleImage.swift */,
+				8406CBC823636E6C00029493 /* MapView.swift */,
+				8406CBDD236442AE00029493 /* SceneList.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		8406CBCB23640B0D00029493 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8406CBCC23640B5D00029493 /* Scene.swift */,
+				8406CBCE23640D6800029493 /* Data.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		8406CBD0236427D200029493 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				8406CBD323642C8B00029493 /* yuanmingyuan.jpg */,
+				8406CBD623643D9D00029493 /* changcheng.jpg */,
+				8406CBD523643D9D00029493 /* tiananmenguangchang.jpg */,
+				8406CBD723643D9D00029493 /* yuyuantangongyuan.jpg */,
+				8406CBD123642A5D00029493 /* sampleData.json */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -247,8 +298,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				8406CBA32363614500029493 /* LaunchScreen.storyboard in Resources */,
+				8406CBD423642C8B00029493 /* yuanmingyuan.jpg in Resources */,
+				8406CBDA23643D9D00029493 /* yuyuantangongyuan.jpg in Resources */,
+				8406CBD823643D9D00029493 /* tiananmenguangchang.jpg in Resources */,
+				8406CBD923643D9D00029493 /* changcheng.jpg in Resources */,
 				8406CBA02363614500029493 /* Preview Assets.xcassets in Resources */,
 				8406CB9D2363614500029493 /* Assets.xcassets in Resources */,
+				8406CBD223642A5D00029493 /* sampleData.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,11 +329,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8406CBCF23640D6800029493 /* Data.swift in Sources */,
+				8406CBDE236442AE00029493 /* SceneList.swift in Sources */,
 				8406CB972363614400029493 /* AppDelegate.swift in Sources */,
 				8406CBC723636BB700029493 /* CircleImage.swift in Sources */,
+				8406CBCD23640B5D00029493 /* Scene.swift in Sources */,
 				8406CBC923636E6C00029493 /* MapView.swift in Sources */,
 				8406CB992363614400029493 /* SceneDelegate.swift in Sources */,
 				8406CB9B2363614400029493 /* ContentView.swift in Sources */,
+				8406CBDC23643F8400029493 /* SceneRow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

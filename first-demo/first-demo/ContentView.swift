@@ -9,26 +9,28 @@
 import SwiftUI
 
 // 视图结构
-struct ContentView: View {
+struct SceneDetail: View {
+    var scene: Scene
+    
     var body: some View {
         // body 内只能有一个元素
         VStack {
-            MapView()
+            MapView(coordinate: scene.locationCoordinate)
                 .frame(height: 300.0)
                 .edgesIgnoringSafeArea(.top)
             
-            CircleImage()
-                .offset(y: -180)
-                .padding(.bottom, -180)
+            CircleImage(image: scene.image)
+                .offset(y: -210)
+                .padding(.bottom, -210)
             
             VStack(alignment: .leading) {
-                Text("北京")
+                Text(scene.name)
                     .font(.title) // 这样的方法被称之为 modifiers（修饰器）
                 HStack {
-                    Text("万春亭")
+                    Text(scene.state)
                         .font(.subheadline)
                     Spacer() // 间隔
-                    Text("景山公园")
+                    Text("Like")
                         .font(.subheadline)
                 }
             }
@@ -36,13 +38,13 @@ struct ContentView: View {
             
             Spacer()
         }
-        
+        .navigationBarTitle(Text(scene.name), displayMode: .inline)
     }
 }
 
 // 便于预览使用 => 点击右侧 Resume 即可预览
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        SceneDetail(scene: sceneData[0])
     }
 }
