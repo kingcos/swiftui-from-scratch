@@ -23,17 +23,6 @@
     },
     {
         "id":1003,
-        "name":"天安门广场",
-        "category":"历史",
-        "state":"北京",
-        "coordinates":{
-            "longitude":116.397827,
-            "latitude":39.90374
-        },
-        "imageName":"tiananmenguangchang"
-    },
-    {
-        "id":1004,
         "name":"玉渊潭公园",
         "category":"自然",
         "state":"北京",
