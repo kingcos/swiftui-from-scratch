@@ -2,4 +2,4 @@
 
 Let's start with SwiftUI~
 
-![](first-demo/preview.png)
+<img src="first-demo/preview.png" width=200>
