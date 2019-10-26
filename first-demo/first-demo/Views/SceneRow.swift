@@ -18,6 +18,13 @@ struct SceneRow: View {
                 .resizable()
                 .frame(width: 50, height: 50)
             Text(scene.name)
+            Spacer()
+            
+            if scene.isFavorite {
+                Image(systemName: "star.fill")
+                    .imageScale(.medium)
+                    .foregroundColor(.yellow)
+            }
         }
     }
 }

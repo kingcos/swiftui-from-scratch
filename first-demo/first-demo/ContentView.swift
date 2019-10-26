@@ -10,7 +10,12 @@ import SwiftUI
 
 // 视图结构
 struct SceneDetail: View {
+    @EnvironmentObject var userData: UserData
     var scene: Scene
+    
+    var sceneIndex: Int {
+        userData.scenes.firstIndex(where: { $0.id == scene.id })!
+    }
     
     var body: some View {
         // body 内只能有一个元素
@@ -24,13 +29,26 @@ struct SceneDetail: View {
                 .padding(.bottom, -210)
             
             VStack(alignment: .leading) {
-                Text(scene.name)
-                    .font(.title) // 这样的方法被称之为 modifiers（修饰器）
+                HStack {
+                    Text(scene.name)
+                        .font(.title) // 这样的方法被称之为 modifiers（修饰器）
+                    Button(action: {
+                        self.userData.scenes[self.sceneIndex].isFavorite.toggle()
+                    }) {
+                        if self.userData.scenes[self.sceneIndex].isFavorite {
+                            Image(systemName: "star.fill")
+                                .foregroundColor(.yellow)
+                        } else {
+                            Image(systemName: "star")
+                                .foregroundColor(.gray)
+                        }
+                    }
+                }
                 HStack {
                     Text(scene.state)
                         .font(.subheadline)
                     Spacer() // 间隔
-                    Text("Like")
+                    Text(scene.category.rawValue)
                         .font(.subheadline)
                 }
             }

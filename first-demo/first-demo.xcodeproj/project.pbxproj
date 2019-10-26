@@ -25,6 +25,7 @@
 		8406CBDA23643D9D00029493 /* yuyuantangongyuan.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8406CBD723643D9D00029493 /* yuyuantangongyuan.jpg */; };
 		8406CBDC23643F8400029493 /* SceneRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8406CBDB23643F8400029493 /* SceneRow.swift */; };
 		8406CBDE236442AE00029493 /* SceneList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8406CBDD236442AE00029493 /* SceneList.swift */; };
+		8406CBE2236453EB00029493 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8406CBE1236453EB00029493 /* UserData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,7 @@
 		8406CBD723643D9D00029493 /* yuyuantangongyuan.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = yuyuantangongyuan.jpg; sourceTree = "<group>"; };
 		8406CBDB23643F8400029493 /* SceneRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SceneRow.swift; path = "first-demo/Views/SceneRow.swift"; sourceTree = SOURCE_ROOT; };
 		8406CBDD236442AE00029493 /* SceneList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneList.swift; sourceTree = "<group>"; };
+		8406CBE1236453EB00029493 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,6 +177,7 @@
 			children = (
 				8406CBCC23640B5D00029493 /* Scene.swift */,
 				8406CBCE23640D6800029493 /* Data.swift */,
+				8406CBE1236453EB00029493 /* UserData.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -333,6 +336,7 @@
 				8406CBC923636E6C00029493 /* MapView.swift in Sources */,
 				8406CB992363614400029493 /* SceneDelegate.swift in Sources */,
 				8406CB9B2363614400029493 /* ContentView.swift in Sources */,
+				8406CBE2236453EB00029493 /* UserData.swift in Sources */,
 				8406CBDC23643F8400029493 /* SceneRow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

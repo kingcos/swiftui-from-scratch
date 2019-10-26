@@ -4,6 +4,7 @@
         "name":"长城",
         "category":"历史",
         "state":"北京",
+        "isFavorite": true,
         "coordinates":{
             "longitude":116.01548,
             "latitude":40.356585
@@ -15,6 +16,7 @@
         "name":"圆明园",
         "category":"历史",
         "state":"北京",
+        "isFavorite": false,
         "coordinates":{
             "longitude":116.303468,
             "latitude":40.006088
@@ -26,6 +28,7 @@
         "name":"玉渊潭公园",
         "category":"自然",
         "state":"北京",
+        "isFavorite": true,
         "coordinates":{
             "longitude":116.320023,
             "latitude":39.916603

@@ -9,15 +9,33 @@
 import SwiftUI
 
 struct SceneList: View {
+//    @State var showFavoritesOnly = true
+    @EnvironmentObject private var userData: UserData
+    
     var body: some View {
 //        List(sceneData, id: \.id) { scene in
 //            SceneRow(scene: scene)
 //        }
         
         NavigationView {
-            List(sceneData) { scene in
-                NavigationLink(destination: SceneDetail(scene: scene)) {
-                    SceneRow(scene: scene)
+//            List(sceneData) { scene in
+//                if !self.showFavoritesOnly || scene.isFavorite {
+//                    NavigationLink(destination: SceneDetail(scene: scene)) {
+//                        SceneRow(scene: scene)
+//                    }
+//                }
+//            }
+            List {
+                Toggle(isOn: $userData.showFavoritesOnly) {
+                    Text("只显示收藏")
+                }
+                
+                ForEach(userData.scenes) { scene in
+                    if !self.userData.showFavoritesOnly || scene.isFavorite {
+                        NavigationLink(destination: SceneDetail(scene: scene)) {
+                            SceneRow(scene: scene)
+                        }
+                    }
                 }
             }
             .navigationBarTitle(Text("景点"))
