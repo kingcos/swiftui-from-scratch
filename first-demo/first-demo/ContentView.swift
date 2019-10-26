@@ -14,12 +14,12 @@ struct ContentView: View {
         // body 内只能有一个元素
         VStack {
             MapView()
-                .frame(height: 300)
+                .frame(height: 300.0)
                 .edgesIgnoringSafeArea(.top)
             
             CircleImage()
-                .offset(y: -150)
-                .padding(.bottom, -150)
+                .offset(y: -180)
+                .padding(.bottom, -180)
             
             VStack(alignment: .leading) {
                 Text("北京")
