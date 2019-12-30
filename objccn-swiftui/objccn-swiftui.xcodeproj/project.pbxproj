@@ -13,6 +13,7 @@
 		315FEB6023B9AAB6003EF145 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 315FEB5F23B9AAB6003EF145 /* Assets.xcassets */; };
 		315FEB6323B9AAB6003EF145 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 315FEB6223B9AAB6003EF145 /* Preview Assets.xcassets */; };
 		315FEB6623B9AAB6003EF145 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 315FEB6423B9AAB6003EF145 /* LaunchScreen.storyboard */; };
+		315FEB6E23BA12EF003EF145 /* CalculatorButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315FEB6D23BA12EF003EF145 /* CalculatorButtonItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		315FEB6223B9AAB6003EF145 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		315FEB6523B9AAB6003EF145 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		315FEB6723B9AAB6003EF145 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		315FEB6D23BA12EF003EF145 /* CalculatorButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorButtonItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				315FEB6423B9AAB6003EF145 /* LaunchScreen.storyboard */,
 				315FEB6723B9AAB6003EF145 /* Info.plist */,
 				315FEB6123B9AAB6003EF145 /* Preview Content */,
+				315FEB6D23BA12EF003EF145 /* CalculatorButtonItem.swift */,
 			);
 			path = "objccn-swiftui";
 			sourceTree = "<group>";
@@ -148,6 +151,7 @@
 			files = (
 				315FEB5A23B9AAB5003EF145 /* AppDelegate.swift in Sources */,
 				315FEB5C23B9AAB5003EF145 /* SceneDelegate.swift in Sources */,
+				315FEB6E23BA12EF003EF145 /* CalculatorButtonItem.swift in Sources */,
 				315FEB5E23B9AAB5003EF145 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
