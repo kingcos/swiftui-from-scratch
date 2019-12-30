@@ -69,6 +69,8 @@ struct CalculatorButtonPad: View {
     }
 }
 
+let scale: CGFloat = UIScreen.main.bounds.width / 414
+
 struct ContentView: View {
     let row: [CalculatorButtonItem] = [
         .digit(1), .digit(2), .digit(3), .op(.plus),
@@ -86,7 +88,22 @@ struct ContentView: View {
         // 因此如果先使用 3 | 4 则无法使用 1 | 2，需要注意顺序
         // https://developer.apple.com/documentation/uikit/uifont/scaling_fonts_automatically
         
-        CalculatorButtonPad()
+        VStack(spacing: 12) {
+            Spacer()
+            Text("0")
+                .font(.system(size: 76))
+                .minimumScaleFactor(0.5)
+                .padding(.trailing, 24)
+                .lineLimit(1)
+                .frame(
+                  minWidth: 0,         // 宽度范围
+                  maxWidth: .infinity, // 宽度范围（尽可能地宽）
+                  alignment: .trailing
+                )
+            CalculatorButtonPad()
+                .padding(.bottom)
+        }
+        .scaleEffect(scale)
     }
 //        Button(action: {
 //          print("Button: +")
