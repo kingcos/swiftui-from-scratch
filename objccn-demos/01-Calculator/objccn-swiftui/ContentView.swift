@@ -11,6 +11,11 @@ import SwiftUI
 let scale: CGFloat = UIScreen.main.bounds.width / 414
 
 struct ContentView: View {
+    // @State 修饰的值，在 SwiftUI 内部会被自动转换为一对 setter 和 getter；
+    // @State 属性值仅只能在属性**本身**被设置时会触发 UI 刷新，这个特性让它非常适合用来声明一个值类型的值：因为对值类型的属性的变更，也会触发整个 值的重新设置，进而刷新 UI（因此不太适合多个组件传递的变量）。
+    // 对这个属性进行赋值的操作将会触发 View 的刷新，它的 body 会被再次调用，底层渲染引擎会找出界面上被改变的部分，根据新的属性值计算出新的 View，并进行刷新。
+    @State private var brain: CalculatorBrain = .left("0")
+    
     let row: [CalculatorButtonItem] = [
         .digit(1), .digit(2), .digit(3), .op(.plus),
     ]
@@ -27,41 +32,47 @@ struct ContentView: View {
         // 因此如果先使用 3 | 4 则无法使用 1 | 2，需要注意顺序
         // https://developer.apple.com/documentation/uikit/uifont/scaling_fonts_automatically
         
+        VStack(spacing: 12) {
+            Spacer() // 使用 Spacer 下沉视图
+            Text(brain.output) // Text("0")
+                .font(.system(size: 76))
+                .minimumScaleFactor(0.5)
+                .padding(.trailing, 24)
+                .lineLimit(1)
+                .frame(
+                  minWidth: 0,         // 宽度最小范围
+                  maxWidth: .infinity, // 宽度范围（尽可能地宽）
+                  alignment: .trailing
+                ) // 使用 frame 将文本推向右对齐
+            Button("Test") {
+                self.brain = .left("1.23")
+            }
+            
+            // 在 Swift 5.1 中，对一个由 @ 符号修饰的属性，在它前面使用 $ 所取得的值，被称为投影属性 (projection property)。
+            // 有些 @ 属性，比如这里的 @State 和 @Binding，它们的投影属性就是自身所对应值的 Binding 类型。不过要注意的是，并不是所有的 @ 属性都提供 $ 的投影访问方式。
+            CalculatorButtonPad(brain: $brain)
+                .padding(.bottom)
+        }
+        .scaleEffect(scale)
+        
 //        VStack(spacing: 12) {
-//            Spacer() // 使用 Spacer 下沉视图
-//            Text("0")
-//                .font(.system(size: 76))
-//                .minimumScaleFactor(0.5)
-//                .padding(.trailing, 24)
-//                .lineLimit(1)
-//                .frame(
-//                  minWidth: 0,         // 宽度最小范围
-//                  maxWidth: .infinity, // 宽度范围（尽可能地宽）
-//                  alignment: .trailing
-//                ) // 使用 frame 将文本推向右对齐
+//            HStack() {
+//                Spacer() // 使用 Spacer 将文本推向右对齐
+//                Text("0")
+//                    .font(.system(size: 76))
+//                    .minimumScaleFactor(0.5)
+//                    .padding(.trailing, 24)
+//                    .lineLimit(1)
+//            }
 //            CalculatorButtonPad()
 //                .padding(.bottom)
 //        }
+//        .frame(
+//            minHeight: 0,
+//            maxHeight: .infinity, // 高度范围（尽可能地宽）
+//            alignment: .bottom
+//        ) // 使用 frame 下沉视图
 //        .scaleEffect(scale)
-        
-        VStack(spacing: 12) {
-            HStack() {
-                Spacer() // 使用 Spacer 将文本推向右对齐
-                Text("0")
-                    .font(.system(size: 76))
-                    .minimumScaleFactor(0.5)
-                    .padding(.trailing, 24)
-                    .lineLimit(1)
-            }
-            CalculatorButtonPad()
-                .padding(.bottom)
-        }
-        .frame(
-            minHeight: 0,
-            maxHeight: .infinity, // 高度范围（尽可能地宽）
-            alignment: .bottom
-        ) // 使用 frame 下沉视图
-        .scaleEffect(scale)
     }
 //        Button(action: {
 //          print("Button: +")
@@ -119,6 +130,10 @@ struct CalculatorButton : View {
 }
 
 struct CalculatorButtonRow : View {
+    // 对被声明为 @Binding 的属性进行赋值，改变的将不是属性本身，而是它的引用，这个改变将被向外传递。
+    // 对内部 brain 的修改将导致外界 brain 改变 & 刷新 UI。
+    @Binding var brain: CalculatorBrain
+    
     let row: [CalculatorButtonItem]
     
     var body: some View {
@@ -135,7 +150,7 @@ struct CalculatorButtonRow : View {
                     size: item.size,
                     backgroundColorName: item.backgroundColorName)
                 {
-                    print("Button: \(item.title)")
+                    self.brain = self.brain.apply(item: item)
                 }
             }
         }
@@ -143,6 +158,8 @@ struct CalculatorButtonRow : View {
 }
 
 struct CalculatorButtonPad: View {
+    @Binding var brain: CalculatorBrain
+    
     let pad: [[CalculatorButtonItem]] = [
         [.command(.clear), .command(.flip), .command(.percent), .op(.divide)],
         [.digit(7), .digit(8), .digit(9), .op(.multiply)],
@@ -154,7 +171,7 @@ struct CalculatorButtonPad: View {
     var body: some View {
         VStack(spacing: 8) {
             ForEach(pad, id: \.self) { row in
-                CalculatorButtonRow(row: row)
+                CalculatorButtonRow(brain: self.$brain, row: row)
             }
         }
     }
