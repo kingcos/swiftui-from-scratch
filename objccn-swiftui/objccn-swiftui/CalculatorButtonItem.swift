@@ -72,5 +72,4 @@ extension CalculatorButtonItem {
     }
 }
 
-
 extension CalculatorButtonItem: Hashable {}

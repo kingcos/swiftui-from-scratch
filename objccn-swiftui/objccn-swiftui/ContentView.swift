@@ -8,80 +8,6 @@
 
 import SwiftUI
 
-struct CalculatorButton : View {
-    let fontSize: CGFloat = 38
-    let title: String
-    let size: CGSize
-    let backgroundColorName: String
-    let action: () -> Void
-    
-    var body: some View {
-        Button(action: action) {
-            Text(title)
-                .font(.system(size: fontSize))
-                .foregroundColor(.white)
-                .frame(width: size.width, height: size.height)
-                .background(Color(backgroundColorName))
-                .cornerRadius(size.width / 2)
-            // 注意 background 与 cornerRadius 顺序不能颠倒，否则先抠圆角再填充背景会导致圆角无效
-        }
-    }
-    
-    // 使用 ZStack 纵向堆叠
-//    var body: some View {
-//        ZStack {
-//            Circle()
-//                .foregroundColor(Color(backgroundColorName))
-//                .frame(width: size.width, height: size.height)
-//            Text(title)
-//                .font(.system(size: fontSize))
-//                .foregroundColor(.white)
-//        }
-//    }
-}
-
-struct CalculatorButtonRow : View {
-    let row: [CalculatorButtonItem]
-    
-    var body: some View {
-        HStack {
-            // ForEach 列举元素，并返回视图集合；id 需遵守 Hashable 协议
-            // \.self 会根据上下文推断为 CalculatorButtonItem，即 \CalculatorButtonItem.self
-            // Swift 中任一值都拥有一个特殊的伪属性，.self，该值本身引用了整个值：
-            // var x = 1
-            // x.self = 2 // x.self == 2, x == 2
-            // let id = \Int.self; x[keyPath: id] = 3 // x[keyPath: id] == 3, x == 3
-            ForEach(row, id: \.self) { item in
-                CalculatorButton(
-                    title: item.title,
-                    size: item.size,
-                    backgroundColorName: item.backgroundColorName)
-                {
-                    print("Button: \(item.title)")
-                }
-            }
-        }
-    }
-}
-
-struct CalculatorButtonPad: View {
-    let pad: [[CalculatorButtonItem]] = [
-        [.command(.clear), .command(.flip), .command(.percent), .op(.divide)],
-        [.digit(7), .digit(8), .digit(9), .op(.multiply)],
-        [.digit(4), .digit(5), .digit(6), .op(.minus)],
-        [.digit(1), .digit(2), .digit(3), .op(.plus)],
-        [.digit(0), .dot, .op(.equal)]
-    ]
-    
-    var body: some View {
-        VStack(spacing: 8) {
-            ForEach(pad, id: \.self) { row in
-                CalculatorButtonRow(row: row)
-            }
-        }
-    }
-}
-
 let scale: CGFloat = UIScreen.main.bounds.width / 414
 
 struct ContentView: View {
@@ -155,5 +81,81 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+    }
+}
+
+//MARK: ---
+
+struct CalculatorButton : View {
+    let fontSize: CGFloat = 38
+    let title: String
+    let size: CGSize
+    let backgroundColorName: String
+    let action: () -> Void
+    
+    var body: some View {
+        Button(action: action) {
+            Text(title)
+                .font(.system(size: fontSize))
+                .foregroundColor(.white)
+                .frame(width: size.width, height: size.height)
+                .background(Color(backgroundColorName))
+                .cornerRadius(size.width / 2)
+            // 注意 background 与 cornerRadius 顺序不能颠倒，否则先抠圆角再填充背景会导致圆角无效
+        }
+    }
+    
+    // 使用 ZStack 纵向堆叠
+//    var body: some View {
+//        ZStack {
+//            Circle()
+//                .foregroundColor(Color(backgroundColorName))
+//                .frame(width: size.width, height: size.height)
+//            Text(title)
+//                .font(.system(size: fontSize))
+//                .foregroundColor(.white)
+//        }
+//    }
+}
+
+struct CalculatorButtonRow : View {
+    let row: [CalculatorButtonItem]
+    
+    var body: some View {
+        HStack {
+            // ForEach 列举元素，并返回视图集合；id 需遵守 Hashable 协议
+            // \.self 会根据上下文推断为 CalculatorButtonItem，即 \CalculatorButtonItem.self
+            // Swift 中任一值都拥有一个特殊的伪属性，.self，该值本身引用了整个值：
+            // var x = 1
+            // x.self = 2 // x.self == 2, x == 2
+            // let id = \Int.self; x[keyPath: id] = 3 // x[keyPath: id] == 3, x == 3
+            ForEach(row, id: \.self) { item in
+                CalculatorButton(
+                    title: item.title,
+                    size: item.size,
+                    backgroundColorName: item.backgroundColorName)
+                {
+                    print("Button: \(item.title)")
+                }
+            }
+        }
+    }
+}
+
+struct CalculatorButtonPad: View {
+    let pad: [[CalculatorButtonItem]] = [
+        [.command(.clear), .command(.flip), .command(.percent), .op(.divide)],
+        [.digit(7), .digit(8), .digit(9), .op(.multiply)],
+        [.digit(4), .digit(5), .digit(6), .op(.minus)],
+        [.digit(1), .digit(2), .digit(3), .op(.plus)],
+        [.digit(0), .dot, .op(.equal)]
+    ]
+    
+    var body: some View {
+        VStack(spacing: 8) {
+            ForEach(pad, id: \.self) { row in
+                CalculatorButtonRow(row: row)
+            }
+        }
     }
 }
