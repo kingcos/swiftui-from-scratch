@@ -23,8 +23,21 @@ struct CalculatorButton : View {
                 .frame(width: size.width, height: size.height)
                 .background(Color(backgroundColorName))
                 .cornerRadius(size.width / 2)
+            // 注意 background 与 cornerRadius 顺序不能颠倒，否则先抠圆角再填充背景会导致圆角无效
         }
     }
+    
+    // 使用 ZStack 纵向堆叠
+//    var body: some View {
+//        ZStack {
+//            Circle()
+//                .foregroundColor(Color(backgroundColorName))
+//                .frame(width: size.width, height: size.height)
+//            Text(title)
+//                .font(.system(size: fontSize))
+//                .foregroundColor(.white)
+//        }
+//    }
 }
 
 struct CalculatorButtonRow : View {
@@ -88,21 +101,40 @@ struct ContentView: View {
         // 因此如果先使用 3 | 4 则无法使用 1 | 2，需要注意顺序
         // https://developer.apple.com/documentation/uikit/uifont/scaling_fonts_automatically
         
+//        VStack(spacing: 12) {
+//            Spacer() // 使用 Spacer 下沉视图
+//            Text("0")
+//                .font(.system(size: 76))
+//                .minimumScaleFactor(0.5)
+//                .padding(.trailing, 24)
+//                .lineLimit(1)
+//                .frame(
+//                  minWidth: 0,         // 宽度最小范围
+//                  maxWidth: .infinity, // 宽度范围（尽可能地宽）
+//                  alignment: .trailing
+//                ) // 使用 frame 将文本推向右对齐
+//            CalculatorButtonPad()
+//                .padding(.bottom)
+//        }
+//        .scaleEffect(scale)
+        
         VStack(spacing: 12) {
-            Spacer()
-            Text("0")
-                .font(.system(size: 76))
-                .minimumScaleFactor(0.5)
-                .padding(.trailing, 24)
-                .lineLimit(1)
-                .frame(
-                  minWidth: 0,         // 宽度范围
-                  maxWidth: .infinity, // 宽度范围（尽可能地宽）
-                  alignment: .trailing
-                )
+            HStack() {
+                Spacer() // 使用 Spacer 将文本推向右对齐
+                Text("0")
+                    .font(.system(size: 76))
+                    .minimumScaleFactor(0.5)
+                    .padding(.trailing, 24)
+                    .lineLimit(1)
+            }
             CalculatorButtonPad()
                 .padding(.bottom)
         }
+        .frame(
+            minHeight: 0,
+            maxHeight: .infinity, // 高度范围（尽可能地宽）
+            alignment: .bottom
+        ) // 使用 frame 下沉视图
         .scaleEffect(scale)
     }
 //        Button(action: {
