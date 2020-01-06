@@ -7,13 +7,6 @@
 //
 
 import Foundation
-
-// Redux (状态管理和组件通讯架构)
-// 1. 将 app 当作一个状态机，状态决定用户界面。
-// 2. 这些状态都保存在一个 Store 对象中，被称为 State。
-// 3. View 不能直接操作 State，而只能通过发送 Action 的方式，间接改变存储在 Store 中的 State。
-// 4. Reducer 接受原有的 State 和发送过来的 Action，生成新的 State。
-// 5. 用新的 State 替换 Store 中原有的状态，并用新状态来驱动更新界面。
  
 typealias CalculatorState = CalculatorBrain
 typealias CalculatorStateAction = CalculatorButtonItem
@@ -28,6 +21,7 @@ struct Reducer {
     }
 }
 
+// 计算器当前状态
 enum CalculatorBrain {
     // 输入算式左侧
     case left(String)

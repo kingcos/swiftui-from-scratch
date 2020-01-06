@@ -44,12 +44,13 @@ struct ContentView: View {
                   maxWidth: .infinity, // 宽度范围（尽可能地宽）
                   alignment: .trailing
                 ) // 使用 frame 将文本推向右对齐
-            Button("Test") {
-                self.brain = .left("1.23")
-            }
+//            Button("Test") {
+//                self.brain = .left("1.23")
+//            }
             
             // 在 Swift 5.1 中，对一个由 @ 符号修饰的属性，在它前面使用 $ 所取得的值，被称为投影属性 (projection property)。
             // 有些 @ 属性，比如这里的 @State 和 @Binding，它们的投影属性就是自身所对应值的 Binding 类型。不过要注意的是，并不是所有的 @ 属性都提供 $ 的投影访问方式。
+            // $brain -> Binding
             CalculatorButtonPad(brain: $brain)
                 .padding(.bottom)
         }
@@ -130,6 +131,7 @@ struct CalculatorButton : View {
 }
 
 struct CalculatorButtonRow : View {
+    // 传递路径：ContentView @State -> CalculatorButtonPad @Binding -> CalculatorButtonRow @Binding
     // 对被声明为 @Binding 的属性进行赋值，改变的将不是属性本身，而是它的引用，这个改变将被向外传递。
     // 对内部 brain 的修改将导致外界 brain 改变 & 刷新 UI。
     @Binding var brain: CalculatorBrain
