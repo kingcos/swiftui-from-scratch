@@ -8,6 +8,7 @@
 
 import Foundation
 
+// propertyWrapper：比如通过属性对 UserDefault 或者 Keychain 进行读写，对某个字符串进行格式化或者去前后段空白，为属性读写加锁等等
 @propertyWrapper struct Converter {
     let from: String
     let to: String
