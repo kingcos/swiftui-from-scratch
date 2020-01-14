@@ -11,7 +11,10 @@ import SwiftUI
 let scale: CGFloat = UIScreen.main.bounds.width / 414
 
 struct ContentView: View {
-    @State private var brain: CalculatorBrain = .left("0")
+//    @State private var brain: CalculatorBrain = .left("0")
+    // model 属性是观察的对象（视图 ObservedObject），model 是引用类型 CalculatorModel 的值，
+    // 其中 objectWillChange 发出事件时，body 会被调用，UI 刷新
+    @ObservedObject private var model = CalculatorModel()
     
     let row: [CalculatorButtonItem] = [
         .digit(1), .digit(2), .digit(3), .op(.plus),
@@ -20,7 +23,7 @@ struct ContentView: View {
     var body: some View {
         VStack(spacing: 12) {
             Spacer() // 使用 Spacer 下沉视图
-            Text(brain.output) // Text("0")
+            Text(model.brain.output)
                 .font(.system(size: 76))
                 .minimumScaleFactor(0.5)
                 .padding(.trailing, 24)
@@ -31,7 +34,8 @@ struct ContentView: View {
                   alignment: .trailing
                 )
             
-            CalculatorButtonPad(brain: $brain)
+            // 将会通过动态查找的方式获取到对应的 Binding<CalculatorBrain>
+            CalculatorButtonPad(brain: $model.brain)
                 .padding(.bottom)
         }
         .scaleEffect(scale)
@@ -86,7 +90,7 @@ struct CalculatorButtonRow : View {
 }
 
 struct CalculatorButtonPad: View {
-    @Binding var brain: CalculatorBrain
+    @Binding var brain: CalculatorBrain // Binding<CalculatorBrain>
     
     let pad: [[CalculatorButtonItem]] = [
         [.command(.clear), .command(.flip), .command(.percent), .op(.divide)],

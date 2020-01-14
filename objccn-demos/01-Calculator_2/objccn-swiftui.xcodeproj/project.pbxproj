@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3117DDC023CDE85D00CA5A1B /* CalculatorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3117DDBF23CDE85D00CA5A1B /* CalculatorModel.swift */; };
 		315FEB5A23B9AAB5003EF145 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315FEB5923B9AAB5003EF145 /* AppDelegate.swift */; };
 		315FEB5C23B9AAB5003EF145 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315FEB5B23B9AAB5003EF145 /* SceneDelegate.swift */; };
 		315FEB5E23B9AAB5003EF145 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315FEB5D23B9AAB5003EF145 /* ContentView.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3117DDBF23CDE85D00CA5A1B /* CalculatorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorModel.swift; sourceTree = "<group>"; };
 		315FEB5623B9AAB5003EF145 /* objccn-swiftui.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "objccn-swiftui.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		315FEB5923B9AAB5003EF145 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		315FEB5B23B9AAB5003EF145 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -74,6 +76,7 @@
 				315FEB6D23BA12EF003EF145 /* CalculatorButtonItem.swift */,
 				315FEB7223BF5C38003EF145 /* CalculatorBrain.swift */,
 				315FEB7C23BF75EF003EF145 /* ConverterDemo.swift */,
+				3117DDBF23CDE85D00CA5A1B /* CalculatorModel.swift */,
 			);
 			path = "objccn-swiftui";
 			sourceTree = "<group>";
@@ -163,6 +166,7 @@
 				315FEB7D23BF75EF003EF145 /* ConverterDemo.swift in Sources */,
 				315FEB7323BF5C38003EF145 /* CalculatorBrain.swift in Sources */,
 				315FEB5E23B9AAB5003EF145 /* ContentView.swift in Sources */,
+				3117DDC023CDE85D00CA5A1B /* CalculatorModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
