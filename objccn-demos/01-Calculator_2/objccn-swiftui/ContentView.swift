@@ -14,7 +14,10 @@ struct ContentView: View {
 //    @State private var brain: CalculatorBrain = .left("0")
     // model 属性是观察的对象（视图 ObservedObject），model 是引用类型 CalculatorModel 的值，
     // 其中 objectWillChange 发出事件时，body 会被调用，UI 刷新
-    @ObservedObject private var model = CalculatorModel()
+//    @ObservedObject private var model = CalculatorModel()
+    
+    // 传递给当前 View 层级及其子层级中
+    @EnvironmentObject var model: CalculatorModel
     
     @State private var editingHistory = false
     
@@ -44,7 +47,8 @@ struct ContentView: View {
             
             // 将会通过动态查找的方式获取到对应的 Binding<CalculatorBrain>
 //            CalculatorButtonPad(brain: $model.brain)
-            CalculatorButtonPad(model: model)
+//            CalculatorButtonPad(model: model)
+            CalculatorButtonPad()
                 .padding(.bottom)
         }
         .scaleEffect(scale)
@@ -80,7 +84,8 @@ struct CalculatorButton : View {
 
 struct CalculatorButtonRow : View {
     // @Binding var brain: CalculatorBrain
-    var model: CalculatorModel
+    // var model: CalculatorModel
+    @EnvironmentObject var model: CalculatorModel
     
     let row: [CalculatorButtonItem]
     
@@ -102,7 +107,7 @@ struct CalculatorButtonRow : View {
 
 struct CalculatorButtonPad: View {
     // @Binding var brain: CalculatorBrain // Binding<CalculatorBrain>
-    var model: CalculatorModel
+    // var model: CalculatorModel
     
     let pad: [[CalculatorButtonItem]] = [
         [.command(.clear), .command(.flip), .command(.percent), .op(.divide)],
@@ -116,7 +121,8 @@ struct CalculatorButtonPad: View {
         VStack(spacing: 8) {
             ForEach(pad, id: \.self) { row in
 //                CalculatorButtonRow(brain: self.$brain, row: row)
-                CalculatorButtonRow(model: self.model, row: row)
+//                CalculatorButtonRow(model: self.model, row: row)
+                CalculatorButtonRow(row: row)
             }
         }
     }
