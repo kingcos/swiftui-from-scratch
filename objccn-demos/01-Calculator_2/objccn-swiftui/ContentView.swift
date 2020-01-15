@@ -16,6 +16,8 @@ struct ContentView: View {
     // 其中 objectWillChange 发出事件时，body 会被调用，UI 刷新
     @ObservedObject private var model = CalculatorModel()
     
+    @State private var editingHistory = false
+    
     let row: [CalculatorButtonItem] = [
         .digit(1), .digit(2), .digit(3), .op(.plus),
     ]
@@ -24,8 +26,11 @@ struct ContentView: View {
         VStack(spacing: 12) {
             Spacer() // 使用 Spacer 下沉视图
             Button("操作履历: \(model.history.count)") {
-                print(self.model.history)
+                self.editingHistory = true
+            }.sheet(isPresented: self.$editingHistory) {
+                HistoryView(model: self.model)
             }
+            
             Text(model.brain.output)
                 .font(.system(size: 76))
                 .minimumScaleFactor(0.5)
