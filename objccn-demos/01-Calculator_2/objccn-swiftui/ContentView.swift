@@ -23,6 +23,9 @@ struct ContentView: View {
     var body: some View {
         VStack(spacing: 12) {
             Spacer() // 使用 Spacer 下沉视图
+            Button("操作履历: \(model.history.count)") {
+                print(self.model.history)
+            }
             Text(model.brain.output)
                 .font(.system(size: 76))
                 .minimumScaleFactor(0.5)
@@ -35,7 +38,8 @@ struct ContentView: View {
                 )
             
             // 将会通过动态查找的方式获取到对应的 Binding<CalculatorBrain>
-            CalculatorButtonPad(brain: $model.brain)
+//            CalculatorButtonPad(brain: $model.brain)
+            CalculatorButtonPad(model: model)
                 .padding(.bottom)
         }
         .scaleEffect(scale)
@@ -70,7 +74,8 @@ struct CalculatorButton : View {
 }
 
 struct CalculatorButtonRow : View {
-    @Binding var brain: CalculatorBrain
+    // @Binding var brain: CalculatorBrain
+    var model: CalculatorModel
     
     let row: [CalculatorButtonItem]
     
@@ -82,7 +87,8 @@ struct CalculatorButtonRow : View {
                     size: item.size,
                     backgroundColorName: item.backgroundColorName)
                 {
-                    self.brain = self.brain.apply(item: item)
+//                    self.brain = self.brain.apply(item: item)
+                    self.model.apply(item)
                 }
             }
         }
@@ -90,7 +96,8 @@ struct CalculatorButtonRow : View {
 }
 
 struct CalculatorButtonPad: View {
-    @Binding var brain: CalculatorBrain // Binding<CalculatorBrain>
+    // @Binding var brain: CalculatorBrain // Binding<CalculatorBrain>
+    var model: CalculatorModel
     
     let pad: [[CalculatorButtonItem]] = [
         [.command(.clear), .command(.flip), .command(.percent), .op(.divide)],
@@ -103,7 +110,8 @@ struct CalculatorButtonPad: View {
     var body: some View {
         VStack(spacing: 8) {
             ForEach(pad, id: \.self) { row in
-                CalculatorButtonRow(brain: self.$brain, row: row)
+//                CalculatorButtonRow(brain: self.$brain, row: row)
+                CalculatorButtonRow(model: self.model, row: row)
             }
         }
     }
