@@ -23,7 +23,7 @@ class CalculatorModel: ObservableObject {
 //        }
 //    }
     
-    // 声明为 @Published 省略了 willSet
+    // 声明为 @Published 省略了 willSet 和 objectWillChange
     @Published var brain: CalculatorBrain = .left("0")
     
     @Published var history: [CalculatorButtonItem] = []
