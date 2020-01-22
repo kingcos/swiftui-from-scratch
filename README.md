@@ -9,6 +9,8 @@ Let's start with SwiftUI~
 - [SwiftUI by Tutorials - raywenderlich.com](https://store.raywenderlich.com/products/swiftui-by-tutorials)
 - [Combine: Asynchronous Programming with Swift - raywenderlich.com](https://store.raywenderlich.com/products/combine-asynchronous-programming-with-swift)
 - [100 Days of SwiftUI - Hacking with Swift](https://www.hackingwithswift.com/100/swiftui)
+- [Build an app with SwiftUI - Design + Code](https://designcode.io/swiftui?promo=learnswiftui)
+- [Learn SwiftUI for iOS 13 - Design + Code](https://designcode.io/swiftui2)
 
 ## Demos
 
