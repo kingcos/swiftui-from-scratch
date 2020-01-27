@@ -16,12 +16,14 @@ struct ContentView: View {
     @State var showFull = false
     
     var body: some View {
+        // 使用 ZStack 垂直堆叠控件
         ZStack {
             TitleView()
                 .blur(radius: show ? 20 : 0)
                 .opacity(showCard ? 0.4 : 1)
                 .offset(x: 0, y: showCard ? -200 : 0)
                 .animation(
+                    // 动画
                     Animation
                         .default
                         .delay(0.1)
@@ -34,6 +36,7 @@ struct ContentView: View {
                 .background(show ? Color("card3") : Color("card4"))
                 .cornerRadius(20)
                 .shadow(radius: 20)
+                // modifier 可多个叠加
                 .offset(x: 0, y: show ? -400 : -40)
                 .offset(x: viewState.width, y: viewState.height)
                 .offset(y: showCard ? -180 : 0)
@@ -64,6 +67,7 @@ struct ContentView: View {
             CardView()
                 .frame(width: showCard ? 375 : 340.0, height: 220.0)
                 .background(Color.black)
+                // cornerRadius 是默认带有切割作用的，因此先切再加阴影
 //                .cornerRadius(20)
                 .clipShape(RoundedRectangle(cornerRadius: showCard ? 30 : 20,
                                             style: .continuous))
@@ -78,6 +82,7 @@ struct ContentView: View {
                     self.showCard.toggle()
             }
             .gesture(
+                // 手势
                 DragGesture().onChanged { value in
                     self.viewState = value.translation
                     self.show = true
