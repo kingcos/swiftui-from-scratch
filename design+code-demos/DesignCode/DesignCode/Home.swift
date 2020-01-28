@@ -22,13 +22,9 @@ struct Home: View {
                     Text("Watching")
                         .font(.system(size: 28, weight: .bold))
                     Spacer()
-                    Button(action: { self.showProfile.toggle() }) {
-                        Image("Avatar")
-                            .renderingMode(.original)
-                            .resizable()
-                            .frame(width: 36, height: 36)
-                            .clipShape(Circle())
-                    }
+                    
+                    // 将 State 作为 Binding 传入
+                    AvatarView(showProfile: $showProfile)
                 }
                 .padding(.horizontal)
                 .padding(.top, 30)
@@ -72,5 +68,20 @@ struct Home: View {
 struct Home_Previews: PreviewProvider {
     static var previews: some View {
         Home()
+    }
+}
+
+struct AvatarView: View {
+    // 多个视图间共享，不允许有默认值
+    @Binding var showProfile: Bool
+    
+    var body: some View {
+        Button(action: { self.showProfile.toggle() }) {
+            Image("Avatar")
+                .renderingMode(.original)
+                .resizable()
+                .frame(width: 36, height: 36)
+                .clipShape(Circle())
+        }
     }
 }
