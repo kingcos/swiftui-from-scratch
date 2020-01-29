@@ -40,6 +40,22 @@ struct HomeView: View {
             .padding(.leading, 30 - 16) // 与下面的 ScrollView 对齐（默认水平为 16）
             .padding(.top, 30)
             
+            HStack(spacing: 12.0) {
+                RingView(color1: #colorLiteral(red: 0.9686274529, green: 0.78039217, blue: 0.3450980484, alpha: 1), color2: #colorLiteral(red: 0.7254902124, green: 0.4784313738, blue: 0.09803921729, alpha: 1), width: 44, height: 44, percent: 68, show: .constant(true))
+                VStack(alignment: .leading, spacing: 4.0) {
+                    Text("6 minutes left")
+                        .font(.subheadline)
+                        .bold()
+                    Text("Watched 10 min today")
+                        .font(.caption)
+                }
+            }
+            .padding(8)
+            .background(Color.white)
+            .cornerRadius(20)
+            .shadow(color: Color.black.opacity(0.2), radius: 20, x: 0, y: 10)
+            .shadow(color: Color.black.opacity(0.1), radius: 1, x: 0, y: 1)
+            
             // 横向 ScrollView
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 20) {
