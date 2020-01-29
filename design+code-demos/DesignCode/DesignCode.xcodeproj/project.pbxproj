@@ -21,6 +21,7 @@
 		84A1AB4923E15CBA00021652 /* UpdateStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A1AB4823E15CBA00021652 /* UpdateStore.swift */; };
 		84A1AB4B23E165F400021652 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A1AB4A23E165F400021652 /* TabBar.swift */; };
 		84A1AB4D23E16A9A00021652 /* RingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A1AB4C23E16A9A00021652 /* RingView.swift */; };
+		84A1AB4F23E1B35400021652 /* Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A1AB4E23E1B35400021652 /* Modifiers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		84A1AB4823E15CBA00021652 /* UpdateStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateStore.swift; sourceTree = "<group>"; };
 		84A1AB4A23E165F400021652 /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 		84A1AB4C23E16A9A00021652 /* RingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingView.swift; sourceTree = "<group>"; };
+		84A1AB4E23E1B35400021652 /* Modifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modifiers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 				84A1AB4823E15CBA00021652 /* UpdateStore.swift */,
 				84A1AB4A23E165F400021652 /* TabBar.swift */,
 				84A1AB4C23E16A9A00021652 /* RingView.swift */,
+				84A1AB4E23E1B35400021652 /* Modifiers.swift */,
 				8474E43A23D99A9F00E76F4C /* Assets.xcassets */,
 				8474E43F23D99A9F00E76F4C /* LaunchScreen.storyboard */,
 				8474E44223D99A9F00E76F4C /* Info.plist */,
@@ -174,6 +177,7 @@
 				84A1AB4923E15CBA00021652 /* UpdateStore.swift in Sources */,
 				84A1AB4523E0AD9600021652 /* UpdateList.swift in Sources */,
 				8474E44923DED96F00E76F4C /* MenuView.swift in Sources */,
+				84A1AB4F23E1B35400021652 /* Modifiers.swift in Sources */,
 				84A1AB4723E1580100021652 /* UpdateDetail.swift in Sources */,
 				84A1AB4D23E16A9A00021652 /* RingView.swift in Sources */,
 				8474E44B23E00A1B00E76F4C /* Home.swift in Sources */,
