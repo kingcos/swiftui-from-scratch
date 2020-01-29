@@ -84,6 +84,7 @@ struct HomeView: View {
                             width: screen.width - 60,
                             height: 275)
                     .offset(y: -60)
+                    .padding(.bottom, 30)
                 
                 Spacer()
             }
