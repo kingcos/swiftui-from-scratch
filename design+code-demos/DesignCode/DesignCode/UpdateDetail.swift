@@ -9,8 +9,23 @@
 import SwiftUI
 
 struct UpdateDetail: View {
+    var update: Update = updateData[1]
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        List {
+            VStack {
+                Image(update.image)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(maxWidth: .infinity)
+                Text(update.text)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+            }
+            .navigationBarTitle(update.title)
+        }
+        // GroupedListStyle()
+        // DefaultListStyle()
+        .listStyle(PlainListStyle())
     }
 }
 
