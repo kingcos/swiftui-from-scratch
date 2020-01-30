@@ -42,16 +42,16 @@ Let's start with SwiftUI~
 <table style="border: 0;">
   <tr>
   <td style="border: 0;">
-    <img src="design+code-demos/DesignCode/preview.png">
+    <img src="design+code-demos/DesignCode-2/preview.png">
   </td>
   <td style="border: 0;">
-    <img src="design+code-demos/DesignCode/preview_2.png">
+    <img src="design+code-demos/DesignCode-2/preview_2.png">
   </td>
   <td style="border: 0;">
-    <img src="design+code-demos/DesignCode/preview_3.png">
+    <img src="design+code-demos/DesignCode-2/preview_3.png">
   </td>
   <td style="border: 0;">
-    <img src="design+code-demos/DesignCode/preview_4.png">
+    <img src="design+code-demos/DesignCode-2/preview_4.png">
   </td>
   </tr>
 </table>
