@@ -10,7 +10,20 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("Hello, World!")
+        VStack {
+            VStack {
+                Text("UI Design")
+                    .font(.title)
+                    .fontWeight(.bold)
+                    .foregroundColor(Color("accent"))
+                    .padding(.top, 16)
+                Text("Certificate")
+                    .foregroundColor(.white)
+            }
+            Image("Background")
+        }
+        .background(Color.black)
+        .cornerRadius(10)
     }
 }
 
