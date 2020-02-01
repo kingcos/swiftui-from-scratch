@@ -11,7 +11,7 @@ import SwiftUI
 struct ContentView: View {
     @State var show = false
     @State var viewState = CGSize.zero
-     
+    
     var body: some View {
         ZStack {
             TitleView()
@@ -29,8 +29,8 @@ struct ContentView: View {
                 .offset(x: 0, y: show ? -400 : -40)
                 .scaleEffect(0.85)
                 .rotationEffect(Angle(degrees:  show ? 15 : 0))
-//                .rotation3DEffect(Angle(degrees: show ? 50 : 0),
-//                                  axis: (x: 10.0, y: 10.0, z: 10.0))
+                // .rotation3DEffect(Angle(degrees: show ? 50 : 0),
+                // axis: (x: 10.0, y: 10.0, z: 10.0))
                 .blendMode (.hardLight)
                 .animation(.easeInOut(duration: 0.7))
                 .offset(x: viewState.width, y: viewState.height)
@@ -42,8 +42,8 @@ struct ContentView: View {
                 .offset(x: 0, y: show ? -200 : -20)
                 .scaleEffect(0.9)
                 .rotationEffect(Angle(degrees: show ? 10 : 0))
-//                .rotation3DEffect(Angle(degrees: show ? 40 : 0),
-//                                  axis: (x: 10.0, y: 10.0, z: 10.0))
+                // .rotation3DEffect(Angle(degrees: show ? 40 : 0),
+                // axis: (x: 10.0, y: 10.0, z: 10.0))
                 .blendMode(.hardLight)
                 .animation(.easeInOut(duration: 0.5))
                 .offset(x: viewState.width, y: viewState.height)
@@ -52,23 +52,23 @@ struct ContentView: View {
                 .offset(x: viewState.width, y: viewState.height)
                 .scaleEffect(0.95)
                 .rotationEffect(Angle(degrees: show ? 5 : 0 ))
-//                .rotation3DEffect(Angle(degrees: show ? 30 : 0),
-//                                  axis: (x: 10.0, y: 10.0, z: 10.0))
+                // .rotation3DEffect(Angle(degrees: show ? 30 : 0),
+                // axis: (x: 10.0, y: 10.0, z: 10.0))
                 .animation(.spring())
                 .onTapGesture {
                     self.show.toggle()
+            }
+            .gesture(
+                DragGesture()
+                    .onChanged { value in
+                        self.viewState = value.translation
+                        self.show = true
                 }
-                .gesture(
-                    DragGesture()
-                        .onChanged { value in
-                            self.viewState = value.translation
-                            self.show = true
-                        }
-                        .onEnded { value in
-                            self.viewState = CGSize.zero
-                            self.show = false
-                        }
-                )
+                .onEnded { value in
+                    self.viewState = CGSize.zero
+                    self.show = false
+                }
+            )
         }
     }
 }
