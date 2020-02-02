@@ -9,13 +9,27 @@
 import SwiftUI
 
 struct HomeList: View {
+    @State var showSheet = false
+    
+    var courses = coursesData
+    
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
-            HStack {
-                ForEach(0 ..< 3) { item in
-                    CourseView()
+            HStack(spacing: 30.0) {
+                ForEach(courses) { course in
+                    CourseView(title: course.title,
+                               image: course.image,
+                               color: course.color,
+                               shadowColor: course.shadowColor)
+                        .onTapGesture {
+                            self.showSheet.toggle()
+                    }
+                    .sheet(isPresented: self.$showSheet) {
+                        ContentView()
+                    }
                 }
             }
+            .padding(.leading, 30)
         }
     }
 }
@@ -27,22 +41,54 @@ struct HomeList_Previews: PreviewProvider {
 }
 
 struct CourseView : View {
+    var title = "Build an app with SwiftUI"
+    var image = "Illustration1"
+    var color = Color("background3")
+    var shadowColor = Color("backgroundShadow3")
+    
     var body: some View {
         VStack(alignment: .leading) {
-            Text("Build an app with SwiftUI")
+            Text(title)
                 .font(.title)
                 .fontWeight(.bold)
                 .foregroundColor(.white)
                 .padding(20)
                 .lineLimit(4)
-                .frame(width: 150)
+                .padding(.trailing, 50)
             Spacer()
-            Image("Illustration1")
+            Image(image)
+                .resizable()
+                .renderingMode(.original)
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 246, height: 150)
+                .padding(.bottom, 30)
         }
-        .background(Color("background3"))
+        .background(color)
         .cornerRadius(30)
         .frame(width: 246, height: 360)
-        .shadow(color: Color("backgroundShadow3"),
-                radius: 20, x: 0, y: 20)
+        .shadow(color: shadowColor, radius: 20, x: 0, y: 20)
     }
 }
+
+struct Course : Identifiable {
+    var id = UUID()
+    var title: String
+    var image: String
+    var color: Color
+    var shadowColor: Color
+}
+
+let coursesData = [
+    Course(title: "Build an app with SwiftUI",
+           image: "Illustration1",
+           color: Color(hue: 0.677, saturation: 0.701, brightness: 0.788),
+           shadowColor: Color(hue: 0.677, saturation: 0.701, brightness: 0.788, opacity: 0.5)),
+    Course(title: "Design and animate your UI",
+           image: "Illustration2",
+           color: Color(red: 0.9254901960784314, green: 0.49411764705882355, blue: 0.4823529411764706),
+           shadowColor: Color(red: 0.9254901960784314, green: 0.49411764705882355, blue: 0.4823529411764706, opacity: 0.5)),
+    Course(title: "Swift UI Advanced",
+           image: "Illustration3",
+           color: Color("background7"),
+           shadowColor: Color(hue: 0.677, saturation: 0.701, brightness: 0.788, opacity: 0.5)),
+]
