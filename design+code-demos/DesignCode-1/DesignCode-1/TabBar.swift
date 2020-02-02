@@ -10,7 +10,32 @@ import SwiftUI
 
 struct TabBar: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+//        TabView(selection: .constant(2)) {
+        TabView {
+            Home()
+                .tabItem({
+                    Image("IconHome")
+                        .renderingMode(.template)
+                    Text("Home")
+                })
+                .tag(1)
+            
+            ContentView()
+                .tabItem({
+                    Image("IconCards")
+                        .renderingMode(.template)
+                    Text("Certificates")
+                })
+                .tag(2)
+            
+            UpdateList()
+                .tabItem({
+                    Image("IconSettings")
+                        .renderingMode(.template)
+                    Text("Updates")
+                })
+                .tag(3)
+        }
     }
 }
 
