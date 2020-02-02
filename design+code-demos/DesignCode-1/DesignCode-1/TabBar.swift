@@ -29,11 +29,11 @@ struct TabBar: View {
                 })
                 .tag(2)
             
-            UpdateList()
+            Settings()
                 .tabItem({
                     Image("IconSettings")
                         .renderingMode(.template)
-                    Text("Updates")
+                    Text("Settings")
                 })
                 .tag(3)
         }
