@@ -16,7 +16,7 @@ struct CertificateRow: View {
             Text("Certificates")
                 .font(.system(size: 20))
                 .fontWeight(.heavy)
-                .padding(.leading, 40)
+                .padding(.leading, 30)
             
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 20.0) {
@@ -25,7 +25,7 @@ struct CertificateRow: View {
                     }
                 }
                 .padding(20)
-                .padding(.leading, 20)
+                .padding(.leading, 10)
             }
         }
     }

@@ -156,6 +156,6 @@ struct CardBottomView : View {
         .background(BlurView(style: .systemMaterial)) // 适配黑夜模式
         .cornerRadius(30)
         .shadow(radius: 20)
-        .offset(y: 500)
+            .offset(y: UIScreen.main.bounds.height - 170)
     }
 }
