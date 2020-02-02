@@ -10,6 +10,7 @@ import SwiftUI
 
 struct TabBar: View {
     var body: some View {
+        // 默认选择 tab，但会导致其他 tab 不渲染，Bug？
 //        TabView(selection: .constant(2)) {
         TabView {
             Home()
@@ -41,6 +42,12 @@ struct TabBar: View {
 
 struct TabBar_Previews: PreviewProvider {
     static var previews: some View {
-        TabBar()
+        Group {
+            TabBar()
+            
+            TabBar()
+                .environment(\.colorScheme, .dark)
+                .environment(\.sizeCategory, .extraExtraLarge)
+        }
     }
 }

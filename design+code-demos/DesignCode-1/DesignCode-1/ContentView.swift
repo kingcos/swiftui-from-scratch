@@ -14,7 +14,7 @@ struct ContentView: View {
     
     var body: some View {
         ZStack {
-            BlurView(style: .extraLight)
+            BlurView(style: .systemMaterial)
             
             TitleView()
                 .blur(radius: show ? 20 : 0)
@@ -149,7 +149,7 @@ struct CardBottomView : View {
         .frame(minWidth: 0, maxWidth: .infinity)
         .padding()
         .padding(.horizontal)
-        .background(Color.white)
+        .background(BlurView(style: .systemMaterial)) // 适配黑夜模式
         .cornerRadius(30)
         .shadow(radius: 20)
         .offset(y: 500)
