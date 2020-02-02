@@ -14,42 +14,51 @@ struct HomeList: View {
     var courses = coursesData
     
     var body: some View {
-        VStack {
-            HStack {
-                VStack(alignment: .leading) {
-                    Text("Courses")
-                        .font(.largeTitle)
-                        .fontWeight(.heavy)
-                    Text("22 courses")
-                        .foregroundColor(.gray)
+        ScrollView {
+            VStack {
+                HStack {
+                    VStack(alignment: .leading) {
+                        Text("Courses")
+                            .font(.largeTitle)
+                            .fontWeight(.heavy)
+                        Text("22 courses")
+                            .foregroundColor(.gray)
+                    }
+                    Spacer()
                 }
-                Spacer()
-            }
-            .padding(.leading, 70.0)
-            .padding(.bottom, 40.0)
-            
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: 30.0) {
-                    ForEach(courses) { course in
-                        CourseView(title: course.title,
-                                   image: course.image,
-                                   color: course.color,
-                                   shadowColor: course.shadowColor)
-                            .onTapGesture {
-                                self.showSheet.toggle()
-                        }
-                        .sheet(isPresented: self.$showSheet) {
-                            ContentView()
+                .padding(.leading, 70.0)
+                
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: 30.0) {
+                        ForEach(courses) { course in
+                            GeometryReader { geometry in
+                                CourseView(title: course.title,
+                                           image: course.image,
+                                           color: course.color,
+                                           shadowColor: course.shadowColor)
+                                    .onTapGesture {
+                                        self.showSheet.toggle()
+                                }
+                                .sheet(isPresented: self.$showSheet) {
+                                    ContentView()
+                                }
+                                .rotation3DEffect(Angle(degrees: Double((geometry.frame(in: .global).minX - 40) / -20)),
+                                                  axis: (x: 0, y: 10.0, z: 0))
+                            }
+                            .frame(width: 246, height: 150)
                         }
                     }
+                    .padding(.leading, 40)
+                    .padding(.top, 30)
+                    Spacer()
                 }
-                .padding(.leading, 40)
+                .frame(height: 450)
+                
+                CertificateRow()
                 Spacer()
             }
-            
-            Spacer()
+            .padding(.top, 78.0)
         }
-        .padding(.top, 78.0)
     }
 }
 
@@ -98,6 +107,18 @@ struct Course : Identifiable {
 }
 
 let coursesData = [
+    Course(title: "Build an app with SwiftUI",
+           image: "Illustration1",
+           color: Color(hue: 0.677, saturation: 0.701, brightness: 0.788),
+           shadowColor: Color(hue: 0.677, saturation: 0.701, brightness: 0.788, opacity: 0.5)),
+    Course(title: "Design and animate your UI",
+           image: "Illustration2",
+           color: Color(red: 0.9254901960784314, green: 0.49411764705882355, blue: 0.4823529411764706),
+           shadowColor: Color(red: 0.9254901960784314, green: 0.49411764705882355, blue: 0.4823529411764706, opacity: 0.5)),
+    Course(title: "Swift UI Advanced",
+           image: "Illustration3",
+           color: Color("background7"),
+           shadowColor: Color(hue: 0.677, saturation: 0.701, brightness: 0.788, opacity: 0.5)),
     Course(title: "Build an app with SwiftUI",
            image: "Illustration1",
            color: Color(hue: 0.677, saturation: 0.701, brightness: 0.788),
