@@ -9,48 +9,77 @@
 import SwiftUI
 
 struct UpdateList: View {
+    @ObservedObject var store = UpdateStore(updates: updateData)
     @State var show = false
     
-    var updates = updateData
+    // var updates = updateData
+    
+    func addUpdate() {
+        store.updates.append(Update(image: "Certificate1",
+                                    title: "New Title",
+                                    text: "New Text",
+                                    date: "JUL 1"))
+    }
     
     var body: some View {
         NavigationView {
-            List(updates) { item in
-                NavigationLink(destination: UpdateDetail(title: item.title,
-                                                         text: item.text,
-                                                         image: item.image)) {
-                    HStack(spacing: 12.0) {
-                        Image(item.image)
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 80, height: 80)
-                            .background(Color("background"))
-                            .cornerRadius(20)
-                        
-                        VStack(alignment: .leading) {
-                            Text(item.title)
-                                .font(.headline)
-                            Text(item.text)
-                                .lineLimit(2)
-                                .lineSpacing(4)
-                                .font(.subheadline)
-                                .frame(height: 50)
-                            Text(item.date)
-                                .font(.caption)
-                                .fontWeight(.bold)
-                                .foregroundColor(.gray)
-                            
-                            Spacer()
-                        }.padding(.leading, 4)
+            VStack {
+                Button(action: addUpdate) {
+                    Text("Add Update")
+                        .foregroundColor(.white)
+                        .fontWeight(.bold)
+                }
+                .padding(8)
+                .background(Color("background3"))
+                .cornerRadius(8)
+                
+                List {
+                    ForEach(store.updates) { item in
+                        NavigationLink(destination: UpdateDetail(title: item.title,
+                                                                 text: item.text,
+                                                                 image: item.image)) {
+                                                                    HStack(spacing: 12.0) {
+                                                                        Image(item.image)
+                                                                            .resizable()
+                                                                            .aspectRatio(contentMode: .fit)
+                                                                            .frame(width: 80, height: 80)
+                                                                            .background(Color("background"))
+                                                                            .cornerRadius(20)
+                                                                        
+                                                                        VStack(alignment: .leading) {
+                                                                            Text(item.title)
+                                                                                .font(.headline)
+                                                                            Text(item.text)
+                                                                                .lineLimit(2)
+                                                                                .lineSpacing(4)
+                                                                                .font(.subheadline)
+                                                                                .frame(height: 50)
+                                                                            Text(item.date)
+                                                                                .font(.caption)
+                                                                                .fontWeight(.bold)
+                                                                                .foregroundColor(.gray)
+                                                                            
+                                                                            Spacer()
+                                                                        }.padding(.leading, 4)
+                                                                    }
+                        }
+                        .padding(.vertical, 8.0)
+                    }
+                    .onDelete { index in
+                        self.store.updates.remove(at: index.first!)
+                    }
+                    .onMove { (source: IndexSet, destination: Int) in
+                        self.store.updates.move(fromOffsets: source, toOffset: destination)
                     }
                 }
-                .padding(.vertical, 8.0)
+                .navigationBarTitle(Text("Updates"))
+                .navigationBarItems(trailing:
+                    // Button(action: { self.show.toggle() }) {
+                    // Image(systemName: "gear")
+                    // })
+                    EditButton()
+                )
             }
-            .navigationBarTitle(Text("Updates"))
-            .navigationBarItems(trailing:
-                Button(action: { self.show.toggle() }) {
-                    Image(systemName: "gear")
-            })
         }
         .sheet(isPresented: $show) { Text("Updates") }
     }

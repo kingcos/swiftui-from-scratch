@@ -10,14 +10,16 @@ import SwiftUI
 import Combine
 
 class UpdateStore : ObservableObject {
-    var didChange = PassthroughSubject<Void, Never>()
+//    @Published var updates: [Update]
     
+    var objectWillChange = PassthroughSubject<Void, Never>()
+
     var updates: [Update] {
-        didSet { didChange.send() }
+        // willSet { objectWillChange.send() }
+        didSet { objectWillChange.send() }
     }
-    
+
     init(updates: [Update] = []) {
         self.updates = updates
     }
-    
 }
