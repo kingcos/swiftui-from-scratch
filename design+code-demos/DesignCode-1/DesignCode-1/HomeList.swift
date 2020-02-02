@@ -14,23 +14,41 @@ struct HomeList: View {
     var courses = coursesData
     
     var body: some View {
-        ScrollView(.horizontal, showsIndicators: false) {
-            HStack(spacing: 30.0) {
-                ForEach(courses) { course in
-                    CourseView(title: course.title,
-                               image: course.image,
-                               color: course.color,
-                               shadowColor: course.shadowColor)
-                        .onTapGesture {
-                            self.showSheet.toggle()
-                    }
-                    .sheet(isPresented: self.$showSheet) {
-                        ContentView()
+        VStack {
+            HStack {
+                VStack(alignment: .leading) {
+                    Text("Courses")
+                        .font(.largeTitle)
+                        .fontWeight(.heavy)
+                    Text("22 courses")
+                        .foregroundColor(.gray)
+                }
+                Spacer()
+            }
+            .padding(.leading, 70.0)
+            .padding(.bottom, 40.0)
+            
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: 30.0) {
+                    ForEach(courses) { course in
+                        CourseView(title: course.title,
+                                   image: course.image,
+                                   color: course.color,
+                                   shadowColor: course.shadowColor)
+                            .onTapGesture {
+                                self.showSheet.toggle()
+                        }
+                        .sheet(isPresented: self.$showSheet) {
+                            ContentView()
+                        }
                     }
                 }
+                .padding(.leading, 40)
             }
-            .padding(.leading, 30)
+            
+            Spacer()
         }
+        .padding(.top, 78.0)
     }
 }
 
@@ -52,7 +70,7 @@ struct CourseView : View {
                 .font(.title)
                 .fontWeight(.bold)
                 .foregroundColor(.white)
-                .padding(20)
+                .padding(30)
                 .lineLimit(4)
                 .padding(.trailing, 50)
             Spacer()
