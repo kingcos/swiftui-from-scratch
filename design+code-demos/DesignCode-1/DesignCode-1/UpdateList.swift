@@ -73,11 +73,14 @@ struct UpdateList: View {
                     }
                 }
                 .navigationBarTitle(Text("Updates"))
-                .navigationBarItems(trailing:
+                .navigationBarItems(
+                    leading: Button(action: addUpdate) {
+                        Image(systemName: "plus")
+                    },
+                    trailing: EditButton()
                     // Button(action: { self.show.toggle() }) {
                     // Image(systemName: "gear")
                     // })
-                    EditButton()
                 )
             }
         }

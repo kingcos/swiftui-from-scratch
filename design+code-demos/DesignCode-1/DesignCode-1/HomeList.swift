@@ -44,6 +44,7 @@ struct HomeList: View {
                     }
                 }
                 .padding(.leading, 40)
+                Spacer()
             }
             
             Spacer()
