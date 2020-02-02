@@ -9,8 +9,25 @@
 import SwiftUI
 
 struct UpdateDetail: View {
+    var title = "SwiftUI"
+    var text = "Loading..."
+    var image = "Illustration1"
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack(spacing: 20) {
+            Text(title)
+                .font(.largeTitle)
+                .fontWeight(.heavy)
+            Image(image)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(height: 200)
+            Text(text)
+                .lineLimit(nil)
+                .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
+            Spacer()
+        }
+        .padding(30)
     }
 }
 

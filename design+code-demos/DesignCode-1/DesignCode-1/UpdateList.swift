@@ -16,23 +16,35 @@ struct UpdateList: View {
     var body: some View {
         NavigationView {
             List(updates) { item in
-                NavigationLink(destination: Text("1")) {
-                    VStack(alignment: .leading) {
-                        Text(item.title)
-                            .font(.headline)
-                        Text(item.text)
-                            .lineLimit(2)
-                            .lineSpacing(4)
-                            .font(.subheadline)
-                            .frame(height: 50)
-                        Text(item.date)
-                            .font(.caption)
-                            .fontWeight(.bold)
-                            .foregroundColor(.gray)
+                NavigationLink(destination: UpdateDetail(title: item.title,
+                                                         text: item.text,
+                                                         image: item.image)) {
+                    HStack(spacing: 12.0) {
+                        Image(item.image)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 80, height: 80)
+                            .background(Color("background"))
+                            .cornerRadius(20)
                         
-                        Spacer()
-                    }.padding(.leading, 4)
+                        VStack(alignment: .leading) {
+                            Text(item.title)
+                                .font(.headline)
+                            Text(item.text)
+                                .lineLimit(2)
+                                .lineSpacing(4)
+                                .font(.subheadline)
+                                .frame(height: 50)
+                            Text(item.date)
+                                .font(.caption)
+                                .fontWeight(.bold)
+                                .foregroundColor(.gray)
+                            
+                            Spacer()
+                        }.padding(.leading, 4)
+                    }
                 }
+                .padding(.vertical, 8.0)
             }
             .navigationBarTitle(Text("Updates"))
             .navigationBarItems(trailing:
