@@ -21,7 +21,10 @@ struct CertificateRow: View {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 20.0) {
                     ForEach(certificates) { item in
-                        CertificateView(item: item)
+                        CertificateItemView(title: item.title, image: item.image)
+                            .frame(width: 230.0, height: 150)
+                            .shadow(color: Color("buttonShadow"),
+                                    radius: 10, x: 0, y: 10)
                     }
                 }
                 .padding(20)
