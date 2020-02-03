@@ -29,9 +29,6 @@ Let's start with SwiftUI~
   <td style="border: 0;">
 	<img src="apple-demos/01-SwiftUI Essentials/preview_3.png">
   </td>
-  <td style="border: 0;">
-	<img src="apple-demos/01-SwiftUI Essentials/preview_4.png">
-  </td>
   </tr>
 </table>
 
