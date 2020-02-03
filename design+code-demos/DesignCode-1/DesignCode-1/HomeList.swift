@@ -55,6 +55,7 @@ struct HomeList: View {
                 }
                 
                 CertificateRow()
+                CourseRow()
                 Spacer()
             }
             .padding(.top, 78.0)

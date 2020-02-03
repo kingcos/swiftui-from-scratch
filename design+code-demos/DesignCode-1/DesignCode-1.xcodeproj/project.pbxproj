@@ -25,6 +25,7 @@
 		84F32D8A23E7BFF800F82F48 /* CardBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F32D8923E7BFF800F82F48 /* CardBottomView.swift */; };
 		84F32D8C23E7C2A200F82F48 /* CertificateItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F32D8B23E7C2A200F82F48 /* CertificateItemView.swift */; };
 		84F32D8E23E7C83E00F82F48 /* CourseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F32D8D23E7C83E00F82F48 /* CourseView.swift */; };
+		84F32D9023E7DA4600F82F48 /* CourseRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F32D8F23E7DA4600F82F48 /* CourseRow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		84F32D8923E7BFF800F82F48 /* CardBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBottomView.swift; sourceTree = "<group>"; };
 		84F32D8B23E7C2A200F82F48 /* CertificateItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificateItemView.swift; sourceTree = "<group>"; };
 		84F32D8D23E7C83E00F82F48 /* CourseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseView.swift; sourceTree = "<group>"; };
+		84F32D8F23E7DA4600F82F48 /* CourseRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseRow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 				84F32D8923E7BFF800F82F48 /* CardBottomView.swift */,
 				84F32D8B23E7C2A200F82F48 /* CertificateItemView.swift */,
 				84F32D8D23E7C83E00F82F48 /* CourseView.swift */,
+				84F32D8F23E7DA4600F82F48 /* CourseRow.swift */,
 			);
 			path = "DesignCode-1";
 			sourceTree = "<group>";
@@ -185,6 +188,7 @@
 				84A1AB7423E34F5700021652 /* AppDelegate.swift in Sources */,
 				84F32D8A23E7BFF800F82F48 /* CardBottomView.swift in Sources */,
 				84F32D8E23E7C83E00F82F48 /* CourseView.swift in Sources */,
+				84F32D9023E7DA4600F82F48 /* CourseRow.swift in Sources */,
 				84A1AB9023E7295C00021652 /* BlurView.swift in Sources */,
 				84E23CAC23E751400096286E /* Settings.swift in Sources */,
 				84A1AB8A23E5FBDD00021652 /* HomeList.swift in Sources */,
