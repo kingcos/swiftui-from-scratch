@@ -131,7 +131,7 @@ struct ContentView_Previews: PreviewProvider {
 
 struct TitleView : View {
     var body: some View {
-        return VStack {
+        VStack {
             HStack {
                 Text("Certificates")
                     .font(.largeTitle)

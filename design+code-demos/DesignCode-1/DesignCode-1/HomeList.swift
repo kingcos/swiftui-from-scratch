@@ -40,7 +40,7 @@ struct HomeList: View {
                                         self.showSheet.toggle()
                                 }
                                 .sheet(isPresented: self.$showSheet) {
-                                    ContentView()
+                                    CourseDetailView(title: course.title, image: course.image)
                                 }
                                 .rotation3DEffect(Angle(degrees: Double((geometry.frame(in: .global).minX - 30) / -40)),
                                                   axis: (x: 0, y: 10.0, z: 0))
@@ -65,36 +65,6 @@ struct HomeList: View {
 struct HomeList_Previews: PreviewProvider {
     static var previews: some View {
         HomeList()
-    }
-}
-
-struct CourseView : View {
-    var title = "Build an app with SwiftUI"
-    var image = "Illustration1"
-    var color = Color("background3")
-    var shadowColor = Color("backgroundShadow3")
-    
-    var body: some View {
-        VStack(alignment: .leading) {
-            Text(title)
-                .font(.title)
-                .fontWeight(.bold)
-                .foregroundColor(.white)
-                .padding(30)
-                .lineLimit(4)
-                .padding(.trailing, 50)
-            Spacer()
-            Image(image)
-                .resizable()
-                .renderingMode(.original)
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 246, height: 150)
-                .padding(.bottom, 30)
-        }
-        .background(color)
-        .cornerRadius(30)
-        .frame(width: 246, height: 360)
-        .shadow(color: shadowColor, radius: 20, x: 0, y: 20)
     }
 }
 
