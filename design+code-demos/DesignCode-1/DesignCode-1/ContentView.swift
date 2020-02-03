@@ -20,9 +20,10 @@ struct ContentView: View {
                 .blur(radius: show ? 20 : 0)
                 .animation(.default)
             
-            CardBottomView()
-                .blur(radius: show ? 20 : 0)
-                .animation(.default)
+            CardBottomView(text: "This certificate is proof that Meng To has achieved the UI Design course with approval from a Design+Code instructor.")
+                .blur(radius: show ? 50 : 0)
+                .animation(.easeInOut(duration: 0.3))
+                .offset(y: 640)
             
             CardView()
                 .background(show ? Color.red : Color("background9"))
@@ -136,26 +137,5 @@ struct TitleView : View {
             Spacer()
         }
         .padding()
-    }
-}
-
-struct CardBottomView : View {
-    var body: some View {
-        VStack(spacing: 20.0) {
-            Rectangle()
-                .frame(width: 60, height: 6)
-                .cornerRadius(3.0)
-                .opacity(0.1)
-            Text("This certificate is proof that Meng To has achieved the UI Design course with approval from a Design+Code instructor.")
-                .lineLimit(10)
-            Spacer()
-        }
-        .frame(minWidth: 0, maxWidth: .infinity)
-        .padding()
-        .padding(.horizontal)
-        .background(BlurView(style: .systemMaterial)) // 适配黑夜模式
-        .cornerRadius(30)
-        .shadow(radius: 20)
-            .offset(y: UIScreen.main.bounds.height - 170)
     }
 }
