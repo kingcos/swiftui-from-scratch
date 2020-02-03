@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  SceneDetail.swift
 //  01-SwiftUI Essentials
 //
 //  Created by kingcos on 2020/2/4.
@@ -8,9 +8,10 @@
 
 import SwiftUI
 
-struct ContentView: View {
+// 视图结构
+struct SceneDetail: View {
     var scene: Scene
-
+    
     var body: some View {
         VStack {
             MapView(coordinate: scene.locationCoordinate)
@@ -24,7 +25,7 @@ struct ContentView: View {
             VStack(alignment: .leading) {
                 Text(scene.name)
                     .font(.title)
-                HStack(alignment: .top) {
+                HStack {
                     Text("\(scene.id)")
                         .font(.subheadline)
                     Spacer()
@@ -36,11 +37,13 @@ struct ContentView: View {
             
             Spacer()
         }
+        .navigationBarTitle(Text(scene.name), displayMode: .inline)
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+// 便于预览使用 => 点击右侧 Resume 即可预览
+struct SceneDetail_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(scene: sceneData[0])
+        SceneDetail(scene: sceneData[0])
     }
 }

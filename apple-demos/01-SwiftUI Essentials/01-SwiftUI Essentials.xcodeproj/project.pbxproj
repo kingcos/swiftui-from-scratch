@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8478BA4323E89E23003A72DD /* yuanmingyuan.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8478BA4023E89E23003A72DD /* yuanmingyuan.jpg */; };
+		8478BA4423E89E23003A72DD /* yuyuantangongyuan.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8478BA4123E89E23003A72DD /* yuyuantangongyuan.jpg */; };
+		8478BA4523E89E23003A72DD /* changcheng.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8478BA4223E89E23003A72DD /* changcheng.jpg */; };
 		84F32D9E23E87B2C00F82F48 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F32D9D23E87B2C00F82F48 /* AppDelegate.swift */; };
 		84F32DA023E87B2C00F82F48 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F32D9F23E87B2C00F82F48 /* SceneDelegate.swift */; };
 		84F32DA223E87B2C00F82F48 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F32DA123E87B2C00F82F48 /* ContentView.swift */; };
@@ -15,9 +18,19 @@
 		84F32DAA23E87B2F00F82F48 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84F32DA823E87B2F00F82F48 /* LaunchScreen.storyboard */; };
 		84F32DB223E8865400F82F48 /* CircleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F32DB123E8865400F82F48 /* CircleImage.swift */; };
 		84F32DB423E8879900F82F48 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F32DB323E8879900F82F48 /* MapView.swift */; };
+		84F32DB723E895F800F82F48 /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F32DB623E895F800F82F48 /* Scene.swift */; };
+		84F32DBB23E896AE00F82F48 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F32DBA23E896AE00F82F48 /* Data.swift */; };
+		84F32DBE23E896D000F82F48 /* sampleData.json in Resources */ = {isa = PBXBuildFile; fileRef = 84F32DBD23E896D000F82F48 /* sampleData.json */; };
+		84F32DC023E8973900F82F48 /* SceneDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F32DBF23E8973900F82F48 /* SceneDetail.swift */; };
+		84F32DC323E897DF00F82F48 /* SceneRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F32DC223E897DF00F82F48 /* SceneRow.swift */; };
+		84F32DC523E8992400F82F48 /* SceneList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F32DC423E8992400F82F48 /* SceneList.swift */; };
+		84F32DC723E8995600F82F48 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F32DC623E8995600F82F48 /* UserData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8478BA4023E89E23003A72DD /* yuanmingyuan.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = yuanmingyuan.jpg; sourceTree = "<group>"; };
+		8478BA4123E89E23003A72DD /* yuyuantangongyuan.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = yuyuantangongyuan.jpg; sourceTree = "<group>"; };
+		8478BA4223E89E23003A72DD /* changcheng.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = changcheng.jpg; sourceTree = "<group>"; };
 		84F32D9A23E87B2C00F82F48 /* 01-SwiftUI Essentials.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "01-SwiftUI Essentials.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		84F32D9D23E87B2C00F82F48 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84F32D9F23E87B2C00F82F48 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -28,6 +41,13 @@
 		84F32DAB23E87B2F00F82F48 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84F32DB123E8865400F82F48 /* CircleImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImage.swift; sourceTree = "<group>"; };
 		84F32DB323E8879900F82F48 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		84F32DB623E895F800F82F48 /* Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
+		84F32DBA23E896AE00F82F48 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
+		84F32DBD23E896D000F82F48 /* sampleData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sampleData.json; sourceTree = "<group>"; };
+		84F32DBF23E8973900F82F48 /* SceneDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDetail.swift; sourceTree = "<group>"; };
+		84F32DC223E897DF00F82F48 /* SceneRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneRow.swift; sourceTree = "<group>"; };
+		84F32DC423E8992400F82F48 /* SceneList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneList.swift; sourceTree = "<group>"; };
+		84F32DC623E8995600F82F48 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +80,9 @@
 		84F32D9C23E87B2C00F82F48 /* 01-SwiftUI Essentials */ = {
 			isa = PBXGroup;
 			children = (
+				84F32DC123E897D400F82F48 /* Views */,
+				84F32DBC23E896C600F82F48 /* Resources */,
+				84F32DB523E895E200F82F48 /* Models */,
 				84F32D9D23E87B2C00F82F48 /* AppDelegate.swift */,
 				84F32D9F23E87B2C00F82F48 /* SceneDelegate.swift */,
 				84F32DA123E87B2C00F82F48 /* ContentView.swift */,
@@ -79,6 +102,37 @@
 				84F32DA623E87B2F00F82F48 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		84F32DB523E895E200F82F48 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				84F32DB623E895F800F82F48 /* Scene.swift */,
+				84F32DBA23E896AE00F82F48 /* Data.swift */,
+				84F32DC623E8995600F82F48 /* UserData.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		84F32DBC23E896C600F82F48 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				84F32DBD23E896D000F82F48 /* sampleData.json */,
+				8478BA4223E89E23003A72DD /* changcheng.jpg */,
+				8478BA4023E89E23003A72DD /* yuanmingyuan.jpg */,
+				8478BA4123E89E23003A72DD /* yuyuantangongyuan.jpg */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		84F32DC123E897D400F82F48 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				84F32DBF23E8973900F82F48 /* SceneDetail.swift */,
+				84F32DC223E897DF00F82F48 /* SceneRow.swift */,
+				84F32DC423E8992400F82F48 /* SceneList.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -140,8 +194,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				84F32DAA23E87B2F00F82F48 /* LaunchScreen.storyboard in Resources */,
+				8478BA4323E89E23003A72DD /* yuanmingyuan.jpg in Resources */,
 				84F32DA723E87B2F00F82F48 /* Preview Assets.xcassets in Resources */,
+				8478BA4523E89E23003A72DD /* changcheng.jpg in Resources */,
 				84F32DA423E87B2F00F82F48 /* Assets.xcassets in Resources */,
+				8478BA4423E89E23003A72DD /* yuyuantangongyuan.jpg in Resources */,
+				84F32DBE23E896D000F82F48 /* sampleData.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -152,11 +210,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84F32DBB23E896AE00F82F48 /* Data.swift in Sources */,
 				84F32D9E23E87B2C00F82F48 /* AppDelegate.swift in Sources */,
 				84F32DB223E8865400F82F48 /* CircleImage.swift in Sources */,
 				84F32DB423E8879900F82F48 /* MapView.swift in Sources */,
+				84F32DC523E8992400F82F48 /* SceneList.swift in Sources */,
+				84F32DC723E8995600F82F48 /* UserData.swift in Sources */,
 				84F32DA023E87B2C00F82F48 /* SceneDelegate.swift in Sources */,
+				84F32DC323E897DF00F82F48 /* SceneRow.swift in Sources */,
+				84F32DC023E8973900F82F48 /* SceneDetail.swift in Sources */,
 				84F32DA223E87B2C00F82F48 /* ContentView.swift in Sources */,
+				84F32DB723E895F800F82F48 /* Scene.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

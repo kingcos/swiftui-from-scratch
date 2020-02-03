@@ -9,8 +9,10 @@
 import SwiftUI
 
 struct CircleImage: View {
+    var image: Image
+
     var body: some View {
-        Image("jingshangongyuan")
+        image
             .frame(maxWidth: 260, maxHeight: 260) // 限制宽度
             .clipShape(Circle()) // 裁剪为圆
             .overlay(Circle().stroke(Color.white, lineWidth: 4)) // 添加边框
@@ -20,6 +22,6 @@ struct CircleImage: View {
 
 struct CircleImage_Previews: PreviewProvider {
     static var previews: some View {
-        CircleImage()
+        CircleImage(image: Image("jingshangongyuan"))
     }
 }
