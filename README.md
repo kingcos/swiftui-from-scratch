@@ -42,16 +42,16 @@ Let's start with SwiftUI~
 <table style="border: 0;">
   <tr>
   <td style="border: 0;">
-    <img src="design+code-demos/DesignCode-1/preview.png">
+    <img src="design+code-demos/01-DesignCode/preview.png">
   </td>
   <td style="border: 0;">
-    <img src="design+code-demos/DesignCode-1/preview_2.png">
+    <img src="design+code-demos/01-DesignCode/preview_2.png">
   </td>
   <td style="border: 0;">
-    <img src="design+code-demos/DesignCode-1/preview_3.png">
+    <img src="design+code-demos/01-DesignCode/preview_3.png">
   </td>
   <td style="border: 0;">
-    <img src="design+code-demos/DesignCode-1/preview_4.png">
+    <img src="design+code-demos/01-DesignCode/preview_4.png">
   </td>
   </tr>
 </table>
@@ -61,16 +61,16 @@ Let's start with SwiftUI~
 <table style="border: 0;">
   <tr>
   <td style="border: 0;">
-    <img src="design+code-demos/DesignCode-2/preview.png">
+    <img src="design+code-demos/02-DesignCode/preview.png">
   </td>
   <td style="border: 0;">
-    <img src="design+code-demos/DesignCode-2/preview_2.png">
+    <img src="design+code-demos/02-DesignCode/preview_2.png">
   </td>
   <td style="border: 0;">
-    <img src="design+code-demos/DesignCode-2/preview_3.png">
+    <img src="design+code-demos/02-DesignCode/preview_3.png">
   </td>
   <td style="border: 0;">
-    <img src="design+code-demos/DesignCode-2/preview_4.png">
+    <img src="design+code-demos/02-DesignCode/preview_4.png">
   </td>
   </tr>
 </table>
