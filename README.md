@@ -37,6 +37,25 @@ Let's start with SwiftUI~
 
 ### Design + Code
 
+#### Build an app with SwiftUI
+
+<table style="border: 0;">
+  <tr>
+  <td style="border: 0;">
+    <img src="design+code-demos/DesignCode-1/preview.png">
+  </td>
+  <td style="border: 0;">
+    <img src="design+code-demos/DesignCode-1/preview_2.png">
+  </td>
+  <td style="border: 0;">
+    <img src="design+code-demos/DesignCode-1/preview_3.png">
+  </td>
+  <td style="border: 0;">
+    <img src="design+code-demos/DesignCode-1/preview_4.png">
+  </td>
+  </tr>
+</table>
+
 #### Learn SwiftUI for iOS 13
 
 <table style="border: 0;">
