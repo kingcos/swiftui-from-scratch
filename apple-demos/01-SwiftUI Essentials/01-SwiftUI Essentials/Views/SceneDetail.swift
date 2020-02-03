@@ -10,7 +10,13 @@ import SwiftUI
 
 // 视图结构
 struct SceneDetail: View {
+    @EnvironmentObject var userData: UserData
+    
     var scene: Scene
+    
+    var sceneIndex: Int {
+        userData.scenes.firstIndex(where: { $0.id == scene.id })!
+    }
     
     var body: some View {
         VStack {
@@ -23,8 +29,23 @@ struct SceneDetail: View {
                 .padding(.bottom, -130)
             
             VStack(alignment: .leading) {
-                Text(scene.name)
-                    .font(.title)
+                HStack {
+                    Text(scene.name)
+                        .font(.title)
+                    
+                    Button(action: {
+                        self.userData.scenes[self.sceneIndex].isFavorite.toggle()
+                    }) {
+                        if self.userData.scenes[self.sceneIndex].isFavorite {
+                            Image(systemName: "star.fill")
+                                .foregroundColor(Color.yellow)
+                        } else {
+                            Image(systemName: "star")
+                                .foregroundColor(Color.gray)
+                        }
+                    }
+                }
+                
                 HStack {
                     Text("\(scene.id)")
                         .font(.subheadline)

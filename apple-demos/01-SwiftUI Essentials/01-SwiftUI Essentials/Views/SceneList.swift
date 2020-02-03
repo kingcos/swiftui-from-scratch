@@ -9,11 +9,22 @@
 import SwiftUI
 
 struct SceneList: View {
+    @EnvironmentObject var userData: UserData
+    // @State var showFavoritesOnly = true
+    
     var body: some View {
         NavigationView {
-            List(sceneData) { scene in
-                NavigationLink(destination: SceneDetail(scene: scene)) {
-                    SceneRow(scene: scene)
+            List {
+                Toggle(isOn: $userData.showFavoritesOnly) {
+                    Text("Favorites only")
+                }
+
+                ForEach(userData.scenes) { scene in
+                    if !self.userData.showFavoritesOnly || scene.isFavorite {
+                        NavigationLink(destination: SceneDetail(scene: scene)) {
+                            SceneRow(scene: scene)
+                        }
+                    }
                 }
             }
             .navigationBarTitle(Text("Scenes"))
@@ -25,10 +36,12 @@ struct SceneList_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             SceneList()
+                .environmentObject(UserData())
                 .previewDevice(PreviewDevice(rawValue: "iPhone SE"))
             
             ForEach(["iPhone SE", "iPhone XS Max"], id: \.self) { deviceName in
                 SceneList()
+                    .environmentObject(UserData())
                     .previewDevice(PreviewDevice(rawValue: deviceName))
                     .previewDisplayName(deviceName)
             }
