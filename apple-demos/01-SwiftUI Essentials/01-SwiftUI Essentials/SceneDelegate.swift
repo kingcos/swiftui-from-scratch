@@ -1,9 +1,9 @@
 //
 //  SceneDelegate.swift
-//  first-demo
+//  01-SwiftUI Essentials
 //
-//  Created by kingcos on 2019/10/26.
-//  Copyright © 2019 kingcos. All rights reserved.
+//  Created by kingcos on 2020/2/4.
+//  Copyright © 2020 kingcos. All rights reserved.
 //
 
 import UIKit
@@ -20,7 +20,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
 
         // Create the SwiftUI view that provides the window contents.
-        let contentView = Badge() // SceneList().environmentObject(UserData())
+        let contentView = ContentView()
 
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {

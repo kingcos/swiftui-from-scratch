@@ -1,9 +1,9 @@
 //
 //  AppDelegate.swift
-//  first-demo
+//  01-SwiftUI Essentials
 //
-//  Created by kingcos on 2019/10/26.
-//  Copyright © 2019 kingcos. All rights reserved.
+//  Created by kingcos on 2020/2/4.
+//  Copyright © 2020 kingcos. All rights reserved.
 //
 
 import UIKit
