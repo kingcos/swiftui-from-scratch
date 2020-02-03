@@ -29,15 +29,15 @@ struct Settings : View {
                 
                 Picker(selection: $selection,
                        label: Text("Favorite course")) {
-                    Text("SwiftUI").tag(1)
-                    Text("React").tag(2)
+                        Text("SwiftUI").tag(1)
+                        Text("React").tag(2)
                 }
                 
                 DatePicker(selection: $date) {
                     Text("Date")
                 }
                 
-                    
+                
                 Section(header: Text("Email")) {
                     TextField("Your email", text: $email)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
@@ -46,9 +46,20 @@ struct Settings : View {
                 
                 Button(action: { self.submit.toggle() }) {
                     Text("Submit")
-                }.alert(isPresented: $submit) {
-                    Alert(title: Text("Thanks!"),
-                          message: Text("Email: \(email)"))
+                }
+//                .alert(isPresented: $submit) {
+//                    Alert(title: Text("Thanks!"),
+//                          message: Text("Email: \(email)"))
+//                }
+                
+                if submit {
+                    VStack(alignment: .leading, spacing: 12) {
+                        Text(receive ? "Subscribed": "Not subscribed")
+                        Text("Emails: \(email)")
+                        Text("Favorite: \(selection)")
+                        Text("Date: \(date)")
+                        Text("email: \(email)")
+                    }.padding()
                 }
             }
             .navigationBarTitle(Text("Settings"))
