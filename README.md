@@ -41,6 +41,7 @@ Let's start with SwiftUI~
   </td>
   <td style="border: 0;">
     <img src="apple-demos/02-Drawing and Animation/preview_2.png">
+  </td>
   </tr>
 </table>
 
