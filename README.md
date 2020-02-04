@@ -37,7 +37,19 @@ Let's start with SwiftUI~
 <table style="border: 0;">
   <tr>
   <td style="border: 0;">
-    <img src="apple-demos/02-Drawing and Animation/preview.png" style="max-width: 150px;">
+    <img src="apple-demos/02-Drawing and Animation/preview.png">
+  </td>
+  <td style="border: 0;">
+    <img src="apple-demos/02-Drawing and Animation/preview_2.png">
+  </tr>
+</table>
+
+#### App Design and Layout
+
+<table style="border: 0;">
+  <tr>
+  <td style="border: 0;">
+    <img src="apple-demos/03-App Design and Layout/preview.png" style="max-width: 150px;">
   </td>
   </tr>
 </table>
