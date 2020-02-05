@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct ProfileHost: View {
+    // 可编辑状态
     @Environment(\.editMode) var mode
     @EnvironmentObject var userData: UserData
     @State var draftProfile = Profile.default
