@@ -13,10 +13,12 @@ struct GraphCapsule: View {
     var range: Range<Double>
     var overallRange: Range<Double>
     
+    // 高度比例
     var heightRatio: CGFloat {
         max(CGFloat(magnitude(of: range) / magnitude(of: overallRange)), 0.15)
     }
     
+    // 偏移比例（差值越大，偏移越大）
     var offsetRatio: CGFloat {
         CGFloat((range.lowerBound - overallRange.lowerBound) / magnitude(of: overallRange))
     }

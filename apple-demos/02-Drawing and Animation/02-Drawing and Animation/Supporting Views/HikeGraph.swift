@@ -15,12 +15,14 @@ func rangeOfRanges<C: Collection>(_ ranges: C) -> Range<Double>
     return low..<high
 }
 
+// 返回范围的大小（上界 - 下界）
 func magnitude(of range: Range<Double>) -> Double {
     return range.upperBound - range.lowerBound
 }
 
 struct HikeGraph: View {
     var hike: Hike
+    // 键路径
     var path: KeyPath<Hike.Observation, Range<Double>>
     
     var color: Color {
@@ -50,7 +52,7 @@ struct HikeGraph: View {
                         height: proxy.size.height,
                         range: data[index][keyPath: self.path],
                         overallRange: overallRange)
-                    .colorMultiply(self.color)
+                    .colorMultiply(self.color) // 改变颜色
                 }
                 .offset(x: 0, y: proxy.size.height * heightRatio)
             }
