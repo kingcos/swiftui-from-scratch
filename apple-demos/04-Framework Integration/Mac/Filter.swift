@@ -50,7 +50,8 @@ struct FilterType: CaseIterable, Hashable, Identifiable  {
         self.category = nil
     }
     
-    static var all = FilterType(name: "All")
+    // 默认的「全部」选项
+    static var all = FilterType(name: "全部")
     
     static var allCases: [FilterType] {
         return [.all] + Scene.Category.allCases.map(FilterType.init)

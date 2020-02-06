@@ -24,19 +24,22 @@ struct NavigationDetail: View {
                 .frame(height: 250)
                 .overlay(
                     GeometryReader { proxy in
-                        Button("Open in Maps") {
+                        Button("在地图中打开") {
                             let destination = MKMapItem(placemark: MKPlacemark(coordinate: self.scene.locationCoordinate))
                             destination.name = self.scene.name
                             destination.openInMaps()
                         }
-                        .frame(width: proxy.size.width, height: proxy.size.height, alignment: .bottomTrailing)
+                        .frame(width: proxy.size.width,
+                               height: proxy.size.height,
+                               alignment: .bottomTrailing)
                         .offset(x: -10, y: -10)
                     }
             )
             
             VStack(alignment: .leading, spacing: 12) {
                 HStack(alignment: .center, spacing: 24) {
-                    CircleImage(image: scene.image.resizable(), shadowRadius: 4)
+                    CircleImage(image: scene.image.resizable(),
+                                shadowRadius: 4)
                         .frame(width: 160, height: 160)
                     
                     VStack(alignment: .leading) {
@@ -73,7 +76,7 @@ struct NavigationDetail: View {
                 
                 Divider()
                 
-                Text("About \(scene.name)")
+                Text("关于 \(scene.name)")
                     .font(.headline)
                 
                 Text(scene.description)

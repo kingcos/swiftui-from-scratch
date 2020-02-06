@@ -26,6 +26,7 @@ struct MapView {
 
 #if os(macOS)
 
+// macOS 上继承 NSViewRepresentable
 extension MapView: NSViewRepresentable {
     func makeNSView(context: Context) -> MKMapView {
         makeMapView()
@@ -38,6 +39,7 @@ extension MapView: NSViewRepresentable {
 
 #else
 
+// iOS 继承 UIViewRepresentable
 extension MapView: UIViewRepresentable {
     func makeUIView(context: Context) -> MKMapView {
         makeMapView()
