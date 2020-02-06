@@ -18,6 +18,7 @@ struct Scene: Hashable, Codable, Identifiable {
     var category: Category
     var isFavorite: Bool
     var isFeatured: Bool
+    var description: String
     
     var featureImage: Image? {
         guard isFeatured else { return nil }

@@ -10,13 +10,14 @@ import SwiftUI
 
 struct CircleImage: View {
     var image: Image
-
+    var shadowRadius: CGFloat = 10
+    
     var body: some View {
         image
             .frame(maxWidth: 260, maxHeight: 260) // 限制宽度
             .clipShape(Circle()) // 裁剪为圆
             .overlay(Circle().stroke(Color.white, lineWidth: 4)) // 添加边框
-            .shadow(radius: 10) // 添加阴影
+            .shadow(radius: shadowRadius) // 添加阴影
     }
 }
 

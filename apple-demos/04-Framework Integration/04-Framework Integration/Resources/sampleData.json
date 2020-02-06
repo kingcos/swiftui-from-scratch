@@ -10,7 +10,8 @@
             "longitude":116.01548,
             "latitude":40.356585
         },
-        "imageName":"changcheng"
+        "imageName":"changcheng",
+        "description":"长城（The Great Wall），又称万里长城，是中国古代的军事防御工程，是一道高大、坚固而连绵不断的长垣，用以限隔敌骑的行动。长城不是一道单纯孤立的城墙，而是以城墙为主体，同大量的城、障、亭、标相结合的防御体系。"
     },
     {
         "id":1002,
@@ -23,7 +24,8 @@
             "longitude":116.303468,
             "latitude":40.006088
         },
-        "imageName":"yuanmingyuan"
+        "imageName":"yuanmingyuan",
+        "description":"圆明园又称圆明三园，是清代大型皇家园林，它坐落在北京西北郊，与颐和园毗邻，由圆明园、长春园和绮春园组成，所以也叫圆明三园。此外，还有许多小园，分布在东、西、南三面，众星拱月般环绕周围。"
     },
     {
         "id":1003,
@@ -36,6 +38,7 @@
             "longitude":116.320023,
             "latitude":39.916603
         },
-        "imageName":"yuyuantangongyuan"
+        "imageName":"yuyuantangongyuan",
+        "description":"玉渊潭公园，AAAA级景区，位于海淀区。东门与钓鱼台国宾馆相邻；西至西三环中路与中央电视塔隔路相望；南门在中华世纪坛正北方，北接海军总医院。"
     }
 ]

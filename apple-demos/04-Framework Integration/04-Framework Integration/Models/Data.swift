@@ -6,7 +6,7 @@
 //  Copyright © 2020 kingcos. All rights reserved.
 //
 
-import UIKit
+import Foundation
 import SwiftUI
 import ImageIO
 
