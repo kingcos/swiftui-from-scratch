@@ -90,8 +90,8 @@
 				84CF276823EB38A000262DA5 /* LaunchScreen.storyboard */,
 				84CF276B23EB38A000262DA5 /* Info.plist */,
 				84CF276523EB38A000262DA5 /* Preview Content */,
-				84CF277123EB396D00262DA5 /* PageViewController.swift */,
 				84CF277323EB3A1F00262DA5 /* PageView.swift */,
+				84CF277123EB396D00262DA5 /* PageViewController.swift */,
 				84CF278A23EB422F00262DA5 /* PageControl.swift */,
 			);
 			path = "04-Framework Integration";

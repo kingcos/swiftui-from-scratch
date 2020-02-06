@@ -9,6 +9,7 @@
 import SwiftUI
 import UIKit
 
+// 只负责管理
 struct PageViewController: UIViewControllerRepresentable {
     var controllers: [UIViewController]
     // 记录当前页
