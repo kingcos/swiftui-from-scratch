@@ -1,0 +1,12 @@
+{
+    "aps": {
+        "alert": {
+            "body": "万里长城欢迎您",
+            "title": "长城",
+        },
+        "category": "SceneNear",
+        "thread-id": "5280"
+    },
+    
+    "sceneIndex": 0
+}

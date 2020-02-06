@@ -8,10 +8,11 @@
 
 import UIKit
 import SwiftUI
+import ImageIO
 
 let sceneData: [Scene] = load("sampleData.json")
 let features = sceneData.filter { $0.isFeatured }
-//let hikeData: [Hike] = load("hikeData.json")
+let hikeData: [Hike] = load("hikeData.json")
 
 func load<T: Decodable>(_ filename: String) -> T {
     let data: Data
