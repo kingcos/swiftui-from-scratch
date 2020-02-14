@@ -13,6 +13,7 @@ struct CourseList: View {
     // @State var show2 = false
     @State var courses = courseData
     @State var active = false
+    @State var activeIndex = -1
     
     var body: some View {
         ZStack {
@@ -35,8 +36,15 @@ struct CourseList: View {
                     // CourseView(show: $show)
                     ForEach(courses.indices, id: \.self) { index in
                         GeometryReader { geometry in
-                            CourseView(show: self.$courses[index].show, active: self.$active, course: self.courses[index])
+                            CourseView(show: self.$courses[index].show,
+                                       active: self.$active,
+                                       activeIndex: self.$activeIndex,
+                                       course: self.courses[index],
+                                       index: index)
                                 .offset(y: self.courses[index].show ? -geometry.frame(in: .global).minY : 0)
+                                .opacity(self.activeIndex != index && self.active ? 0 : 1)
+                                .scaleEffect(self.activeIndex != index && self.active ? 0.5 : 1)
+                                .offset(x: self.activeIndex != index && self.active ? screen.width : 0)
                         }
                         .frame(height: 280)
                         .frame(maxWidth: self.courses[index].show ? .infinity : screen.width - 60)
@@ -61,8 +69,10 @@ struct CourseList_Previews: PreviewProvider {
 struct CourseView: View {
     @Binding var show: Bool
     @Binding var active: Bool
+    @Binding var activeIndex: Int
     
     var course: Course
+    var index: Int
     
     var body: some View {
         ZStack(alignment: .top) {
@@ -129,6 +139,12 @@ struct CourseView: View {
             .onTapGesture {
                 self.show.toggle()
                 self.active.toggle()
+                
+                if self.show {
+                    self.activeIndex = self.index
+                } else {
+                    self.activeIndex = -1
+                }
             }
         }
         .frame(height: show ? screen.height : 280)
