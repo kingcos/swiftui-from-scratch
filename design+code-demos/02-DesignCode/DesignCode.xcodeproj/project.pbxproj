@@ -33,6 +33,7 @@
 		84A1AB6323E1B6B200021652 /* WorkSans-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 84A1AB5923E1B6B200021652 /* WorkSans-Black.ttf */; };
 		84A1AB6423E1B6B200021652 /* WorkSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 84A1AB5A23E1B6B200021652 /* WorkSans-Bold.ttf */; };
 		84A1AB6623E1FBD400021652 /* CourseList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A1AB6523E1FBD400021652 /* CourseList.swift */; };
+		84AA32C223F7113900CF7F9D /* CourseDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AA32C123F7113900CF7F9D /* CourseDetail.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +65,7 @@
 		84A1AB5923E1B6B200021652 /* WorkSans-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WorkSans-Black.ttf"; sourceTree = "<group>"; };
 		84A1AB5A23E1B6B200021652 /* WorkSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WorkSans-Bold.ttf"; sourceTree = "<group>"; };
 		84A1AB6523E1FBD400021652 /* CourseList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseList.swift; sourceTree = "<group>"; };
+		84AA32C123F7113900CF7F9D /* CourseDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseDetail.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 				84A1AB4C23E16A9A00021652 /* RingView.swift */,
 				84A1AB4E23E1B35400021652 /* Modifiers.swift */,
 				84A1AB6523E1FBD400021652 /* CourseList.swift */,
+				84AA32C123F7113900CF7F9D /* CourseDetail.swift */,
 				8474E43A23D99A9F00E76F4C /* Assets.xcassets */,
 				84A1AB5023E1B6B200021652 /* Work_Sans */,
 				8474E43F23D99A9F00E76F4C /* LaunchScreen.storyboard */,
@@ -235,6 +238,7 @@
 				842E628423E08E8600B158C2 /* HomeView.swift in Sources */,
 				8474E43723D99A9F00E76F4C /* SceneDelegate.swift in Sources */,
 				8474E43923D99A9F00E76F4C /* ContentView.swift in Sources */,
+				84AA32C223F7113900CF7F9D /* CourseDetail.swift in Sources */,
 				84A1AB4B23E165F400021652 /* TabBar.swift in Sources */,
 				84A1AB6623E1FBD400021652 /* CourseList.swift in Sources */,
 			);
