@@ -28,7 +28,8 @@ class API {
         guard let url = URL(string: "https://jsonplaceholder.typicode.com/posts") else { return }
         
         URLSession.shared.dataTask(with: url) { (data, _, _) in
-            let posts = try! JSONDecoder().decode([Post].self, from: data!)
+            guard let data = data,
+                  let posts = try? JSONDecoder().decode([Post].self, from: data) else { return }
             
             DispatchQueue.main.async {
                 completion(posts)
