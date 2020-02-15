@@ -97,7 +97,7 @@ struct CourseView: View {
                    maxHeight: show ? .infinity : 280,
                    alignment: .top)
             .offset(y: show ? 460 : 0)
-            .background(Color.white)
+            .background(Color("background3"))
             .clipShape(RoundedRectangle(cornerRadius: 30, style: .continuous))
             .shadow(color: Color.black.opacity(0.2), radius: 20, x: 0, y: 20)
             .opacity(show ? 1 : 0)
