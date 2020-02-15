@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -37,6 +37,7 @@
 		84AA32C423F71AB400CF7F9D /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AA32C323F71AB300CF7F9D /* Data.swift */; };
 		84AA32C623F71D6600CF7F9D /* PostList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AA32C523F71D6600CF7F9D /* PostList.swift */; };
 		84AA32C823F7B82A00CF7F9D /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AA32C723F7B82A00CF7F9D /* DataStore.swift */; };
+		84AA32CB23F7C63700CF7F9D /* Contentful in Frameworks */ = {isa = PBXBuildFile; productRef = 84AA32CA23F7C63700CF7F9D /* Contentful */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -79,6 +80,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84AA32CB23F7C63700CF7F9D /* Contentful in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -171,6 +173,9 @@
 			dependencies = (
 			);
 			name = DesignCode;
+			packageProductDependencies = (
+				84AA32CA23F7C63700CF7F9D /* Contentful */,
+			);
 			productName = DesignCode;
 			productReference = 8474E43123D99A9F00E76F4C /* DesignCode.app */;
 			productType = "com.apple.product-type.application";
@@ -199,6 +204,9 @@
 				Base,
 			);
 			mainGroup = 8474E42823D99A9F00E76F4C;
+			packageReferences = (
+				84AA32C923F7C63700CF7F9D /* XCRemoteSwiftPackageReference "contentful.swift" */,
+			);
 			productRefGroup = 8474E43223D99A9F00E76F4C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -446,6 +454,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		84AA32C923F7C63700CF7F9D /* XCRemoteSwiftPackageReference "contentful.swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/contentful/contentful.swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.6;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		84AA32CA23F7C63700CF7F9D /* Contentful */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 84AA32C923F7C63700CF7F9D /* XCRemoteSwiftPackageReference "contentful.swift" */;
+			productName = Contentful;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 8474E42923D99A9F00E76F4C /* Project object */;
 }
