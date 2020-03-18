@@ -33,6 +33,7 @@ extension URL {
 }
 
 extension String {
+    // 移除换行为空格
     var newlineRemoved: String {
         return split(separator: "\n").joined(separator: " ")
     }

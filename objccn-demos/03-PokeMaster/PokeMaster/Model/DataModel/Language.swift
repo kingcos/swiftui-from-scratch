@@ -12,6 +12,7 @@ struct Language: Codable {
     let name: String
     let url: URL
 
+    // 计算属性
     var isCN: Bool { name == "zh-Hans" }
     var isEN: Bool { name == "en" }
 }
