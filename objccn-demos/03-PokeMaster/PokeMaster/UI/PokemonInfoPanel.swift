@@ -2,7 +2,7 @@
 //  PokemonInfoPanel.swift
 //  PokeMaster
 //
-//  Created by 买明 on 2020/3/19.
+//  Created by kingcos on 2020/3/19.
 //  Copyright © 2020 OneV's Den. All rights reserved.
 //
 
