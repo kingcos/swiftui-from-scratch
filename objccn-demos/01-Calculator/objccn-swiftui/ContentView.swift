@@ -12,7 +12,7 @@ let scale: CGFloat = UIScreen.main.bounds.width / 414
 
 struct ContentView: View {
     // @State 修饰的值，在 SwiftUI 内部会被自动转换为一对 setter 和 getter；
-    // @State 属性值仅只能在属性**本身**被设置时会触发 UI 刷新，这个特性让它非常适合用来声明一个值类型的值：因为对值类型的属性的变更，也会触发整个 值的重新设置，进而刷新 UI（因此不太适合多个组件传递的变量）。
+    // @State 属性值仅只能在属性**本身**被设置时会触发 UI 刷新，这个特性让它非常适合用来声明一个值类型的值：因为对值类型的属性的变更，也会触发整个 值的重新设置，进而刷新 UI（因此不太适合多个组件之间传递的变量）。
     // 对这个属性进行赋值的操作将会触发 View 的刷新，它的 body 会被再次调用，底层渲染引擎会找出界面上被改变的部分，根据新的属性值计算出新的 View，并进行刷新。
     @State private var brain: CalculatorBrain = .left("0")
     
