@@ -31,6 +31,13 @@ struct PokemonList: View {
                 }
             }
         }
+        .overlay( // 在当前 View 上方添加另外的 View，类似 ZStack，但会尊重下方的 View 的布局
+            VStack {
+                Spacer()
+                PokemonInfoPanel(model: .sample(id: 1))
+            }
+            .edgesIgnoringSafeArea(.bottom)
+        )
     }
 }
 
