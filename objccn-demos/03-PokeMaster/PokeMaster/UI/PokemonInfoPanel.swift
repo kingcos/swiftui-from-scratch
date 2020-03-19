@@ -11,6 +11,8 @@ import SwiftUI
 struct PokemonInfoPanel: View {
     let model: PokemonViewModel
     
+    @State var darkBlur = false
+    
     var abilities: [AbilityViewModel] {
         AbilityViewModel.sample(pokemonID: model.id)
     }
@@ -31,13 +33,19 @@ struct PokemonInfoPanel: View {
     
     var body: some View {
         VStack(spacing: 20) {
+            Button(action: {
+                self.darkBlur.toggle()
+            }) {
+                Text("切换模糊效果")
+            }
             topIndicator
             Header(model: model)
             pokemonDescription
             Divider()
             AbilityList(
                 model: model,
-                abilityModels: abilities)
+                abilityModels: abilities
+            )
           }
           .padding(
             EdgeInsets(
@@ -49,7 +57,7 @@ struct PokemonInfoPanel: View {
         )
         //        .background(Color.white)
         //        .background(BlurView(style: .systemMaterial))
-        .blurBackground(style: .systemMaterial)
+        .blurBackground(style: darkBlur ? .systemMaterialDark : .systemMaterial)
         .cornerRadius(20)
         .fixedSize(horizontal: false, vertical: true)
     }

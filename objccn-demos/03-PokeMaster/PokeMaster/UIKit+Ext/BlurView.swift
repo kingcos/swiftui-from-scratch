@@ -12,9 +12,17 @@ import UIKit
 struct BlurView: UIViewRepresentable {
     let style: UIBlurEffect.Style
     
+    init(style: UIBlurEffect.Style) {
+        print("init")
+        
+        self.style = style
+    }
+    
     func makeUIView(
         context: UIViewRepresentableContext<BlurView>
     ) -> UIView {
+        print("makeUIView")
+        
         let view = UIView(frame: .zero)
         view.backgroundColor = .clear
         
@@ -33,11 +41,18 @@ struct BlurView: UIViewRepresentable {
         return view
     }
     
-    // 留空
     func updateUIView(
         _ uiView: UIView,
         context: UIViewRepresentableContext<BlurView>
-    ) {}
+    ) {
+        // style 被设置时调用，要更新 UI
+        print("updateUIView")
+        guard let subview = uiView.subviews.first,
+              let blurView = subview as? UIVisualEffectView else { return }
+        
+        let blurEffect = UIBlurEffect(style: style)
+        blurView.effect = blurEffect
+    }
 }
 
 extension View {
