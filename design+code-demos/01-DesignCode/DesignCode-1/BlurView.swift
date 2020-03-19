@@ -17,7 +17,7 @@ struct BlurView: UIViewRepresentable {
         let blurEffect = UIBlurEffect(style: style)
         let blurView = UIVisualEffectView(effect: blurEffect)
         blurView.translatesAutoresizingMaskIntoConstraints = false
-        view.insertSubview(blurView, at: 0)
+        view.insertSubview(blurView, at: 0) // 插入模糊视图，也可 view.addSubview(blurView)
         NSLayoutConstraint.activate([
             blurView.heightAnchor.constraint(equalTo: view.heightAnchor),
             blurView.widthAnchor.constraint(equalTo: view.widthAnchor),

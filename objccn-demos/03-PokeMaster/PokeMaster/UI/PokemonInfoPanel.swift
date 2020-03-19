@@ -47,7 +47,9 @@ struct PokemonInfoPanel: View {
                 trailing: 30
           )
         )
-        .background(Color.white)
+        //        .background(Color.white)
+        //        .background(BlurView(style: .systemMaterial))
+        .blurBackground(style: .systemMaterial)
         .cornerRadius(20)
         .fixedSize(horizontal: false, vertical: true)
     }
