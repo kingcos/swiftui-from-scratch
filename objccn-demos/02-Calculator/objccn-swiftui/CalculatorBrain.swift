@@ -66,19 +66,27 @@ enum CalculatorBrain {
     }
 
     private func apply(num: Int) -> CalculatorBrain {
+        // 处理数字
+        
         switch self {
         case .left(let left):
+            // 当前处于 left，则拼接
             return .left(left.apply(num: num))
         case .leftOp(let left, let op):
+            // 当前处于 left + op，则放置在 right
             return .leftOpRight(left: left, op: op, right: "0".apply(num: num))
         case .leftOpRight(let left, let op, let right):
+            // 当前处于 right，则拼接
             return .leftOpRight(left: left, op: op, right: right.apply(num: num))
         case .error:
+            // 当前处于出错状态，则从 0 开始
             return .left("0".apply(num: num))
         }
     }
 
     private func applyDot() -> CalculatorBrain {
+        // 根据当前状态处理小数点
+        
         switch self {
         case .left(let left):
             return .left(left.applyDot())
@@ -92,6 +100,8 @@ enum CalculatorBrain {
     }
 
     private func apply(op: CalculatorButtonItem.Op) -> CalculatorBrain {
+        // 根据当前状态处理操作符
+        
         switch self {
         case .left(let left):
             switch op {
@@ -132,6 +142,8 @@ enum CalculatorBrain {
     }
 
     private func apply(command: CalculatorButtonItem.Command) -> CalculatorBrain {
+        // 根据当前状态处理命令
+        
         switch command {
         case .clear:
             return .left("0")
