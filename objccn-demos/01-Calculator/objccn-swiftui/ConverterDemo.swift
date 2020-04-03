@@ -8,7 +8,7 @@
 
 import Foundation
 
-// propertyWrapper：比如通过属性对 UserDefaults 或者 Keychain 进行读写，对某个字符串进行格式化或者去前后段空白，为属性读写加锁等等
+// propertyWrapper：比如通过属性对 UserDefaults 或者 Keychain 进行读写、对某个字符串进行格式化或者去前后段空白、为属性读写加锁等等
 @propertyWrapper struct Converter {
     let from: String
     let to: String
@@ -20,7 +20,7 @@ import Foundation
         get { "\(from) \(value)" }
         set { value = Double(newValue) ?? -1 }
     }
-        
+    
     var projectedValue: String {
         return "\(to) \(value * rate)"
     }
@@ -40,14 +40,14 @@ import Foundation
 }
 
 struct Foo {
-    @Converter(initialValue: "100", from: "USD", to: "CNY", rate: 6.88)
-    var usd_cny
+    @Converter(initialValue: "100", from: "USD", to: "CNY", rate: 6.88) // 构造方法
+    var usd_cny // wrappedValue
 
     @Converter(initialValue: "100", from: "CNY", to: "EUR", rate: 0.13)
     var cny_eur
 
     func foo() {
-        // wrappedValue - projectedValue
+        // wrappedValue - $projectedValue
         print("\(usd_cny) = \($usd_cny)")
         print("\(cny_eur) = \($cny_eur)")
     }

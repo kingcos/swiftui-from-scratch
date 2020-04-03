@@ -49,20 +49,23 @@ class CalculatorModel: ObservableObject {
     
     func apply(_ item: CalculatorButtonItem) {
         brain = brain.apply(item: item)
-        history.append(item)
+        history.append(item) // 加入历史
         
         temporaryKept.removeAll()
         slidingIndex = Float(totalCount)
     }
     
     func keepHistory(upTo index: Int) {
+        // 断言
         precondition(index <= totalCount, "Out of index.")
         
         let total = history + temporaryKept
         
+        // 把所有的操作分为要回溯到的位置和要废弃的操作
         history = Array(total[..<index])
         temporaryKept = Array(total[index...])
         
+        // 应用历史，回溯回去
         brain = history.reduce(CalculatorBrain.left("0")) { result, item in
             result.apply(item: item)
         }

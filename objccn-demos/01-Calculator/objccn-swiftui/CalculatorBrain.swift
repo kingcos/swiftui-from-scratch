@@ -32,7 +32,7 @@ enum CalculatorBrain {
     // 异常情况
     case error
 
-    @discardableResult
+    @discardableResult // 忽略未使用该函数返回值时的警告
     func apply(item: CalculatorButtonItem) -> CalculatorBrain {
         switch item {
         case .digit(let num):
