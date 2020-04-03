@@ -12,27 +12,27 @@ Redux (状态管理和组件通讯架构)
 
 ## propertyWrapper
 
-`@State / @Binding / @ObjectBinding / @EnvironmentObject`，都是被  `@propertyWrapper` 修饰的 struct 类型：
+`@State / @Binding / @ObjectBinding / @EnvironmentObject`，都是被  `@propertyWrapper`  修饰的 struct 类型：
 
 ```swift
-import Foundation
-
-//
+/// A linked View property that instantiates a persistent state
+/// value of type `Value`, allowing the view to read and update its
+/// value.
 @available(iOS 13.0, OSX 10.15, tvOS 13.0, watchOS 6.0, *)
-@propertyWrapper public struct State<Value> : DynamicProperty {
+@frozen @propertyWrapper public struct State<Value> : DynamicProperty {
 
+    // 初始化（两个初始化方法的意义？）
     /// Initialize with the provided initial value.
     public init(wrappedValue value: Value)
-    
-    // initialValue 这个参数名相对特殊：当它出现在 init 方法的第一个参数位置时，编译器将允许我们在声明的时候直接为 @State var brain 进行赋值。
+
     /// Initialize with the provided initial value.
     public init(initialValue value: Value)
-
+    
     // 外界访问和赋值都触发包装的 wrappedValue
     /// The current state value.
     public var wrappedValue: Value { get nonmutating set }
-
-    // 通过 $ 访问的是 projectedValue
+    
+    // 通过 $ 访问的是 projectedValue，但这里暴露的是引用语义（之前 State 遵守 BindingConvertible）
     /// Produces the binding referencing this state value
     public var projectedValue: Binding<Value> { get }
 }

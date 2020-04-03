@@ -11,10 +11,9 @@ import SwiftUI
 let scale: CGFloat = UIScreen.main.bounds.width / 414
 
 struct ContentView: View {
-    // @State 修饰的值，在 SwiftUI 内部会被自动转换为一对 setter 和 getter；
-    // @State 属性值仅只能在属性**本身**被设置时会触发 UI 刷新，这个特性让它非常适合用来声明一个值类型的值：因为对值类型的属性的变更，也会触发整个 值的重新设置，进而刷新 UI（因此不太适合多个组件传递的变量）。
-    // 对这个属性进行赋值的操作将会触发 View 的刷新，它的 body 会被再次调用，底层渲染引擎会找出界面上被改变的部分，根据新的属性值计算出新的 View，并进行刷新。
-    @State private var brain: CalculatorBrain = .left("0")
+    // @State 修饰的值将被转换为 getter & setter；
+    // @State 适用于声明值类型变量，当其值改变时将触发 UI 刷新（非全局刷新）
+    @State private var brain: CalculatorBrain = .left("0") // init(initialValue value: Value)
     
     let row: [CalculatorButtonItem] = [
         .digit(1), .digit(2), .digit(3), .op(.plus),
@@ -48,8 +47,8 @@ struct ContentView: View {
 //                self.brain = .left("1.23")
 //            }
             
-            // 在 Swift 5.1 中，对一个由 @ 符号修饰的属性，在它前面使用 $ 所取得的值，被称为投影属性 (projection property)。
-            // 有些 @ 属性，比如这里的 @State 和 @Binding，它们的投影属性就是自身所对应值的 Binding 类型。不过要注意的是，并不是所有的 @ 属性都提供 $ 的投影访问方式。
+            // 投影属性（projection property）在由 @ 修饰的属性之前使用 $ 所取得的值
+            // @State 和 @Binding 的投影属性即自身所对应值的 Binding 类型（并非所有的 @ 属性都提供 $ 的投影访问方式）
             // $brain -> Binding
             CalculatorButtonPad(brain: $brain)
                 .padding(.bottom)
@@ -132,8 +131,8 @@ struct CalculatorButton : View {
 
 struct CalculatorButtonRow : View {
     // 传递路径：ContentView @State -> CalculatorButtonPad @Binding -> CalculatorButtonRow @Binding
-    // 对被声明为 @Binding 的属性进行赋值，改变的将不是属性本身，而是它的引用，这个改变将被向外传递。
-    // 对内部 brain 的修改将导致外界 brain 改变 & 刷新 UI。
+    // 对被声明为 @Binding 的属性进行赋值，改变的将不是属性本身，而是它的原始引用，这个改变将被向外传递。
+    // 对内部 brain 的修改将导致外界 brain 改变，并刷新 UI。
     @Binding var brain: CalculatorBrain
     
     let row: [CalculatorButtonItem]
