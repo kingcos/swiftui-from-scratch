@@ -31,6 +31,7 @@ enum CalculatorBrain {
     case leftOpRight(left: String, op: CalculatorButtonItem.Op, right: String)
     // 异常情况
     case error
+    case result(String)
 
     @discardableResult
     func apply(item: CalculatorButtonItem) -> CalculatorBrain {
@@ -54,7 +55,7 @@ enum CalculatorBrain {
     var output: String {
         let result: String
         switch self {
-        case .left(let left): result = left
+        case .left(let left), .result(let left): result = left
         case .leftOp(let left, _): result = left
         case .leftOpRight(_, _, let right): result = right
         case .error: return "Error"
@@ -78,7 +79,7 @@ enum CalculatorBrain {
         case .leftOpRight(let left, let op, let right):
             // 当前处于 right，则拼接
             return .leftOpRight(left: left, op: op, right: right.apply(num: num))
-        case .error:
+        case .error, .result:
             // 当前处于出错状态，则从 0 开始
             return .left("0".apply(num: num))
         }
@@ -88,7 +89,7 @@ enum CalculatorBrain {
         // 根据当前状态处理小数点
         
         switch self {
-        case .left(let left):
+        case .left(let left), .result(let left):
             return .left(left.applyDot())
         case .leftOp(let left, let op):
             return .leftOpRight(left: left, op: op, right: "0".applyDot())
@@ -103,7 +104,7 @@ enum CalculatorBrain {
         // 根据当前状态处理操作符
         
         switch self {
-        case .left(let left):
+        case .left(let left), .result(let left):
             switch op {
             case .plus, .minus, .multiply, .divide:
                 return .leftOp(left: left, op: op)
@@ -131,7 +132,8 @@ enum CalculatorBrain {
                 }
             case .equal:
                 if let result = currentOp.calculate(l: left, r: right) {
-                    return .left(result)
+//                    return .left(result)
+                    return .result(result)
                 } else {
                     return .error
                 }
@@ -149,7 +151,7 @@ enum CalculatorBrain {
             return .left("0")
         case .flip:
             switch self {
-            case .left(let left):
+            case .left(let left), .result(let left):
                 return .left(left.flipped())
             case .leftOp(let left, let op):
                 return .leftOpRight(left: left, op: op, right: "-0")
@@ -160,7 +162,7 @@ enum CalculatorBrain {
             }
         case .percent:
             switch self {
-            case .left(let left):
+            case .left(let left), .result(let left):
                 return .left(left.percentaged())
             case .leftOp:
                 return self

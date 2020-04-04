@@ -11,28 +11,44 @@ import SwiftUI
 let scale: CGFloat = UIScreen.main.bounds.width / 414
 
 struct ContentView: View {
-//    @State private var brain: CalculatorBrain = .left("0")
     // model 属性是观察的对象（视图 ObservedObject），model 是引用类型 CalculatorModel 的值，
     // 其中 objectWillChange 发出事件时，body 会被调用，UI 刷新
 //    @ObservedObject private var model = CalculatorModel()
     
-    // 传递给当前 View 层级及其子层级中
+    // @EnvironmentObject 无需在构造函数中传递（不会在类型中自动创建变量）
+    // 即可直接传递给当前 View 层级及其子层级中
     @EnvironmentObject var model: CalculatorModel
     
     @State private var editingHistory = false
-    
-    let row: [CalculatorButtonItem] = [
-        .digit(1), .digit(2), .digit(3), .op(.plus),
-    ]
+    @State private var showingResult = false
     
     var body: some View {
         VStack(spacing: 12) {
             Spacer() // 使用 Spacer 下沉视图
-            Button("操作履历: \(model.history.count)") {
-                self.editingHistory = true
-            }.sheet(isPresented: self.$editingHistory) {
-                HistoryView(model: self.model)
-            }
+//            Button("操作履历: \(model.history.count)") {
+//                self.editingHistory = true
+//            }.sheet(isPresented: self.$editingHistory) {
+//                HistoryView(model: self.model, isPresented: self.$editingHistory)
+//            }
+            VStack {
+                if model.totalCount == 0 {
+                    Text("没有履历")
+                } else {
+                    HStack {
+                        Text("履历").font(.headline)
+                        Text("\(model.historyDetail)").lineLimit(nil)
+                    }
+                    HStack {
+                        Text("显示").font(.headline)
+                        Text("\(model.brain.output)")
+                    }
+                    Slider(
+                        value: $model.slidingIndex,
+                        in: 0...Float(model.totalCount),
+                        step: 1
+                    )
+                }
+            }.padding()
             
             Text(model.brain.output)
                 .font(.system(size: 76))
@@ -44,10 +60,24 @@ struct ContentView: View {
                   maxWidth: .infinity, // 宽度范围（尽可能地宽）
                   alignment: .trailing
                 )
+                .onTapGesture {
+                    self.showingResult.toggle()
+                }
+                .alert(isPresented: self.$showingResult) {
+                    Alert(title: Text(self.model.historyDetail),
+                          message: Text(self.model.brain.output),
+                          primaryButton: .default(Text("Copy"),
+                                                  action: {
+                                                    UIPasteboard.general.string = self.model.brain.output
+                          }),
+                          secondaryButton: .cancel())
+                }
             
-            // 将会通过动态查找的方式获取到对应的 Binding<CalculatorBrain>
+            // 通过动态查找的方式获取到对应的 Binding<CalculatorBrain> 传入
 //            CalculatorButtonPad(brain: $model.brain)
+            
 //            CalculatorButtonPad(model: model)
+            
             CalculatorButtonPad()
                 .padding(.bottom)
         }
@@ -83,7 +113,9 @@ struct CalculatorButton : View {
 }
 
 struct CalculatorButtonRow : View {
-    // @Binding var brain: CalculatorBrain
+    // 外界传入 self.$brain
+    // @Binding var brain: CalculatorBrain // Binding<CalculatorBrain>
+    
     // var model: CalculatorModel
     @EnvironmentObject var model: CalculatorModel
     
@@ -98,6 +130,7 @@ struct CalculatorButtonRow : View {
                     backgroundColorName: item.backgroundColorName)
                 {
 //                    self.brain = self.brain.apply(item: item)
+                    // 点击之后不止一个操作（应用），那么就封装在 model 中
                     self.model.apply(item)
                 }
             }
@@ -106,7 +139,9 @@ struct CalculatorButtonRow : View {
 }
 
 struct CalculatorButtonPad: View {
-    // @Binding var brain: CalculatorBrain // Binding<CalculatorBrain>
+    // 外界传入 $model.brain
+//    @Binding var brain: CalculatorBrain // Binding<CalculatorBrain>
+    
     // var model: CalculatorModel
     
     let pad: [[CalculatorButtonItem]] = [
@@ -120,7 +155,9 @@ struct CalculatorButtonPad: View {
     var body: some View {
         VStack(spacing: 8) {
             ForEach(pad, id: \.self) { row in
+                // 再向下传入 CalculatorButtonRow
 //                CalculatorButtonRow(brain: self.$brain, row: row)
+                
 //                CalculatorButtonRow(model: self.model, row: row)
                 CalculatorButtonRow(row: row)
             }

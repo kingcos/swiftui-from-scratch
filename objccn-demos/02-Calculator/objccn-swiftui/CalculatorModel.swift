@@ -8,11 +8,10 @@
 
 import Combine
 
-// CalculatorModel 自身是 ObservableObject 可观察的对象（被观察者）
-// ObservableObject 相比 @State 更自由一些
+// ObservableObject 相比 @State 更自由一些；必须使用 class
+// CalculatorModel 自身是 ObservableObject 即可观察的对象（被观察者）
 class CalculatorModel: ObservableObject {
-    // 在数据将要发生改变时，这个属性用来向外进行广播，它的订阅者 (一般是 View 相关的逻辑) 在收到通知后，对 View 进行刷新
-    // PassthroughSubject 提供 send 方法用来通知外界事件发生，即驱动 UI 的数据将要改变
+    // 数据变化 -> objectWillChange -> View
     // 使用 @Published 时需注释 ⬇️
 //    let objectWillChange = PassthroughSubject<Void, Never>()
     
@@ -26,8 +25,10 @@ class CalculatorModel: ObservableObject {
     // 声明为 @Published 省略了 willSet 和 objectWillChange
     @Published var brain: CalculatorBrain = .left("0") // 初始为 0
     
+    // 存储每一次操作的 Item
     @Published var history: [CalculatorButtonItem] = []
     
+    // 将 history 转换为字符串
     var historyDetail: String {
         history.map { $0.description }.joined()
     }
@@ -48,11 +49,11 @@ class CalculatorModel: ObservableObject {
     }
     
     func apply(_ item: CalculatorButtonItem) {
-        brain = brain.apply(item: item)
-        history.append(item) // 加入历史
+        brain = brain.apply(item: item) // 计算器显示、计算操作
+        history.append(item) // 加入回溯历史
         
-        temporaryKept.removeAll()
-        slidingIndex = Float(totalCount)
+        temporaryKept.removeAll() // 移除暂存被回溯的操作
+        slidingIndex = Float(totalCount) // 滑块 index 置为总数量（此时 didSet 重复做了一遍）
     }
     
     func keepHistory(upTo index: Int) {
