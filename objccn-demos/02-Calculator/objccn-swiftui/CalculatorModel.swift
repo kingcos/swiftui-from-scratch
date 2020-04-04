@@ -14,7 +14,7 @@ class CalculatorModel: ObservableObject {
     // 数据变化 -> objectWillChange -> View
     // 使用 @Published 时需注释 ⬇️
 //    let objectWillChange = PassthroughSubject<Void, Never>()
-    
+//
 //    var brain: CalculatorBrain = .left("0") {
 //        // 手动在将要设置时调用 send
 //        willSet {
@@ -27,6 +27,12 @@ class CalculatorModel: ObservableObject {
     
     // 存储每一次操作的 Item
     @Published var history: [CalculatorButtonItem] = []
+//    var history: [CalculatorButtonItem] = [] {
+//        willSet {
+//            objectWillChange.send()
+//        }
+//    }
+    
     
     // 将 history 转换为字符串
     var historyDetail: String {
