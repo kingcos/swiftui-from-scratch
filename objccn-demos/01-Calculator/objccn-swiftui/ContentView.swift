@@ -12,7 +12,9 @@ let scale: CGFloat = UIScreen.main.bounds.width / 414
 
 struct ContentView: View {
     // @State 修饰的值将被转换为 getter & setter；
-    // @State 适用于声明值类型变量，当其值改变时将触发 UI 刷新（非全局刷新）
+    // @State 适用于声明值类型变量，当其值改变时将触发 UI 刷新（非全局刷新），
+    // 且条件为：所有相关操作和状态改变都应和当前 View 挂钩（在 body 或 body 所调用的方法中访问）
+    // 若在多个 View 中共享数据，或需要在 View 外部操作数据，则不可使用 @State
     @State private var brain: CalculatorBrain = .left("0") // init(initialValue value: Value)
     
     let row: [CalculatorButtonItem] = [

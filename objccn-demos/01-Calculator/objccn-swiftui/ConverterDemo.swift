@@ -8,7 +8,31 @@
 
 import Foundation
 
-// propertyWrapper：比如通过属性对 UserDefaults 或者 Keychain 进行读写、对某个字符串进行格式化或者去前后段空白、为属性读写加锁等等
+@propertyWrapper
+public struct Percentage {
+    var value: Int
+
+    public var wrappedValue: Int {
+        get { value }
+        set { value = max(0, min(100, newValue)) }
+    }
+
+    public init(wrappedValue: Int) {
+        value = wrappedValue
+    }
+
+    public init(initialValue: Int) {
+        value = initialValue
+    }
+}
+
+struct ViewModel {
+    // init(initialValue: Int)
+    @Percentage(initialValue: 1000) var progress1
+    // public init(wrappedValue: Int)
+    @Percentage var progress2 = 2000
+}
+
 @propertyWrapper struct Converter {
     let from: String
     let to: String
@@ -50,5 +74,12 @@ struct Foo {
         // wrappedValue - $projectedValue
         print("\(usd_cny) = \($usd_cny)")
         print("\(cny_eur) = \($cny_eur)")
+        
+        let vm = ViewModel()
+        print(vm.progress1, vm.progress2)
     }
 }
+
+//USD 100.0 = CNY 688.0
+//CNY 100.0 = EUR 13.0
+//1000 2000

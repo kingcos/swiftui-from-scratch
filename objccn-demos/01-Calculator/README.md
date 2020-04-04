@@ -32,8 +32,11 @@ Redux (状态管理和组件通讯架构)
     /// The current state value.
     public var wrappedValue: Value { get nonmutating set }
     
-    // 通过 $ 访问的是 projectedValue，但这里暴露的是引用语义（之前 State 遵守 BindingConvertible）
+    // 通过 $ 访问的是 projectedValue，但这里暴露的是引用语义
+    //（之前 State 通过遵守 BindingConvertible，State 暴露修改内部存储的方法）
     /// Produces the binding referencing this state value
     public var projectedValue: Binding<Value> { get }
 }
 ```
+
+适用于依赖 getter & setter 的方式：比如通过属性对 UserDefaults 或者 Keychain 进行读写、对某个字符串进行格式化或者去前后段空白、为属性读写加锁等等
