@@ -17,6 +17,7 @@ struct PokemonList: View {
 //            PokemonInfoRow(model: pokemon, expanded: false)
 //        }
         ScrollView { // 没有重用机制，少量可用
+            SearchBar()
             ForEach(PokemonViewModel.all) { pokemon in
                 PokemonInfoRow(model: pokemon,
                     expanded: self.expandingIndex == pokemon.id)
