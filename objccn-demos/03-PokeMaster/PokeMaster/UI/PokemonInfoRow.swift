@@ -88,11 +88,12 @@ struct PokemonInfoRow: View {
             }
         )
         .padding(.horizontal)
-        .animation(
-            .spring(response: 0.55,
-                    dampingFraction: 0.425,
-                    blendDuration: 0)
-        ) // 隐式动画
+//        .animation(
+//            .spring(response: 0.55,
+//                    dampingFraction: 0.425,
+//                    blendDuration: 0)
+//        ) // 隐式动画
+        
 //        .onTapGesture {
 //            self.expanded.toggle()
 //
