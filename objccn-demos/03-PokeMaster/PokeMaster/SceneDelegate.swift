@@ -20,7 +20,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
 
         // Create the SwiftUI view that provides the window contents.
-        let contentView = MainTab()
+        // 内部子控件谁需要 environmentObject 谁声明即可自动注入
+        let contentView = MainTab().environmentObject(Store())
 
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {

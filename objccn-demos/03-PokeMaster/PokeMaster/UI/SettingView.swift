@@ -11,6 +11,13 @@ import SwiftUI
 struct SettingView: View {
     @ObservedObject var settings = Settings()
     
+    // 需注入
+    @EnvironmentObject var store: Store
+    // 包装为计算属性
+    var settingsBinding: Binding<AppState.Settings> {
+        $store.appState.settings
+    }
+    
     var accountSection: some View {
         Section(header: Text("账户")) {
             Picker(selection: $settings.accountBehavior, label: Text("")) {
@@ -34,15 +41,21 @@ struct SettingView: View {
     
     var optionSection: some View {
         Section(header: Text("选项")) {
-            Toggle(isOn: $settings.showEnglishName) {
+//            Toggle(isOn: $settings.showEnglishName) {
+            Toggle(isOn: settingsBinding.showEnglishName) {
                 Text("显示英文名")
             }
-            Picker(selection: $settings.sorting, label: Text("排序方式")) {
+            Picker(
+//                selection: $settings.sorting,
+                selection: settingsBinding.sorting,
+                label: Text("排序方式")
+            ) {
                 ForEach(Settings.Sorting.allCases, id: \.self) {
                     Text($0.text)
                 }
             }
-            Toggle(isOn: $settings.showFavoriteOnly) {
+//            Toggle(isOn: $settings.showFavoriteOnly) {
+            Toggle(isOn: settingsBinding.showFavoriteOnly) {
                 Text("只显示收藏")
             }
         }
@@ -67,8 +80,21 @@ struct SettingView: View {
     }
 }
 
+extension AppState.Settings.Sorting {
+    var text: String {
+        switch self {
+            case .id: return "ID"
+            case .name: return "名字"
+            case .color: return "颜色"
+            case .favorite: return "最爱"
+        }
+    }
+}
+
 struct SettingView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingView()
+        let store = Store()
+        store.appState.settings.sorting = .color
+        return SettingView().environmentObject(store)
     }
 }

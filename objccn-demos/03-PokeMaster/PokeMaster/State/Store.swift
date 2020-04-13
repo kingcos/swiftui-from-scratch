@@ -6,4 +6,8 @@
 //  Copyright © 2020 OneV's Den. All rights reserved.
 //
 
-import Foundation
+import Combine
+
+class Store: ObservableObject {
+    @Published var appState = AppState()
+}
