@@ -19,8 +19,17 @@ extension AppState {
             case id, name, color, favorite
         }
         
+        enum AccountBehavior: CaseIterable {
+            case register, login
+        }
+        
         var showEnglishName = true
         var sorting = Sorting.id
         var showFavoriteOnly = false
+        
+        var accountBehavior = AccountBehavior.login
+        var email = ""
+        var password = ""
+        var verifyPassword = ""
     }
 }

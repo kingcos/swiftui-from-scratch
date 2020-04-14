@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct SettingView: View {
-    @ObservedObject var settings = Settings()
+//    @ObservedObject var settings = Settings()
     
     // 需注入
     @EnvironmentObject var store: Store
@@ -17,20 +17,24 @@ struct SettingView: View {
     var settingsBinding: Binding<AppState.Settings> {
         $store.appState.settings
     }
+    var settings: AppState.Settings {
+        store.appState.settings
+    }
     
     var accountSection: some View {
         Section(header: Text("账户")) {
-            Picker(selection: $settings.accountBehavior, label: Text("")) {
-                ForEach(Settings.AccountBehavior.allCases, id: \.self) {
+            Picker(selection: settingsBinding.accountBehavior,
+                   label: Text("")) {
+                ForEach(AppState.Settings.AccountBehavior.allCases, id: \.self) {
                     Text($0.text)
                 }
             }
             .pickerStyle(SegmentedPickerStyle()) // Segment 样式
-            TextField("电子邮箱", text: $settings.email)
-            SecureField("密码", text: $settings.password) // 安全键盘
+            TextField("电子邮箱", text: settingsBinding.email)
+            SecureField("密码", text: settingsBinding.password) // 安全键盘
             
             if settings.accountBehavior == .register {
-                SecureField("确认密码", text: $settings.verifyPassword)
+                SecureField("确认密码", text: settingsBinding.verifyPassword)
             }
             
             Button(settings.accountBehavior.text) {
@@ -87,6 +91,15 @@ extension AppState.Settings.Sorting {
             case .name: return "名字"
             case .color: return "颜色"
             case .favorite: return "最爱"
+        }
+    }
+}
+
+extension AppState.Settings.AccountBehavior {
+    var text: String {
+        switch self {
+            case .register: return "注册"
+            case .login: return "登录"
         }
     }
 }
