@@ -18,6 +18,7 @@
 		31EAFFB3243E0C4E00CF875C /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EAFFB2243E0C4E00CF875C /* SearchBar.swift */; };
 		840C7A4A24437B72004E286F /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840C7A4924437B72004E286F /* Store.swift */; };
 		840C7A4C24437B84004E286F /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840C7A4B24437B84004E286F /* AppState.swift */; };
+		840C7A4E24441B94004E286F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840C7A4D24441B94004E286F /* User.swift */; };
 		848A1FE624436E380080C34C /* MainTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848A1FE524436E380080C34C /* MainTab.swift */; };
 		D1320AD523178614006F02A6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1320A7D23178614006F02A6 /* Assets.xcassets */; };
 		D1320AD623178614006F02A6 /* FileHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1320A7F23178614006F02A6 /* FileHelper.swift */; };
@@ -111,6 +112,7 @@
 		4B9EAF6823162D9900B72082 /* PokeMaster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PokeMaster.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		840C7A4924437B72004E286F /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		840C7A4B24437B84004E286F /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		840C7A4D24441B94004E286F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		848A1FE524436E380080C34C /* MainTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTab.swift; sourceTree = "<group>"; };
 		84D2DFE8243ED3DF0016D0B8 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		D1320A7D23178614006F02A6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -408,6 +410,7 @@
 				D1320ACE23178614006F02A6 /* Ability.swift */,
 				D1320ACF23178614006F02A6 /* Pokemon.swift */,
 				D1320AD023178614006F02A6 /* PokemonSpecies.swift */,
+				840C7A4D24441B94004E286F /* User.swift */,
 			);
 			path = DataModel;
 			sourceTree = "<group>";
@@ -558,6 +561,7 @@
 				D1320B1F23178614006F02A6 /* AppDelegate.swift in Sources */,
 				D1320B1C23178614006F02A6 /* Ability.swift in Sources */,
 				D1320B1B23178614006F02A6 /* Language.swift in Sources */,
+				840C7A4E24441B94004E286F /* User.swift in Sources */,
 				840C7A4C24437B84004E286F /* AppState.swift in Sources */,
 				D1320B1D23178614006F02A6 /* Pokemon.swift in Sources */,
 				D1320AD623178614006F02A6 /* FileHelper.swift in Sources */,
