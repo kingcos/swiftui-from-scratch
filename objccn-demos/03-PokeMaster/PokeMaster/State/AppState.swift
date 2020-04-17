@@ -31,5 +31,8 @@ extension AppState {
         var email = ""
         var password = ""
         var verifyPassword = ""
+        
+        // 登录用户状态
+        var loginUser: User?
     }
 }
