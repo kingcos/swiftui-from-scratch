@@ -73,6 +73,9 @@ class Store: ObservableObject {
                 print("Error: \(error)")
                 appState.settings.loginError = error
             }
+            
+        case .logout:
+            appState.settings.loginUser = nil
         }
         
         return (appState, appCommand)

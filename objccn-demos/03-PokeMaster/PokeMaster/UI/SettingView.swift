@@ -41,7 +41,8 @@ struct SettingView: View {
                 }
                 
                 if settings.loginRequesting {
-                    Text("登录中")
+//                    Text("登录中")
+                    LoadingView()
                 } else {
                     Button(settings.accountBehavior.text) {
                         self.store.dispatch(
@@ -59,6 +60,7 @@ struct SettingView: View {
                 Text(settings.loginUser!.email)
                 Button("注销") {
                     print("注销")
+                    self.store.dispatch(.logout)
                 }
                 
             }
