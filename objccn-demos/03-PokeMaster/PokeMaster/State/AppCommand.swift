@@ -35,7 +35,8 @@ struct LoginAppCommand: AppCommand {
                     store.dispatch(.accountBehaviorDone(result: .success(user)))
                 }
             )
-            .store(in: &store.subs)
+            .add(to: store.disposeBag)
+//            .store(in: &store.subs)
     }
 }
 

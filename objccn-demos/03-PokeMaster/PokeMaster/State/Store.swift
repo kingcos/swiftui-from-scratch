@@ -12,7 +12,9 @@ class Store: ObservableObject {
     @Published var appState = AppState()
     
     // 存储订阅，防止订阅释放
-    var subs = Set<AnyCancellable>()
+//    var subs = Set<AnyCancellable>()
+    // 也可使用类似 RxSwift 中的 DisposeBag
+    var disposeBag = DisposeBag()
     
     init() {
         setupObservers()
@@ -21,7 +23,9 @@ class Store: ObservableObject {
     func setupObservers() {
         appState.settings.checker.isEmailValid.sink { isValid in
             self.dispatch(.emailValid(valid: isValid))
-        }.store(in: &subs)
+        }
+        .add(to: disposeBag)
+//        .store(in: &subs)
         
         
     }
