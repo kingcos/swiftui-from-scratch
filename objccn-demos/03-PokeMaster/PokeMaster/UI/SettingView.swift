@@ -40,13 +40,17 @@ struct SettingView: View {
                     SecureField("确认密码", text: settingsBinding.verifyPassword)
                 }
                 
-                Button(settings.accountBehavior.text) {
-                    self.store.dispatch(
-                        .login(
-                            email: self.settings.email,
-                            password: self.settings.password
+                if settings.loginRequesting {
+                    Text("登录中")
+                } else {
+                    Button(settings.accountBehavior.text) {
+                        self.store.dispatch(
+                            .login(
+                                email: self.settings.email,
+                                password: self.settings.password
+                            )
                         )
-                    )
+                    }
                 }
                 
             } else {
@@ -99,6 +103,14 @@ struct SettingView: View {
             optionSection
             actionSection
         }
+        // 弹窗（item 传入详细的上下文）
+        .alert(item: settingsBinding.loginError) { error in
+            Alert(title: Text(error.localizedDescription))
+        }
+        // ActionSheet API 类似
+//        .actionSheet(item: settingsBinding.loginError) { error in
+//            ActionSheet(title: Text(error.localizedDescription))
+//        }
     }
 }
 

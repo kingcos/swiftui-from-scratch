@@ -34,5 +34,9 @@ extension AppState {
         
         // 登录用户状态
         var loginUser: User?
+        // 登录请求中
+        var loginRequesting = false
+        // State -> 登录错误弹窗 UI
+        var loginError: AppError?
     }
 }
