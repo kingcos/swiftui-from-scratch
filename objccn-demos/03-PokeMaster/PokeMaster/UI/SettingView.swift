@@ -26,29 +26,29 @@ struct SettingView: View {
             if settings.loginUser == nil {
                 // 未登录时，仅显示登录和注册表单
                 
-                Picker(selection: settingsBinding.accountBehavior,
+                Picker(selection: settingsBinding.checker.accountBehavior,
                        label: Text("")) {
                     ForEach(AppState.Settings.AccountBehavior.allCases, id: \.self) {
                         Text($0.text)
                     }
                 }
                 .pickerStyle(SegmentedPickerStyle()) // Segment 样式
-                TextField("电子邮箱", text: settingsBinding.email)
-                SecureField("密码", text: settingsBinding.password) // 安全键盘
+                TextField("电子邮箱", text: settingsBinding.checker.email)
+                SecureField("密码", text: settingsBinding.checker.password) // 安全键盘
                 
-                if settings.accountBehavior == .register {
-                    SecureField("确认密码", text: settingsBinding.verifyPassword)
+                if settings.checker.accountBehavior == .register {
+                    SecureField("确认密码", text: settingsBinding.checker.verifyPassword)
                 }
                 
                 if settings.loginRequesting {
 //                    Text("登录中")
                     LoadingView()
                 } else {
-                    Button(settings.accountBehavior.text) {
+                    Button(settings.checker.accountBehavior.text) {
                         self.store.dispatch(
                             .login(
-                                email: self.settings.email,
-                                password: self.settings.password
+                                email: self.settings.checker.email,
+                                password: self.settings.checker.password
                             )
                         )
                     }

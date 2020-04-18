@@ -30,10 +30,11 @@ extension AppState {
         var sorting
         var showFavoriteOnly = false
         
-        var accountBehavior = AccountBehavior.login
-        var email = ""
-        var password = ""
-        var verifyPassword = ""
+        // 转为 AccountChecker 内
+//        var accountBehavior = AccountBehavior.login
+//        var email = ""
+//        var password = ""
+//        var verifyPassword = ""
         
         // 登录用户状态
         @FileStorage(directory: .documentDirectory, fileName: "user.json")
@@ -51,5 +52,15 @@ extension AppState {
         var loginRequesting = false
         // State -> 登录错误弹窗 UI
         var loginError: AppError?
+        
+        class AccountChecker {
+            // class 的属性才可以声明为 @Published
+            @Published var accountBehavior = AccountBehavior.login
+            @Published var email = ""
+            @Published var password = ""
+            @Published var verifyPassword = ""
+        }
+        
+        var checker = AccountChecker()
     }
 }
