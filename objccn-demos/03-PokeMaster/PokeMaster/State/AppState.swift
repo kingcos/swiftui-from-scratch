@@ -12,6 +12,8 @@ import Combine
 struct AppState {
     // 局部 Settings 类型
     var settings = Settings()
+    
+    var pokemonList = PokemonList()
 }
 
 extension AppState {
@@ -102,5 +104,20 @@ extension AppState {
         }
         
         var checker = AccountChecker()
+    }
+}
+
+extension AppState {
+    struct PokemonList {
+        @FileStorage(directory: .cachesDirectory, fileName: "pokemons.json")
+        var pokemons: [Int: PokemonViewModel]?
+        var loadingPokemons = false
+        
+        // 按 ID 排序的 Pokemon
+        var allPokemonsByID: [PokemonViewModel] {
+            guard let pokemons = pokemons?.values else { return [] }
+            
+            return pokemons.sorted { $0.id < $1.id }
+        }
     }
 }

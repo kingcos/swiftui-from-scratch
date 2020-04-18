@@ -9,9 +9,19 @@
 import SwiftUI
 
 struct PokemonRootView: View {
+    @EnvironmentObject var store: Store
+    
     var body: some View {
         NavigationView {
-            PokemonList().navigationBarTitle("宝可梦列表")
+            if store.appState.pokemonList.pokemons == nil {
+                Text("Loading...")
+                    .onAppear {
+                        // 显示时执行
+                        self.store.dispatch(.loadPokemons)
+                }
+            } else {
+                PokemonList().navigationBarTitle("宝可梦列表")
+            }
         }
     }
 }
