@@ -34,6 +34,7 @@ struct SettingView: View {
                 }
                 .pickerStyle(SegmentedPickerStyle()) // Segment 样式
                 TextField("电子邮箱", text: settingsBinding.checker.email)
+                    .foregroundColor(settings.isEmailValid ? .green : .red)
                 SecureField("密码", text: settingsBinding.checker.password) // 安全键盘
                 
                 if settings.checker.accountBehavior == .register {

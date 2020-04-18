@@ -14,6 +14,18 @@ class Store: ObservableObject {
     // 存储订阅，防止订阅释放
     var subs = Set<AnyCancellable>()
     
+    init() {
+        setupObservers()
+    }
+    
+    func setupObservers() {
+        appState.settings.checker.isEmailValid.sink { isValid in
+            self.dispatch(.emailValid(valid: isValid))
+        }.store(in: &subs)
+        
+        
+    }
+    
     func dispatch(_ action: AppAction) {
         #if DEBUG
         print("[ACTION]: \(action)")
@@ -76,6 +88,9 @@ class Store: ObservableObject {
             
         case .logout:
             appState.settings.loginUser = nil
+            
+        case .emailValid(let valid):
+            appState.settings.isEmailValid = valid
         }
         
         return (appState, appCommand)
