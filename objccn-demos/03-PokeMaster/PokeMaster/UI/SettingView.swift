@@ -78,7 +78,7 @@ struct SettingView: View {
                 selection: settingsBinding.sorting,
                 label: Text("排序方式")
             ) {
-                ForEach(Settings.Sorting.allCases, id: \.self) {
+                ForEach(AppState.Settings.Sorting.allCases, id: \.self) {
                     Text($0.text)
                 }
             }

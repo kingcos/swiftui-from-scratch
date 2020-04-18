@@ -15,7 +15,7 @@ struct AppState {
 
 extension AppState {
     struct Settings {
-        enum Sorting: CaseIterable {
+        enum Sorting: String, CaseIterable {
             case id, name, color, favorite
         }
         
@@ -23,8 +23,11 @@ extension AppState {
             case register, login
         }
         
-        var showEnglishName = true
-        var sorting = Sorting.id
+        @UserDefaultsStorage(key: "showEnglishName", defaultValue: false)
+        var showEnglishName
+        
+        @UserDefaultsStorage(key: "sorting", defaultValue: Sorting.id)
+        var sorting
         var showFavoriteOnly = false
         
         var accountBehavior = AccountBehavior.login
