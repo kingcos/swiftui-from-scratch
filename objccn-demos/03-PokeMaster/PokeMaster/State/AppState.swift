@@ -33,7 +33,17 @@ extension AppState {
         var verifyPassword = ""
         
         // 登录用户状态
+        @FileStorage(directory: .documentDirectory, fileName: "user.json")
         var loginUser: User?
+//        var loginUser: User? = try? FileHelper.loadJSON(from: .documentDirectory, fileName: "user.json") {
+//            didSet {
+//                if let user = loginUser {
+//                    try? FileHelper.writeJSON(user, to: .documentDirectory, fileName: "user.json")
+//                } else {
+//                    try? FileHelper.delete(from: .documentDirectory, fileName: "user.json")
+//                }
+//            }
+//        }
         // 登录请求中
         var loginRequesting = false
         // State -> 登录错误弹窗 UI
