@@ -48,12 +48,19 @@ struct SettingView: View {
                     LoadingView()
                 } else {
                     Button(settings.checker.accountBehavior.text) {
-                        self.store.dispatch(
-                            .login(
-                                email: self.settings.checker.email,
-                                password: self.settings.checker.password
+                        self.settings.checker.accountBehavior == .login ?
+                            self.store.dispatch(
+                                .login(
+                                    email: self.settings.checker.email,
+                                    password: self.settings.checker.password
+                                )
+                            ) :
+                            self.store.dispatch(
+                                .register(
+                                    email: self.settings.checker.email,
+                                    password: self.settings.checker.password
+                                )
                             )
-                        )
                     }.disabled(!settings.isRegisterValid)
                 }
                 

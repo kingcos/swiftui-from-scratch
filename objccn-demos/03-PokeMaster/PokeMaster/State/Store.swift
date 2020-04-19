@@ -84,9 +84,17 @@ class Store: ObservableObject {
             // 副作用交由 Command 处理
             appCommand = LoginAppCommand(email: email, password: password)
             
+        case .register(let email, let password):
+            guard !appState.settings.registerRequesting else {
+                break
+            }
+            appState.settings.registerRequesting = true
+            appCommand = RegisterCommand(email: email, password: password)
+            
         case .accountBehaviorDone(let result):
             // 登录请求结束
             appState.settings.loginRequesting = false
+            appState.settings.registerRequesting = false
             
             switch result {
             case .success(let user):

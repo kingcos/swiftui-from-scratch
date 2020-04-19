@@ -15,6 +15,7 @@ enum AppError: Error, Identifiable {
     
     case passwordWrong
     case networkingFailed(Error)
+    case userAlreadyExists
 }
 
 extension AppError {
@@ -22,6 +23,8 @@ extension AppError {
         switch self {
         case .passwordWrong:
             return "密码错误"
+        case .userAlreadyExists:
+            return "该用户已存在"
         case .networkingFailed(let err):
             return "网络错误：\(err.localizedDescription)"
         }

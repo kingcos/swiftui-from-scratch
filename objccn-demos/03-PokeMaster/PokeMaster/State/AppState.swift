@@ -58,6 +58,7 @@ extension AppState {
 //        }
         // 登录请求中
         var loginRequesting = false
+        var registerRequesting = false
         // State -> 登录错误弹窗 UI
         var loginError: AppError?
         
