@@ -127,6 +127,8 @@ class Store: ObservableObject {
             appCommand = LoadPokemonsCommand()
             
         case .loadPokemonsDone(let result):
+            appState.pokemonList.loadingPokemons = false
+            
             switch result {
             case .success(let models):
                 // 将一个键值对序列转换为字典，其中键值对的首个元素会被作为 key。[id : Pokemon]

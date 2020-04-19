@@ -14,17 +14,30 @@ struct PokemonRootView: View {
     var body: some View {
         NavigationView {
             if store.appState.pokemonList.pokemons == nil {
-                Text("Loading...")
-                    .onAppear {
-                        // 显示时执行
+                if store.appState.settings.loadError == nil {
+                    Text("Loading...")
+                        .onAppear {
+                            // 显示时执行
+                            self.store.dispatch(.loadPokemons)
+                    }
+                } else {
+                    Button(action: {
                         self.store.dispatch(.loadPokemons)
+                    }) {
+                        Image(systemName: "arrow.clockwise")
+                            .foregroundColor(Color.gray)
+                        Text("Retry")
+                            .foregroundColor(Color.gray)
+                    }
+                    .padding()
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(Color.gray, lineWidth: 2)
+                    )
                 }
             } else {
                 PokemonList().navigationBarTitle("宝可梦列表")
             }
-        }
-        .alert(item: $store.appState.settings.loadError) { error in
-            Alert(title: Text(error.localizedDescription))
         }
     }
 }

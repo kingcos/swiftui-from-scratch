@@ -17,7 +17,10 @@ struct LoadPokemonsCommand: AppCommand {
                     store.dispatch(.loadPokemonsDone(result: .failure(error)))
                 }
             }, receiveValue: { value in
-                store.dispatch(.loadPokemonsDone(result: .success(value)))
+                arc4random() % 2 == 0 ?
+                    store.dispatch(.loadPokemonsDone(result: .failure(.userAlreadyExists)))
+                    :
+                    store.dispatch(.loadPokemonsDone(result: .success(value)))
             })
             .add(to: store.disposeBag)
     }

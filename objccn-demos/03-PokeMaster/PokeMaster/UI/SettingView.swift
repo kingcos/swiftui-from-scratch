@@ -103,6 +103,7 @@ struct SettingView: View {
         Section {
             Button(action: {
                 self.store.dispatch(.clearCache)
+//                self.store.dispatch(.loadPokemons)
             }) {
                 Text("清空缓存").foregroundColor(.red)
             }
