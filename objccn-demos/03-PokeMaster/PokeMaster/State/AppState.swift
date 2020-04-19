@@ -35,6 +35,7 @@ extension AppState {
         var showFavoriteOnly = false
         
         var isEmailValid: Bool = false
+        var isPasswordValid: Bool = false
         
         // 转为 AccountChecker 内
 //        var accountBehavior = AccountBehavior.login
@@ -100,6 +101,23 @@ extension AppState {
                 return Publishers.CombineLatest3(emailLocalValid, canSkipRemoteVerify, remoteVerify)
                     .map { $0 && ($1 || $2) }
                     .eraseToAnyPublisher()
+            }
+            
+            var isPasswordValid: AnyPublisher<Bool, Never> {
+                let isPasswordNotEmpty = $password
+                    .map { !$0.isEmpty }
+//                    .print("isPasswordNotNull")
+                
+                let isVerifyPasswordNotEmpty = $verifyPassword
+                    .map { !$0.isEmpty }
+//                    .print("isVerifyPasswordNotNull")
+                
+                let isEqual = $password.combineLatest($verifyPassword).map { $0.0 == $0.1 }
+                let canSkip = $accountBehavior.map { $0 == .login } // .print("canSkip")
+                
+                return Publishers.CombineLatest4(canSkip, isPasswordNotEmpty, isVerifyPasswordNotEmpty, isEqual).map {
+                    $0 || ($1 && $2 && $3)
+                }.eraseToAnyPublisher()
             }
         }
         

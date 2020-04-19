@@ -36,9 +36,11 @@ struct SettingView: View {
                 TextField("电子邮箱", text: settingsBinding.checker.email)
                     .foregroundColor(settings.isEmailValid ? .green : .red)
                 SecureField("密码", text: settingsBinding.checker.password) // 安全键盘
+                    .foregroundColor(settings.isPasswordValid ? .green : .red)
                 
                 if settings.checker.accountBehavior == .register {
                     SecureField("确认密码", text: settingsBinding.checker.verifyPassword)
+                        .foregroundColor(settings.isPasswordValid ? .green : .red)
                 }
                 
                 if settings.loginRequesting {

@@ -27,6 +27,10 @@ class Store: ObservableObject {
         .add(to: disposeBag)
 //        .store(in: &subs)
         
+        appState.settings.checker.isPasswordValid.sink { isValid in
+            self.dispatch(.passwordValid(valid: isValid))
+        }
+        .add(to: disposeBag)
         
     }
     
@@ -95,6 +99,9 @@ class Store: ObservableObject {
             
         case .emailValid(let valid):
             appState.settings.isEmailValid = valid
+            
+        case .passwordValid(let valid):
+            appState.settings.isPasswordValid = valid
             
         case .loadPokemons:
             if appState.pokemonList.loadingPokemons {
