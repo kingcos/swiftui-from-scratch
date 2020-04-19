@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import KingfisherSwiftUI
 
 struct ToolButtonModifier: ViewModifier {
     func body(content: Content) -> some View {
@@ -27,7 +28,8 @@ struct PokemonInfoRow: View {
     var body: some View {
         VStack {
             HStack {
-                Image("Pokemon-\(model.id)")
+//                Image("Pokemon-\(model.id)")
+                KFImage(model.iconImageURL)
                     .resizable() // 默认图片绘制与 frame 无关
                     .frame(width: 50, height: 50)
                     .aspectRatio(contentMode: .fit) // 保持原始比例
