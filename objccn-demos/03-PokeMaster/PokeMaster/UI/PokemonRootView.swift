@@ -23,6 +23,9 @@ struct PokemonRootView: View {
                 PokemonList().navigationBarTitle("宝可梦列表")
             }
         }
+        .alert(item: $store.appState.settings.loadError) { error in
+            Alert(title: Text(error.localizedDescription))
+        }
     }
 }
 

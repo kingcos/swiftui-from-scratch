@@ -131,8 +131,8 @@ class Store: ObservableObject {
             case .success(let models):
                 // 将一个键值对序列转换为字典，其中键值对的首个元素会被作为 key。[id : Pokemon]
                 appState.pokemonList.pokemons = Dictionary(uniqueKeysWithValues: models.map { ($0.id, $0) })
-            case .failure(let err):
-                print(err)
+            case .failure(let error):
+                appState.settings.loadError = error
             }
             
         case .clearCache:

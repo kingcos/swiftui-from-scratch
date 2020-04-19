@@ -61,6 +61,7 @@ extension AppState {
         var registerRequesting = false
         // State -> 登录错误弹窗 UI
         var loginError: AppError?
+        var loadError: AppError?
         
         class AccountChecker {
             // class 的属性才可以声明为 @Published
