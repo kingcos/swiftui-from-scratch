@@ -36,6 +36,7 @@ extension AppState {
         
         var isEmailValid: Bool = false
         var isPasswordValid: Bool = false
+        var isRegisterValid: Bool = false
         
         // 转为 AccountChecker 内
 //        var accountBehavior = AccountBehavior.login
@@ -118,6 +119,10 @@ extension AppState {
                 return Publishers.CombineLatest4(canSkip, isPasswordNotEmpty, isVerifyPasswordNotEmpty, isEqual).map {
                     $0 || ($1 && $2 && $3)
                 }.eraseToAnyPublisher()
+            }
+            
+            var isRegisterValid: AnyPublisher<Bool, Never> {
+                return isEmailValid.combineLatest(isPasswordValid).map { $0 && $1 }.eraseToAnyPublisher()
             }
         }
         

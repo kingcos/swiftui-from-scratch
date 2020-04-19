@@ -32,6 +32,10 @@ class Store: ObservableObject {
         }
         .add(to: disposeBag)
         
+        appState.settings.checker.isRegisterValid.sink { isValid in
+            self.dispatch(.registerValid(valid: isValid))
+        }
+        .add(to: disposeBag)
     }
     
     func dispatch(_ action: AppAction) {
@@ -102,6 +106,9 @@ class Store: ObservableObject {
             
         case .passwordValid(let valid):
             appState.settings.isPasswordValid = valid
+            
+        case .registerValid(let valid):
+            appState.settings.isRegisterValid = valid
             
         case .loadPokemons:
             if appState.pokemonList.loadingPokemons {

@@ -54,7 +54,7 @@ struct SettingView: View {
                                 password: self.settings.checker.password
                             )
                         )
-                    }
+                    }.disabled(!settings.isRegisterValid)
                 }
                 
             } else {
