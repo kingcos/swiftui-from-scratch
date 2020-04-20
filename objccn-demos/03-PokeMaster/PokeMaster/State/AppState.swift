@@ -138,6 +138,9 @@ extension AppState {
         var pokemons: [Int: PokemonViewModel]?
         var loadingPokemons = false
         
+        var expandingIndex: Int?
+        var searchText: String = ""
+        
         // 按 ID 排序的 Pokemon
         var allPokemonsByID: [PokemonViewModel] {
             guard let pokemons = pokemons?.values else { return [] }

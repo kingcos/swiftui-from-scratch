@@ -9,8 +9,15 @@
 import SwiftUI
 
 struct PokemonList: View {
-    @State var expandingIndex: Int?
-    @State var searchText: String = ""
+//    @State var expandingIndex: Int?
+//    @State var searchText: String = ""
+    var bindingPokemonList: Binding<AppState.PokemonList> {
+        $store.appState.pokemonList
+    }
+    
+    var pokemonList: AppState.PokemonList {
+        store.appState.pokemonList
+    }
     
     @EnvironmentObject var store: Store
     
@@ -21,20 +28,22 @@ struct PokemonList: View {
 //        }
         ScrollView { // 没有重用机制，少量可用
 //            SearchBar()
-            TextField("搜索", text: $searchText)
+            TextField("搜索", text: bindingPokemonList.searchText)
                 .frame(height: 40)
                 .padding(.horizontal, 25)
 //            ForEach(PokemonViewModel.all) { pokemon in
             ForEach(store.appState.pokemonList.allPokemonsByID) { pokemon in
                 PokemonInfoRow(model: pokemon,
-                    expanded: self.expandingIndex == pokemon.id)
+                               expanded: self.pokemonList.expandingIndex == pokemon.id)
                     .onTapGesture {
-                        if self.expandingIndex == pokemon.id {
+                        if self.pokemonList.expandingIndex == pokemon.id {
                             // 取消选中
-                            self.expandingIndex = nil
+//                            pokemonList.expandingIndex = nil
+                            self.store.dispatch(.expandItem(index: nil))
                         } else {
                             // 选中
-                            self.expandingIndex = pokemon.id
+//                            pokemonList.expandingIndex = pokemon.id
+                            self.store.dispatch(.expandItem(index: pokemon.id))
                         }
                 }
             }

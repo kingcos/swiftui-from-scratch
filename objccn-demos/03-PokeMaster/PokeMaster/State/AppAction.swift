@@ -23,4 +23,6 @@ enum AppAction {
     case loadPokemonsDone(result: Result<[PokemonViewModel], AppError>)
     
     case clearCache
+    
+    case expandItem(index: Int?)
 }
