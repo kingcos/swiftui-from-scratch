@@ -10,6 +10,7 @@ import SwiftUI
 
 struct PokemonList: View {
     @State var expandingIndex: Int?
+    @State var searchText: String = ""
     
     @EnvironmentObject var store: Store
     
@@ -19,7 +20,10 @@ struct PokemonList: View {
 //            PokemonInfoRow(model: pokemon, expanded: false)
 //        }
         ScrollView { // 没有重用机制，少量可用
-            SearchBar()
+//            SearchBar()
+            TextField("搜索", text: $searchText)
+                .frame(height: 40)
+                .padding(.horizontal, 25)
 //            ForEach(PokemonViewModel.all) { pokemon in
             ForEach(store.appState.pokemonList.allPokemonsByID) { pokemon in
                 PokemonInfoRow(model: pokemon,
