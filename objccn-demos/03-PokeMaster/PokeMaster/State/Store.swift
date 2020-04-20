@@ -139,9 +139,36 @@ class Store: ObservableObject {
             
         case .clearCache:
             appState.pokemonList.pokemons = nil
+            appState.pokemonList.abilities = nil
             
-        case .expandItem(let index):
-            appState.pokemonList.expandingIndex = index
+        case .toggleListSelection(let index):
+            if appState.pokemonList.expandingIndex == index {
+                appState.pokemonList.expandingIndex = nil
+            } else {
+                appState.pokemonList.expandingIndex = index
+            }
+            
+        case .loadAbilities(let pokemon):
+            if appState.pokemonList.loadingAbilities {
+                break
+            }
+        
+            appState.pokemonList.loadingAbilities = true
+            appCommand = LoadAbilitiesCommand(pokemon: pokemon)
+        case .loadAbilitiesDone(let result):
+            appState.pokemonList.loadingAbilities = false
+            
+            switch result {
+            case .success(let models):
+//                appState.pokemonList.abilities = models.flatMap { [$0.id: $0] }
+                var abs = appState.pokemonList.abilities ?? [:]
+                for ab in models {
+                    abs[ab.id] = ab
+                }
+                appState.pokemonList.abilities = abs
+            case .failure(let error):
+                print(error)
+            }
         }
         
         return (appState, appCommand)

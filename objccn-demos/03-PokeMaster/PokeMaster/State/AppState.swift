@@ -147,5 +147,15 @@ extension AppState {
             
             return pokemons.sorted { $0.id < $1.id }
         }
+        
+        // 按 ID 缓存所有 AbilityViewModel
+        var abilities: [Int: AbilityViewModel]?
+        var loadingAbilities = false
+        
+        func abilityViewModels(for pokemon: Pokemon) -> [AbilityViewModel]? {
+            guard let abilities = abilities else { return nil }
+            
+            return abilities.map { AbilityViewModel(ability: $0.value.ability) }
+        }
     }
 }

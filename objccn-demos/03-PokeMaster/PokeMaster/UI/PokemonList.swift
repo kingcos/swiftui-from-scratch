@@ -36,15 +36,20 @@ struct PokemonList: View {
                 PokemonInfoRow(model: pokemon,
                                expanded: self.pokemonList.expandingIndex == pokemon.id)
                     .onTapGesture {
+                        self.store.dispatch(.toggleListSelection(index: pokemon.id))
+                        self.store.dispatch(.loadAbilities(pokemon: pokemon.pokemon))
+                        
+                        /*
                         if self.pokemonList.expandingIndex == pokemon.id {
                             // 取消选中
 //                            pokemonList.expandingIndex = nil
-                            self.store.dispatch(.expandItem(index: nil))
+                            self.store.dispatch(.toggleListSelection(index: nil))
                         } else {
                             // 选中
 //                            pokemonList.expandingIndex = pokemon.id
-                            self.store.dispatch(.expandItem(index: pokemon.id))
+                            self.store.dispatch(.toggleListSelection(index: pokemon.id))
                         }
+                        */
                 }
             }
         }

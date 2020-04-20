@@ -12,9 +12,11 @@ struct PokemonInfoPanel: View {
     let model: PokemonViewModel
     
     @State var darkBlur = false
+    @EnvironmentObject var store: Store
     
-    var abilities: [AbilityViewModel] {
-        AbilityViewModel.sample(pokemonID: model.id)
+    var abilities: [AbilityViewModel]? {
+//        AbilityViewModel.sample(pokemonID: model.id)
+        store.appState.pokemonList.abilityViewModels(for: model.pokemon)
     }
     
     var topIndicator: some View {
