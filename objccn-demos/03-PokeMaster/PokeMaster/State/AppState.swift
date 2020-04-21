@@ -138,7 +138,20 @@ extension AppState {
         var pokemons: [Int: PokemonViewModel]?
         var loadingPokemons = false
         
-        var expandingIndex: Int?
+        struct SelectionState {
+            // 展开的索引
+            var expandingIndex: Int? = nil
+            // 面板索引
+            var panelIndex: Int? = nil
+            var panelPresented = false
+
+            func isExpanding(_ id: Int) -> Bool {
+                expandingIndex == id
+            }
+        }
+        
+        // 专门处理选择一项
+        var selectionState = SelectionState()
         var searchText: String = ""
         
         // 按 ID 排序的 Pokemon

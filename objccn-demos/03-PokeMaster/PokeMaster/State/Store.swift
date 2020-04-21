@@ -142,10 +142,10 @@ class Store: ObservableObject {
             appState.pokemonList.abilities = nil
             
         case .toggleListSelection(let index):
-            if appState.pokemonList.expandingIndex == index {
-                appState.pokemonList.expandingIndex = nil
+            if appState.pokemonList.selectionState.expandingIndex == index {
+                appState.pokemonList.selectionState.expandingIndex = nil
             } else {
-                appState.pokemonList.expandingIndex = index
+                appState.pokemonList.selectionState.expandingIndex = index
             }
             
         case .loadAbilities(let pokemon):

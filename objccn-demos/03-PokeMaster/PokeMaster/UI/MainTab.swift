@@ -9,6 +9,20 @@
 import SwiftUI
 
 struct MainTab: View {
+    
+    @EnvironmentObject var store: Store
+    
+    private var pokemonList: AppState.PokemonList {
+        store.appState.pokemonList
+    }
+    private var pokemonListBinding: Binding<AppState.PokemonList> {
+        $store.appState.pokemonList
+    }
+
+    private var selectedPanelIndex: Int? {
+        pokemonList.selectionState.panelIndex
+    }
+    
     var body: some View {
         TabView {
             PokemonRootView().tabItem {

@@ -11,6 +11,7 @@ import SwiftUI
 struct PokemonList: View {
 //    @State var expandingIndex: Int?
 //    @State var searchText: String = ""
+    
     var bindingPokemonList: Binding<AppState.PokemonList> {
         $store.appState.pokemonList
     }
@@ -26,6 +27,7 @@ struct PokemonList: View {
 //        List(PokemonViewModel.all) { pokemon in
 //            PokemonInfoRow(model: pokemon, expanded: false)
 //        }
+        
         ScrollView { // 没有重用机制，少量可用
 //            SearchBar()
             TextField("搜索", text: bindingPokemonList.searchText)
@@ -34,7 +36,7 @@ struct PokemonList: View {
 //            ForEach(PokemonViewModel.all) { pokemon in
             ForEach(store.appState.pokemonList.allPokemonsByID) { pokemon in
                 PokemonInfoRow(model: pokemon,
-                               expanded: self.pokemonList.expandingIndex == pokemon.id)
+                               expanded: self.pokemonList.selectionState.isExpanding(pokemon.id))
                     .onTapGesture {
                         self.store.dispatch(.toggleListSelection(index: pokemon.id))
                         self.store.dispatch(.loadAbilities(pokemon: pokemon.pokemon))
@@ -52,6 +54,8 @@ struct PokemonList: View {
                         */
                 }
             }
+            Spacer()
+                .frame(height: 8)
         }
 //        .overlay( // 在当前 View 上方添加另外的 View，类似 ZStack，但会尊重下方的 View 的布局
 //            VStack {

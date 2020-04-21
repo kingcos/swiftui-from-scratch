@@ -178,6 +178,18 @@ extension PokemonInfoPanel {
     }
 }
 
+struct PokemonInfoPanelOverlay: View {
+    let model: PokemonViewModel
+    
+    var body: some View {
+        VStack {
+            Spacer()
+            PokemonInfoPanel(model: model)
+        }
+        .edgesIgnoringSafeArea(.bottom)
+    }
+}
+
 struct PokemonInfoPanel_Previews: PreviewProvider {
     static var previews: some View {
         PokemonInfoPanel(model: .sample(id: 1))
