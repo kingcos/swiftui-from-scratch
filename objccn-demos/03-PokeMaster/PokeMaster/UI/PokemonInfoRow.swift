@@ -25,6 +25,8 @@ struct PokemonInfoRow: View {
 //    @State var expanded: Bool
     let expanded: Bool
     
+    @EnvironmentObject var store: Store
+    
     var body: some View {
         VStack {
             HStack {
@@ -56,7 +58,8 @@ struct PokemonInfoRow: View {
                         .modifier(ToolButtonModifier())
                 }
                 Button(action: {
-                    print("panel")
+                    let target = !self.store.appState.pokemonList.selectionState.panelPresented
+                    self.store.dispatch(.togglePanelPresenting(presenting: target))
                 }) {
                     Image(systemName: "chart.bar")
                         .modifier(ToolButtonModifier())

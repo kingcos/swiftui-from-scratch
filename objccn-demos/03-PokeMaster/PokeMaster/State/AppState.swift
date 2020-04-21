@@ -140,9 +140,9 @@ extension AppState {
         
         struct SelectionState {
             // 展开的索引
-            var expandingIndex: Int? = nil
+            var expandingIndex: Int?
             // 面板索引
-            var panelIndex: Int? = nil
+            var panelIndex: Int?
             var panelPresented = false
 
             func isExpanding(_ id: Int) -> Bool {

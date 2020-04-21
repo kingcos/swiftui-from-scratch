@@ -37,6 +37,22 @@ struct MainTab: View {
             }
         }
 //        .edgesIgnoringSafeArea(.top)
+        .overlay(panel)
+    }
+    
+    var panel: some View {
+        Group {
+            if pokemonList.selectionState.panelPresented {
+                // if let 此处不可用
+                if selectedPanelIndex != nil && pokemonList.pokemons != nil {
+                    PokemonInfoPanelOverlay(model: pokemonList.pokemons![selectedPanelIndex!]!)
+                } else {
+                    EmptyView()
+                }
+            } else {
+                EmptyView()
+            }
+        }
     }
 }
 

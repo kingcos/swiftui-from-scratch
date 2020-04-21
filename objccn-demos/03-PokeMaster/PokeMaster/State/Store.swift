@@ -144,9 +144,14 @@ class Store: ObservableObject {
         case .toggleListSelection(let index):
             if appState.pokemonList.selectionState.expandingIndex == index {
                 appState.pokemonList.selectionState.expandingIndex = nil
+                appState.pokemonList.selectionState.panelPresented = false
             } else {
                 appState.pokemonList.selectionState.expandingIndex = index
+                appState.pokemonList.selectionState.panelIndex = index
             }
+            
+        case .togglePanelPresenting(let presenting):
+            appState.pokemonList.selectionState.panelPresented = presenting
             
         case .loadAbilities(let pokemon):
             if appState.pokemonList.loadingAbilities {
