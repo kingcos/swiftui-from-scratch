@@ -41,8 +41,14 @@ struct PokemonInfoPanel: View {
                 Text("切换模糊效果")
             }
             topIndicator
-            Header(model: model)
-            pokemonDescription
+            
+            // 取消部分视图的动画
+            Group {
+                Header(model: model)
+                pokemonDescription
+            }
+            .animation(nil)
+            
             Divider()
             AbilityList(
                 model: model,
