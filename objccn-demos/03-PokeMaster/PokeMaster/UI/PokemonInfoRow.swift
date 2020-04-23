@@ -27,6 +27,8 @@ struct PokemonInfoRow: View {
     
     @EnvironmentObject var store: Store
     
+    @State var isSFViewActive = false
+    
     var body: some View {
         VStack {
             HStack {
@@ -73,9 +75,12 @@ struct PokemonInfoRow: View {
                 
                 // NavigationLink 需在 NavigationView 内
                 NavigationLink(
-                    destination: SafariView(url: model.detailPageURL)
+                    destination: SafariView(url: model.detailPageURL) {
+                        self.isSFViewActive = false
+                    }
                         .navigationBarTitle(Text(model.name),
-                                            displayMode: .inline)
+                                            displayMode: .inline),
+                    isActive: $isSFViewActive
                 ) {
                     Image(systemName: "info.circle")
                         .modifier(ToolButtonModifier())
