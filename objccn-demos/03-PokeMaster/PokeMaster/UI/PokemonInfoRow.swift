@@ -64,9 +64,19 @@ struct PokemonInfoRow: View {
                     Image(systemName: "chart.bar")
                         .modifier(ToolButtonModifier())
                 }
-                Button(action: {
-                    print("web")
-                }) {
+//                Button(action: {
+//                    print("web")
+//                }) {
+//                    Image(systemName: "info.circle")
+//                        .modifier(ToolButtonModifier())
+//                }
+                
+                // NavigationLink 需在 NavigationView 内
+                NavigationLink(
+                    destination: SafariView(url: model.detailPageURL)
+                        .navigationBarTitle(Text(model.name),
+                                            displayMode: .inline)
+                ) {
                     Image(systemName: "info.circle")
                         .modifier(ToolButtonModifier())
                 }
