@@ -37,7 +37,13 @@ struct MainTab: View {
             }
         }
 //        .edgesIgnoringSafeArea(.top)
-        .overlay(panel)
+//        .overlay(panel) // 依赖 Store
+        .overlaySheet(isPresented: pokemonListBinding.selectionState.panelPresented) {
+            if self.selectedPanelIndex != nil
+            && self.pokemonList.pokemons != nil {
+                PokemonInfoPanel(model: self.pokemonList.pokemons![self.selectedPanelIndex!]!)
+            }
+        }
     }
     
     var panel: some View {
