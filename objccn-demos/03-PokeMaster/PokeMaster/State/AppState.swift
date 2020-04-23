@@ -138,6 +138,9 @@ extension AppState {
         var pokemons: [Int: PokemonViewModel]?
         var loadingPokemons = false
         
+        // Web 视图是否活跃
+        var isSFViewActive = false
+        
         struct SelectionState {
             // 展开的索引
             var expandingIndex: Int?

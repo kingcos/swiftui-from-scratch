@@ -21,7 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         // Create the SwiftUI view that provides the window contents.
         // 内部子控件谁需要 environmentObject 谁声明即可自动注入
-        let contentView = MainTab().environmentObject(Store())
+        let contentView = ContentView()// MainTab().environmentObject(Store())
 
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {

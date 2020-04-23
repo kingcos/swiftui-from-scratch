@@ -32,4 +32,6 @@ enum AppAction {
     case loadAbilities(pokemon: Pokemon)
     // 技能加载结束
     case loadAbilitiesDone(result: Result<[AbilityViewModel], AppError>)
+    
+    case closeSafariView
 }

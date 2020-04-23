@@ -27,7 +27,8 @@ struct PokemonInfoRow: View {
     
     @EnvironmentObject var store: Store
     
-    @State var isSFViewActive = false
+    // 在 AppState 中统一管理
+//    @State var isSFViewActive = false
     
     var body: some View {
         VStack {
@@ -76,11 +77,12 @@ struct PokemonInfoRow: View {
                 // NavigationLink 需在 NavigationView 内
                 NavigationLink(
                     destination: SafariView(url: model.detailPageURL) {
-                        self.isSFViewActive = false
+//                        self.isSFViewActive = false
+                        self.store.dispatch(.closeSafariView)
                     }
                         .navigationBarTitle(Text(model.name),
                                             displayMode: .inline),
-                    isActive: $isSFViewActive
+                    isActive: expanded ? $store.appState.pokemonList.isSFViewActive : .constant(true)
                 ) {
                     Image(systemName: "info.circle")
                         .modifier(ToolButtonModifier())
