@@ -41,6 +41,7 @@ struct MainTab: View {
     }
     
     var panel: some View {
+        // 这里需要返回 some View，通过 Group 把不同类型的 View 包装到 Group View 中，或使用 AnyView 抹除具体类型
         Group {
             if pokemonList.selectionState.panelPresented {
                 // if let 此处不可用
