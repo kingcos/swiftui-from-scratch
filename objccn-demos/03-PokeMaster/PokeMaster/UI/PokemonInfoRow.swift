@@ -82,7 +82,7 @@ struct PokemonInfoRow: View {
                     }
                         .navigationBarTitle(Text(model.name),
                                             displayMode: .inline),
-                    isActive: expanded ? $store.appState.pokemonList.isSFViewActive : .constant(true)
+                    isActive: expanded ? $store.appState.pokemonList.isSFViewActive : .constant(false)
                 ) {
                     Image(systemName: "info.circle")
                         .modifier(ToolButtonModifier())

@@ -14,6 +14,8 @@ struct AppState {
     var settings = Settings()
     
     var pokemonList = PokemonList()
+    
+    var mainTab = MainTab()
 }
 
 extension AppState {
@@ -173,5 +175,15 @@ extension AppState {
             
             return abilities.map { AbilityViewModel(ability: $0.value.ability) }
         }
+    }
+}
+
+extension AppState {
+    struct MainTab {
+        enum Index: Hashable {
+            case list, settings
+        }
+        
+        var selection: Index = .list
     }
 }
