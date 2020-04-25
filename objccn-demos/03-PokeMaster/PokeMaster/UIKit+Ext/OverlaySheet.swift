@@ -36,16 +36,16 @@ struct OverlaySheet<Content: View>: View {
 //            }
         
         DragGesture()
-//            .updating($translation) { current, state, _ in
-//                // 只调整纵轴
-//                state.y = current.translation.height
-//            }
-//            .onEnded { state in
-//                // 手势结束时，判定是否要关闭面板
-//                if state.translation.height > 250 {
-//                    self.isPresented.wrappedValue = false
-//                }
-//            }
+            .updating($translation) { current, state, _ in
+                // 只调整纵轴
+                state.y = current.translation.height
+            }
+            .onEnded { state in
+                // 手势结束时，判定是否要关闭面板
+                if state.translation.height > 250 {
+                    self.isPresented.wrappedValue = false
+                }
+            }
     }
     
     var body: some View {
