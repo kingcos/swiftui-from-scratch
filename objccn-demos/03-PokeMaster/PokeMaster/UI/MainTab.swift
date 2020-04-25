@@ -24,13 +24,28 @@ struct MainTab: View {
     }
     
     var body: some View {
+//        TabView(selection: $store.appState.mainTab.selection) {
+//            PokemonRootView().tabItem {
+//                Image(systemName: "list.bullet.below.rectangle")
+//                Text("列表")
+//            }
+//            .tag(AppState.MainTab.Index.list)
+//
+//
+//            SettingRootView().tabItem {
+//                Image(systemName: "gear")
+//                Text("设置")
+//            }
+//            .tag(AppState.MainTab.Index.settings)
+//        }
+        
         TabView {
             PokemonRootView().tabItem {
                 // tabItem 只接受 Image 和 Text
                 Image(systemName: "list.bullet.below.rectangle")
                 Text("列表")
             }
-            
+
             SettingRootView().tabItem {
                 Image(systemName: "gear")
                 Text("设置")
