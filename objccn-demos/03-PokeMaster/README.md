@@ -246,3 +246,83 @@ extension Publisher {
     public func sink(receiveCompletion: @escaping ((Subscribers.Completion<Self.Failure>) -> Void), receiveValue: @escaping ((Self.Output) -> Void)) -> AnyCancellable
 }
 ```
+
+## 布局与对齐
+
+### 布局流程
+
+- 协商解决，层层上报
+
+### 布局优先级
+
+- 布局优先级默认为 0，但可以通过 `.layoutPriority(1)` 修改为更高优先级。
+
+### 强制固定尺寸
+
+- `fixedSize` 后使用 `frame`
+
+### Stack View 的对齐
+
+```swift
+@frozen public struct VerticalAlignment : Equatable {
+
+    /// Creates an instance with the given ID.
+    ///
+    /// Note: each instance should have a unique ID.
+    public init(_ id: AlignmentID.Type)
+}
+
+extension VerticalAlignment {
+
+    /// A guide marking the top edge of the view.
+    public static let top: VerticalAlignment
+
+    // ...
+}
+
+public protocol AlignmentID {
+
+    // 使用对齐方式时的偏移量
+    /// Returns the value of the corresponding guide, in `context`, when not
+    /// otherwise set in `context`.
+    static func defaultValue(in context: ViewDimensions) -> CGFloat
+}
+
+// 根据 context 即 ViewDimensions 获取
+public struct ViewDimensions {
+    // 视图宽高
+    
+    /// The view's width
+    public var width: CGFloat { get }
+
+    /// The view's height
+    public var height: CGFloat { get }
+
+    /// Accesses the value of the given guide.
+    public subscript(guide: HorizontalAlignment) -> CGFloat { get }
+
+    /// Accesses the value of the given guide.
+    public subscript(guide: VerticalAlignment) -> CGFloat { get }
+
+    // 显式对齐值
+    /// Returns the explicit value of the given alignment guide in this view, or
+    /// `nil` if no such value exists.
+    public subscript(explicit guide: HorizontalAlignment) -> CGFloat? { get }
+
+    /// Returns the explicit value of the given alignment guide in this view, or
+    /// `nil` if no such value exists.
+    public subscript(explicit guide: VerticalAlignment) -> CGFloat? { get }
+}
+```
+
+```swift
+extension VerticalAlignment {
+    struct MyCenter: AlignmentID {
+        static func defaultValue(in context: ViewDimensions) -> CGFloat {
+            context.height / 2
+        }
+    }
+    
+    static let myCenter = VerticalAlignment(MyCenter.self)
+}
+````

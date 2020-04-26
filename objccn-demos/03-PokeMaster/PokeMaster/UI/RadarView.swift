@@ -64,9 +64,11 @@ struct Hexagon: Shape {
             }
             path.closeSubpath()
         }
+        // 按照输入值截取一段路径
         .trimmedPath(from: 0, to: progress)
     }
 
+    // 来自 Animatable 协议
     var animatableData: CGFloat {
         set { progress = newValue }
         get { progress }
