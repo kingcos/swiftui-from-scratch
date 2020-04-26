@@ -13,6 +13,7 @@ struct PokemonInfoPanel: View {
     
     @State var darkBlur = false
     @EnvironmentObject var store: Store
+    @Environment(\.colorScheme) var colorScheme
     
     var abilities: [AbilityViewModel]? {
 //        AbilityViewModel.sample(pokemonID: model.id)
@@ -29,7 +30,10 @@ struct PokemonInfoPanel: View {
     var pokemonDescription: some View {
         Text(model.descriptionText)
             .font(.callout)
-            .foregroundColor(Color(hex: 0x666666))
+            .foregroundColor(
+                colorScheme == .light ? Color(hex: 0x666666) : Color(hex: 0xAAAAAA)
+            )
+//            .foregroundColor(Color(hex: 0x666666))
             .fixedSize(horizontal: false, vertical: true) // 多行显示
     }
     
@@ -50,24 +54,36 @@ struct PokemonInfoPanel: View {
             .animation(nil)
             
             Divider()
-            AbilityList(
-                model: model,
-                abilityModels: abilities
-            )
-          }
-          .padding(
-            EdgeInsets(
-                top: 12,
-                leading: 30,
-                bottom: 30,
-                trailing: 30
-          )
-        )
-        //        .background(Color.white)
-        //        .background(BlurView(style: .systemMaterial))
-        .blurBackground(style: darkBlur ? .systemMaterialDark : .systemMaterial)
-        .cornerRadius(20)
-        .fixedSize(horizontal: false, vertical: true)
+            HStack(spacing: 20) {
+                AbilityList(
+                    model: model,
+                    abilityModels: abilities
+                )
+                RadarView(values: model.pokemon.stats.map { $0.baseStat },
+                          color: model.color,
+                          max: 120,
+                          progress: CGFloat(store.appState.pokemonList.selectionState.radarProgress),
+                          shouldAnimate: store.appState.pokemonList.selectionState.radarShouldAnimate)
+                .frame(width: 100, height: 100)
+            }
+        }
+        .padding(.top, 12)
+        .padding(.bottom, 30)
+        .padding(.horizontal, 30)
+//          .padding(
+//            EdgeInsets(
+//                top: 12,
+//                leading: 30,
+//                bottom: 30,
+//                trailing: 30
+//              )
+//            )
+            //        .background(Color.white)
+            //        .background(BlurView(style: .systemMaterial))
+            .blurBackground(style: darkBlur ? .systemMaterialDark : .systemMaterial)
+            .cornerRadius(20)
+            .fixedSize(horizontal: false, vertical: true)
+        
     }
 }
 
@@ -151,33 +167,6 @@ extension PokemonInfoPanel {
                 VStack(spacing: 12) {
                     bodyStatus
                     typeInfo
-                }
-            }
-        }
-    }
-}
-
-extension PokemonInfoPanel {
-    struct AbilityList: View {
-        let model: PokemonViewModel
-        let abilityModels: [AbilityViewModel]?
-        
-        var body: some View {
-            VStack(alignment: .leading, spacing: 12) {
-                Text("技能")
-                    .font(.headline)
-                    .fontWeight(.bold)
-                if abilityModels != nil {
-                    ForEach(abilityModels!) { ability in
-                        Text(ability.name)
-                            .font(.subheadline)
-                            .foregroundColor(self.model.color)
-                        Text(ability.descriptionText)
-                            .font(.footnote)
-                            .foregroundColor(Color(hex: 0xAAAAAA))
-                            .fixedSize(horizontal: false, vertical: true)
-
-                    }
                 }
             }
         }

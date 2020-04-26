@@ -145,13 +145,17 @@ class Store: ObservableObject {
             if appState.pokemonList.selectionState.expandingIndex == index {
                 appState.pokemonList.selectionState.expandingIndex = nil
                 appState.pokemonList.selectionState.panelPresented = false
+                appState.pokemonList.selectionState.radarProgress = 0
             } else {
                 appState.pokemonList.selectionState.expandingIndex = index
                 appState.pokemonList.selectionState.panelIndex = index
+                appState.pokemonList.selectionState.radarShouldAnimate =
+                    appState.pokemonList.selectionState.radarProgress == 1 ? false : true
             }
             
         case .togglePanelPresenting(let presenting):
             appState.pokemonList.selectionState.panelPresented = presenting
+            appState.pokemonList.selectionState.radarProgress = presenting ? 1 : 0
             
         case .loadAbilities(let pokemon):
             if appState.pokemonList.loadingAbilities {

@@ -151,6 +151,9 @@ extension AppState {
             // 面板索引
             var panelIndex: Int?
             var panelPresented = false
+            
+            var radarProgress: Double = 0
+            var radarShouldAnimate = true
 
             func isExpanding(_ id: Int) -> Bool {
                 expandingIndex == id
