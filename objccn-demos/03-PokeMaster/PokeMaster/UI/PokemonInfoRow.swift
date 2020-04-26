@@ -55,7 +55,7 @@ struct PokemonInfoRow: View {
             HStack(spacing: expanded ? 20 : -30) {
                 Spacer()
                 Button(action: {
-                    print("fav")
+                    self.store.dispatch(.addToFavorite)
                 }) {
                     Image(systemName: "star")
                         .modifier(ToolButtonModifier())
@@ -117,11 +117,15 @@ struct PokemonInfoRow: View {
             }
         )
         .padding(.horizontal)
-        // model.detailPageURL
         .sheet(isPresented: $store.appState.pokemonList.isSFViewActive) {
             SafariView(url: self.store.appState.pokemonList.openURL!) {
                 self.store.dispatch(.closeSafariView)
             }
+        }
+        .alert(isPresented: $store.appState.pokemonList.isShowLoginAlert) {
+            Alert(title: Text("需要账户"), primaryButton: .cancel(), secondaryButton: .default(Text("登录"), action: {
+                self.store.dispatch(.switchToSelection(selection: .settings))
+            }))
         }
 
 //        .animation(

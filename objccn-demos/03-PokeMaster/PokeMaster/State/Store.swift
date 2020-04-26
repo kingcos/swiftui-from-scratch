@@ -181,6 +181,12 @@ class Store: ObservableObject {
         case .openSafariView(let url):
             appState.pokemonList.openURL = url
             appState.pokemonList.isSFViewActive = true
+            
+        case .addToFavorite:
+            appState.pokemonList.isShowLoginAlert = appState.settings.loginUser == nil
+            
+        case .switchToSelection(let selection):
+            appState.mainTab.selection = selection
         }
         
         return (appState, appCommand)

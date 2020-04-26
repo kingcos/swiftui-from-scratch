@@ -36,4 +36,8 @@ enum AppAction {
     case closeSafariView
     
     case openSafariView(url: URL)
+    
+    case addToFavorite
+    
+    case switchToSelection(selection: AppState.MainTab.Index)
 }
