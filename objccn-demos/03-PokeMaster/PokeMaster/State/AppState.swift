@@ -142,6 +142,7 @@ extension AppState {
         
         // Web 视图是否活跃
         var isSFViewActive = false
+        var openURL: URL? = nil
         
         struct SelectionState {
             // 展开的索引

@@ -74,16 +74,23 @@ struct PokemonInfoRow: View {
 //                        .modifier(ToolButtonModifier())
 //                }
                 
-                // NavigationLink 需在 NavigationView 内
-                NavigationLink(
-                    destination: SafariView(url: model.detailPageURL) {
-//                        self.isSFViewActive = false
-                        self.store.dispatch(.closeSafariView)
-                    }
-                        .navigationBarTitle(Text(model.name),
-                                            displayMode: .inline),
-                    isActive: expanded ? $store.appState.pokemonList.isSFViewActive : .constant(false)
-                ) {
+//                // NavigationLink 需在 NavigationView 内
+//                NavigationLink(
+//                    destination: SafariView(url: model.detailPageURL) {
+////                        self.isSFViewActive = false
+//                        self.store.dispatch(.closeSafariView)
+//                    }
+//                        .navigationBarTitle(Text(model.name),
+//                                            displayMode: .inline),
+//                    isActive: expanded ? $store.appState.pokemonList.isSFViewActive : .constant(false)
+//                ) {
+//                    Image(systemName: "info.circle")
+//                        .modifier(ToolButtonModifier())
+//                }
+        
+                Button(action: {
+                    self.store.dispatch(.openSafariView(url: self.model.detailPageURL))
+                }) {
                     Image(systemName: "info.circle")
                         .modifier(ToolButtonModifier())
                 }
@@ -110,6 +117,13 @@ struct PokemonInfoRow: View {
             }
         )
         .padding(.horizontal)
+        // model.detailPageURL
+        .sheet(isPresented: $store.appState.pokemonList.isSFViewActive) {
+            SafariView(url: self.store.appState.pokemonList.openURL!) {
+                self.store.dispatch(.closeSafariView)
+            }
+        }
+
 //        .animation(
 //            .spring(response: 0.55,
 //                    dampingFraction: 0.425,

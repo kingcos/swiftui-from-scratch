@@ -34,4 +34,6 @@ enum AppAction {
     case loadAbilitiesDone(result: Result<[AbilityViewModel], AppError>)
     
     case closeSafariView
+    
+    case openSafariView(url: URL)
 }

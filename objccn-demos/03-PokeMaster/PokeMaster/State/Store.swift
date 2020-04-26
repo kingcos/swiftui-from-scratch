@@ -177,6 +177,10 @@ class Store: ObservableObject {
             
         case .closeSafariView:
             appState.pokemonList.isSFViewActive = false
+            
+        case .openSafariView(let url):
+            appState.pokemonList.openURL = url
+            appState.pokemonList.isSFViewActive = true
         }
         
         return (appState, appCommand)
