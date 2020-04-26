@@ -42,6 +42,7 @@
 		84ED38202455F5090042F8E9 /* RadarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ED381F2455F5090042F8E9 /* RadarView.swift */; };
 		84ED38262455FF8A0042F8E9 /* PokemonInfoPanelAbilityList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ED38252455FF8A0042F8E9 /* PokemonInfoPanelAbilityList.swift */; };
 		84ED3829245606990042F8E9 /* DemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ED3828245606990042F8E9 /* DemoView.swift */; };
+		84ED382B245607C20042F8E9 /* ChallengView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ED382A245607C20042F8E9 /* ChallengView.swift */; };
 		D1320AD523178614006F02A6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1320A7D23178614006F02A6 /* Assets.xcassets */; };
 		D1320AD623178614006F02A6 /* FileHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1320A7F23178614006F02A6 /* FileHelper.swift */; };
 		D1320AD723178614006F02A6 /* Sample.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1320A8023178614006F02A6 /* Sample.swift */; };
@@ -159,6 +160,7 @@
 		84ED38252455FF8A0042F8E9 /* PokemonInfoPanelAbilityList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonInfoPanelAbilityList.swift; sourceTree = "<group>"; };
 		84ED3827245602630042F8E9 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		84ED3828245606990042F8E9 /* DemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoView.swift; sourceTree = "<group>"; };
+		84ED382A245607C20042F8E9 /* ChallengView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengView.swift; sourceTree = "<group>"; };
 		D1320A7D23178614006F02A6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D1320A7F23178614006F02A6 /* FileHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileHelper.swift; sourceTree = "<group>"; };
 		D1320A8023178614006F02A6 /* Sample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sample.swift; sourceTree = "<group>"; };
@@ -265,6 +267,7 @@
 				848A1FE524436E380080C34C /* MainTab.swift */,
 				84ED381F2455F5090042F8E9 /* RadarView.swift */,
 				84ED3828245606990042F8E9 /* DemoView.swift */,
+				84ED382A245607C20042F8E9 /* ChallengView.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -643,6 +646,7 @@
 				84ED381A245206E20042F8E9 /* SafariView.swift in Sources */,
 				D1320B1F23178614006F02A6 /* AppDelegate.swift in Sources */,
 				84DD5877244B13E50054690E /* EmailCheckingRequest.swift in Sources */,
+				84ED382B245607C20042F8E9 /* ChallengView.swift in Sources */,
 				D1320B1C23178614006F02A6 /* Ability.swift in Sources */,
 				84883A16244C566A0009F25E /* RegisterRequest.swift in Sources */,
 				D1320B1B23178614006F02A6 /* Language.swift in Sources */,
