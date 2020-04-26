@@ -23,7 +23,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
     }
     
-    // pokemaster://showPanel?id={id}
     private func createStore(_ URLContexts: Set<UIOpenURLContext>) -> Store {
         let store = Store()
         
@@ -31,6 +30,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             let components = URLComponents(url: url, resolvingAgainstBaseURL: false) else { return store }
         
         switch (components.scheme, components.host) {
+        // pokemaster://showPanel?id={id}
         case ("pokemaster", "showPanel"):
             guard let idQuery = (components.queryItems?.first { $0.name == "id" }),
                   let idString = idQuery.value,
@@ -39,6 +39,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             store.appState.pokemonList.selectionState = .init(expandingIndex: id,
                                                               panelIndex: id,
                                                               panelPresented: true)
+        // pokemaster://userRegister?email=admin@example.com
+        case ("pokemaster", "userRegister"):
+            guard let emailQuery = (components.queryItems?.first { $0.name == "email" }),
+                  let email = emailQuery.value else { break }
+            
+            store.appState.mainTab.selection = .settings
+            store.appState.settings.checker.accountBehavior = .register
+            store.appState.settings.checker.email = email
         default:
             break
         }
