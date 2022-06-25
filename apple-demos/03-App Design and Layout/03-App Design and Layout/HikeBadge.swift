@@ -13,7 +13,7 @@ struct HikeBadge: View {
     var body: some View {
         VStack(alignment: .center) {
             Badge()
-                .frame(width: 300, height: 300) // 以此分辨率渲染
+                .frame(width: 300, height: 300) // 以此大小渲染
                 .scaleEffect(1.0 / 3.0)
                 .frame(width: 100, height: 100)
             Text(name)

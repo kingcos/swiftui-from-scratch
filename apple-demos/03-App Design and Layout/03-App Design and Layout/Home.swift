@@ -10,12 +10,11 @@ import SwiftUI
 
 struct CategoryHome: View {
     @EnvironmentObject var modelData: ModelData
+    @State private var showingProfile = false
     
     var featured: [Scene] {
         modelData.sceneData.filter { $0.isFavorite }
     }
-    
-    @State var showingProfile = false
     
     var profileButton: some View {
         Button(action: { self.showingProfile.toggle() }) {
@@ -50,13 +49,21 @@ struct CategoryHome: View {
                     Text("See All")
                 }
             }
+            .listStyle(.inset)
 //            .navigationBarTitle(Text("Featured"))
             .navigationBarTitle("Featured")
-            .navigationBarItems(trailing: profileButton)
+            .toolbar {
+                Button {
+                    showingProfile.toggle()
+                } label: {
+                    Label("User Profile", systemImage: "person.crop.circle")
+                }
+            }
             .sheet(isPresented: $showingProfile) {
                 ProfileHost()
-                    .environmentObject(self.modelData) // 注入
+                    .environmentObject(modelData) // 注入
             }
+//            .navigationBarItems(trailing: profileButton)
         }
     }
 }

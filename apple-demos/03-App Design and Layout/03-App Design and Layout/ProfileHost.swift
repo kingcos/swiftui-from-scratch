@@ -9,7 +9,8 @@
 import SwiftUI
 
 struct ProfileHost: View {
-    // 可编辑状态
+    // 可编辑状态，写入存储
+    // 将编辑模式存储在环境中，可以方便地在用户进入和退出编辑模式时更新多个视图。
     @Environment(\.editMode) var mode
     @EnvironmentObject var modelData: ModelData
     @State var draftProfile = Profile.default
@@ -17,28 +18,27 @@ struct ProfileHost: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
             HStack {
-                if self.mode?.wrappedValue == .active {
+                if mode?.wrappedValue == .active {
                     Button("Cancel") {
-                        self.draftProfile = self.modelData.profile
-                        self.mode?.animation().wrappedValue = .inactive
+                        draftProfile = modelData.profile
+                        mode?.animation().wrappedValue = .inactive
                     }
                 }
                 
                 Spacer()
-                
                 EditButton()
             }
             
-            if self.mode?.wrappedValue == .inactive {
+            if mode?.wrappedValue == .inactive {
                 ProfileSummary(profile: modelData.profile)
             } else {
                 ProfileEditor(profile: $draftProfile)
-                .onAppear {
-                    self.draftProfile = self.modelData.profile
-                }
-                .onDisappear {
-                    self.modelData.profile = self.draftProfile
-                }
+                    .onAppear {
+                        self.draftProfile = self.modelData.profile
+                    }
+                    .onDisappear {
+                        self.modelData.profile = self.draftProfile
+                    }
             }
         }
         .padding()

@@ -26,7 +26,7 @@ struct ProfileEditor: View {
             }
             
             Toggle(isOn: $profile.prefersNotifications) {
-                Text("Enable Notifications")
+                Text("Enable Notifications").bold()
             }
             
             VStack(alignment: .leading, spacing: 20) {
@@ -37,19 +37,23 @@ struct ProfileEditor: View {
                         Text(season.rawValue).tag(season)
                     }
                 }
-                .pickerStyle(SegmentedPickerStyle())
+//                .pickerStyle(SegmentedPickerStyle())
+                .pickerStyle(.segmented)
             }
             .padding(.top)
             
-            VStack(alignment: .leading, spacing: 20) {
+//            VStack(alignment: .leading, spacing: 20) {
+//                Text("Goal Date").bold()
+//                // 时间选择器
+//                DatePicker("Goal Date",
+//                           selection: $profile.goalDate,
+//                           in: dateRange,
+//                           displayedComponents: .date)
+//            }
+//            .padding(.top)
+            DatePicker(selection: $profile.goalDate, in: dateRange, displayedComponents: .date) {
                 Text("Goal Date").bold()
-                // 时间选择器
-                DatePicker("Goal Date",
-                           selection: $profile.goalDate,
-                           in: dateRange,
-                           displayedComponents: .date)
             }
-            .padding(.top)
         }
     }
 }
