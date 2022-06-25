@@ -9,7 +9,13 @@
 import Foundation
 import Combine
 
+//final class UserData: ObservableObject {
+//    @Published var showFavoritesOnly = false
+//    @Published var scenes = sceneData
+//}
+
+// 从 Combine 框架中声明符合 ObservableObject 协议的新模型类型。
+// SwiftUI 将订阅 ObservableObject，并在数据更改时更新任何需要刷新的视图。
 final class UserData: ObservableObject {
-    @Published var showFavoritesOnly = false
-    @Published var scenes = sceneData
+    @Published var sceneData: [Scene] = load("sampleData.json")
 }

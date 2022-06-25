@@ -16,7 +16,7 @@ struct CircleImage: View {
             .frame(maxWidth: 260, maxHeight: 260) // 限制宽度
             .clipShape(Circle()) // 裁剪为圆
             .overlay(Circle().stroke(Color.white, lineWidth: 4)) // 添加边框
-            .shadow(radius: 10) // 添加阴影
+            .shadow(radius: 7) // 添加阴影
     }
 }
 

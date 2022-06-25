@@ -12,15 +12,29 @@ import CoreLocation
 struct Scene: Hashable, Codable, Identifiable {
     var id: Int
     var name: String
-    fileprivate var imageName: String
-    fileprivate var coordinates: Coordinates
+//    fileprivate var imageName: String
+//    fileprivate var coordinates: Coordinates
     var state: String
     var category: Category
     var isFavorite: Bool
+    var description: String
     
-    var locationCoordinate: CLLocationCoordinate2D {
-        CLLocationCoordinate2D(latitude: coordinates.latitude, longitude: coordinates.longitude)
+    private var imageName: String
+    var image: Image {
+        Image(imageName)
     }
+    
+    private var coordinates: Coordinates
+    var locationCoordinate: CLLocationCoordinate2D {
+        CLLocationCoordinate2D(latitude: coordinates.latitude,
+                               longitude: coordinates.longitude)
+    }
+    
+    struct Coordinates: Hashable, Codable {
+        var latitude: Double
+        var longitude: Double
+    }
+    
     
     enum Category: String, CaseIterable, Hashable, Codable {
         case museum     = "博物馆"
@@ -30,13 +44,8 @@ struct Scene: Hashable, Codable, Identifiable {
     }
 }
 
-extension Scene {
-    var image: Image {
-        ImageStore.shared.image(name: imageName)
-    }
-}
-
-struct Coordinates: Hashable, Codable {
-    var latitude: Double
-    var longitude: Double
-}
+//extension Scene {
+//    var image: Image {
+//        ImageStore.shared.image(name: imageName)
+//    }
+//}

@@ -10,24 +10,44 @@ import SwiftUI
 
 struct SceneList: View {
     @EnvironmentObject var userData: UserData
-    // @State var showFavoritesOnly = true
+    @State var showFavoritesOnly = false
+    
+    var filteredScenes: [Scene] {
+        userData.sceneData.filter { scene in
+            (!showFavoritesOnly || scene.isFavorite)
+        }
+    }
     
     var body: some View {
         NavigationView {
             List {
-                Toggle(isOn: $userData.showFavoritesOnly) {
+                Toggle(isOn: $showFavoritesOnly) {
                     Text("Favorites only")
                 }
-
-                ForEach(userData.scenes) { scene in
-                    if !self.userData.showFavoritesOnly || scene.isFavorite {
-                        NavigationLink(destination: SceneDetail(scene: scene)) {
-                            SceneRow(scene: scene)
-                        }
+                
+                ForEach(filteredScenes) { scene in
+                    NavigationLink {
+                        SceneDetail(scene: scene)
+                    } label: {
+                        SceneRow(scene: scene)
                     }
                 }
             }
-            .navigationBarTitle(Text("Scenes"))
+            
+//            List {
+//                Toggle(isOn: $userData.showFavoritesOnly) {
+//                    Text("Favorites only")
+//                }
+//
+//                ForEach(userData.scenes) { scene in
+//                    if !self.userData.showFavoritesOnly || scene.isFavorite {
+//                        NavigationLink(destination: SceneDetail(scene: scene)) {
+//                            SceneRow(scene: scene)
+//                        }
+//                    }
+//                }
+//            }
+            .navigationBarTitle("Scenes")
         }
     }
 }

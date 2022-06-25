@@ -9,38 +9,14 @@
 import SwiftUI
 
 struct ContentView: View {
-    var scene: Scene
-
     var body: some View {
-        VStack {
-            MapView(coordinate: scene.locationCoordinate)
-                .edgesIgnoringSafeArea(.top)
-                .frame(height: 300)
-            
-            CircleImage(image: scene.image)
-                .offset(y: -130)
-                .padding(.bottom, -130)
-            
-            VStack(alignment: .leading) {
-                Text(scene.name)
-                    .font(.title)
-                HStack(alignment: .top) {
-                    Text("\(scene.id)")
-                        .font(.subheadline)
-                    Spacer()
-                    Text(scene.state)
-                        .font(.subheadline)
-                }
-            }
-            .padding()
-            
-            Spacer()
-        }
+        SceneList()
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(scene: sceneData[0])
+        ContentView()
+            .environmentObject(UserData())
     }
 }

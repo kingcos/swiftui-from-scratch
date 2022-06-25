@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8411A46D2866ED380004DD2F /* FavoriteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8411A46C2866ED380004DD2F /* FavoriteButton.swift */; };
 		8478BA4323E89E23003A72DD /* yuanmingyuan.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8478BA4023E89E23003A72DD /* yuanmingyuan.jpg */; };
 		8478BA4423E89E23003A72DD /* yuyuantangongyuan.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8478BA4123E89E23003A72DD /* yuyuantangongyuan.jpg */; };
 		8478BA4523E89E23003A72DD /* changcheng.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8478BA4223E89E23003A72DD /* changcheng.jpg */; };
@@ -28,6 +29,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8411A46C2866ED380004DD2F /* FavoriteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteButton.swift; sourceTree = "<group>"; };
 		8478BA4023E89E23003A72DD /* yuanmingyuan.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = yuanmingyuan.jpg; sourceTree = "<group>"; };
 		8478BA4123E89E23003A72DD /* yuyuantangongyuan.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = yuyuantangongyuan.jpg; sourceTree = "<group>"; };
 		8478BA4223E89E23003A72DD /* changcheng.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = changcheng.jpg; sourceTree = "<group>"; };
@@ -61,6 +63,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8411A46E2866ED620004DD2F /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				84F32DB123E8865400F82F48 /* CircleImage.swift */,
+				84F32DB323E8879900F82F48 /* MapView.swift */,
+				8411A46C2866ED380004DD2F /* FavoriteButton.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		84F32D9123E87B2C00F82F48 = {
 			isa = PBXGroup;
 			children = (
@@ -89,8 +101,6 @@
 				84F32DA323E87B2F00F82F48 /* Assets.xcassets */,
 				84F32DA823E87B2F00F82F48 /* LaunchScreen.storyboard */,
 				84F32DAB23E87B2F00F82F48 /* Info.plist */,
-				84F32DB123E8865400F82F48 /* CircleImage.swift */,
-				84F32DB323E8879900F82F48 /* MapView.swift */,
 				84F32DA523E87B2F00F82F48 /* Preview Content */,
 			);
 			path = "01-SwiftUI Essentials";
@@ -128,6 +138,7 @@
 		84F32DC123E897D400F82F48 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				8411A46E2866ED620004DD2F /* Helpers */,
 				84F32DBF23E8973900F82F48 /* SceneDetail.swift */,
 				84F32DC223E897DF00F82F48 /* SceneRow.swift */,
 				84F32DC423E8992400F82F48 /* SceneList.swift */,
@@ -213,6 +224,7 @@
 				84F32DBB23E896AE00F82F48 /* Data.swift in Sources */,
 				84F32D9E23E87B2C00F82F48 /* AppDelegate.swift in Sources */,
 				84F32DB223E8865400F82F48 /* CircleImage.swift in Sources */,
+				8411A46D2866ED380004DD2F /* FavoriteButton.swift in Sources */,
 				84F32DB423E8879900F82F48 /* MapView.swift in Sources */,
 				84F32DC523E8992400F82F48 /* SceneList.swift in Sources */,
 				84F32DC723E8995600F82F48 /* UserData.swift in Sources */,
@@ -361,6 +373,7 @@
 				DEVELOPMENT_TEAM = LEG7CXMPKJ;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "01-SwiftUI Essentials/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -381,6 +394,7 @@
 				DEVELOPMENT_TEAM = LEG7CXMPKJ;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "01-SwiftUI Essentials/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

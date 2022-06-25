@@ -15,11 +15,11 @@ struct SceneDetail: View {
     var scene: Scene
     
     var sceneIndex: Int {
-        userData.scenes.firstIndex(where: { $0.id == scene.id })!
+        userData.sceneData.firstIndex(where: { $0.id == scene.id })!
     }
     
     var body: some View {
-        VStack {
+        ScrollView {
             MapView(coordinate: scene.locationCoordinate)
                 .edgesIgnoringSafeArea(.top)
                 .frame(height: 300)
@@ -32,39 +32,62 @@ struct SceneDetail: View {
                 HStack {
                     Text(scene.name)
                         .font(.title)
-                    
-                    Button(action: {
-                        self.userData.scenes[self.sceneIndex].isFavorite.toggle()
-                    }) {
-                        if self.userData.scenes[self.sceneIndex].isFavorite {
-                            Image(systemName: "star.fill")
-                                .foregroundColor(Color.yellow)
-                        } else {
-                            Image(systemName: "star")
-                                .foregroundColor(Color.gray)
-                        }
-                    }
+                    FavoriteButton(isSet: $userData.sceneData[sceneIndex].isFavorite)
                 }
-                
+
                 HStack {
                     Text("\(scene.id)")
-                        .font(.subheadline)
                     Spacer()
                     Text(scene.state)
-                        .font(.subheadline)
                 }
+                .font(.subheadline)
+                .foregroundColor(.secondary)
+
+                Divider()
+
+                Text("关于\(scene.name)")
+                    .font(.title2)
+                Text("描述：\(scene.description)")
+                
+                
+//                HStack {
+//
+//                    Button(action: {
+//                        self.userData.scenes[self.sceneIndex].isFavorite.toggle()
+//                    }) {
+//                        if self.userData.scenes[self.sceneIndex].isFavorite {
+//                            Image(systemName: "star.fill")
+//                                .foregroundColor(Color.yellow)
+//                        } else {
+//                            Image(systemName: "star")
+//                                .foregroundColor(Color.gray)
+//                        }
+//                    }
+//                }
+//
+//                HStack {
+//                    Text("\(scene.id)")
+//                        .font(.subheadline)
+//                    Spacer()
+//                    Text(scene.state)
+//                        .font(.subheadline)
+//                }
             }
             .padding()
             
             Spacer()
         }
-        .navigationBarTitle(Text(scene.name), displayMode: .inline)
+        .navigationTitle(scene.name)
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
 // 便于预览使用 => 点击右侧 Resume 即可预览
 struct SceneDetail_Previews: PreviewProvider {
+    static let userData = UserData()
+    
     static var previews: some View {
-        SceneDetail(scene: sceneData[0])
+        SceneDetail(scene: userData.sceneData[0])
+            .environmentObject(userData)
     }
 }
