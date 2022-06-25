@@ -7,6 +7,17 @@ The elevation, heart rate, and pace of a hike plotted on a graph.
 
 import SwiftUI
 
+extension Animation {
+    // ripple 涟漪
+    static func ripple(index: Int) -> Animation {
+//        Animation.default
+        
+        Animation.spring(dampingFraction: 0.5)
+            .speed(2)
+            .delay(0.03 * Double(index))
+    }
+}
+
 func rangeOfRanges<C: Collection>(_ ranges: C) -> Range<Double>
     where C.Element == Range<Double> {
     guard !ranges.isEmpty else { return 0..<0 }
@@ -46,13 +57,17 @@ struct HikeGraph: View {
 
         return GeometryReader { proxy in
             HStack(alignment: .bottom, spacing: proxy.size.width / 120) {
-                ForEach(data.indices) { index in
+//                ForEach(data.indices) { index in
+                ForEach(Array(data.enumerated()), id: \.offset) { index, observation in
                     GraphCapsule(
                         index: index,
+                        color: color,
                         height: proxy.size.height,
                         range: data[index][keyPath: self.path],
-                        overallRange: overallRange)
-                    .colorMultiply(self.color) // 改变颜色
+                        overallRange: overallRange
+                    )
+                    .animation(.ripple(index: index))
+//                    .colorMultiply(self.color) // 改变颜色
                 }
                 .offset(x: 0, y: proxy.size.height * heightRatio)
             }
@@ -63,11 +78,11 @@ struct HikeGraph: View {
 struct HikeGraph_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            HikeGraph(hike: hikeData[0], path: \.elevation)
+            HikeGraph(hike: ModelData().hikeData[0], path: \.elevation)
                 .frame(height: 200)
-            HikeGraph(hike: hikeData[0], path: \.heartRate)
+            HikeGraph(hike: ModelData().hikeData[0], path: \.heartRate)
                 .frame(height: 200)
-            HikeGraph(hike: hikeData[0], path: \.pace)
+            HikeGraph(hike: ModelData().hikeData[0], path: \.pace)
                 .frame(height: 200)
         }
     }

@@ -6,11 +6,11 @@ Helpers for loading images and data.
 */
 
 import Foundation
-import CoreLocation
-import UIKit
-import SwiftUI
+import Combine
 
-let hikeData: [Hike] = load("hikeData.json")
+final class ModelData: ObservableObject {
+    @Published var hikeData: [Hike] = load("hikeData.json")
+}
 
 func load<T: Decodable>(_ filename: String) -> T {
     let data: Data

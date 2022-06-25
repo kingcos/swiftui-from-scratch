@@ -9,6 +9,7 @@ import SwiftUI
 
 struct GraphCapsule: View {
     var index: Int
+    var color: Color
     var height: CGFloat
     var range: Range<Double>
     var overallRange: Range<Double>
@@ -32,7 +33,7 @@ struct GraphCapsule: View {
     
     var body: some View {
         Capsule()
-            .fill(Color.white)
+            .fill(color)
             .frame(height: height * heightRatio, alignment: .bottom)
             .offset(x: 0, y: height * -offsetRatio)
             .animation(animation)
@@ -41,6 +42,6 @@ struct GraphCapsule: View {
 
 struct GraphCapsule_Previews: PreviewProvider {
     static var previews: some View {
-        GraphCapsule(index: 0, height: 150, range: 10..<50, overallRange: 0..<100)
+        GraphCapsule(index: 0, color: .red, height: 150, range: 10..<50, overallRange: 0..<100)
     }
 }

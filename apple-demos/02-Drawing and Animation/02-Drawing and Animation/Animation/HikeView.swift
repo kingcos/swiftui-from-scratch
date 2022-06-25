@@ -11,16 +11,15 @@ import SwiftUI
 extension AnyTransition {
     // 抽离
     static var moveAndFade: AnyTransition {
-        // AnyTransition.slide
-        // AnyTransition.move(edge: .trailing)
+//         AnyTransition.slide
+//         AnyTransition.move(edge: .trailing)
         
-        let insertion = AnyTransition
-            .move(edge: .trailing)
-            .combined(with: .opacity)
-        let removal = AnyTransition
-            .scale
-            .combined(with: .opacity)
-        return .asymmetric(insertion: insertion, removal: removal)
+        .asymmetric( // 非对称变换
+            // 插入
+            insertion: .move(edge: .trailing).combined(with: .opacity),
+            // 移除
+            removal: .scale.combined(with: .opacity)
+        )
     }
 }
 
@@ -43,17 +42,34 @@ struct HikeView: View {
                 
                 Spacer()
 
-                Button(action: {
-                    // withAnimation(.easeInOut(duration: 4)) {
+//                Button(action: {
+//                    // withAnimation(.easeInOut(duration: 4)) {
+//                    withAnimation {
+//                        self.showDetail.toggle()
+//                    }
+//                }) {
+//                    Image(systemName: "chevron.right.circle")
+//                        .imageScale(.large)
+//                        .rotationEffect(.degrees(showDetail ? 90 : 0))
+//                        .scaleEffect(showDetail ? 1.5 : 1)
+//                        .padding()
+//                }
+                Button {
+//                    withAnimation(.easeInOut(duration: 4)) {
                     withAnimation {
-                        self.showDetail.toggle()
+                        // 受影响的视图均有动画
+                        showDetail.toggle()
                     }
-                }) {
-                    Image(systemName: "chevron.right.circle")
+                } label: {
+                    Label("Graph", systemImage: "chevron.right.circle")
+                        .labelStyle(.iconOnly)
                         .imageScale(.large)
                         .rotationEffect(.degrees(showDetail ? 90 : 0))
+//                        .animation(nil, value: showDetail) // 关闭旋转动画（上一个 modifier 的动画）
                         .scaleEffect(showDetail ? 1.5 : 1)
                         .padding()
+//                        .animation(.easeInOut, value: showDetail)
+//                        .animation(.spring(), value: showDetail)
                 }
             }
             
@@ -62,7 +78,7 @@ struct HikeView: View {
             if showDetail {
                 HikeDetail(hike: hike)
                         .transition(.moveAndFade)
-                    // .transition(.slide) // 滑动动画
+//                     .transition(.slide) // 滑动动画
             }
         }
     }
@@ -71,7 +87,7 @@ struct HikeView: View {
 struct HikeView_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
-            HikeView(hike: hikeData[0])
+            HikeView(hike: ModelData().hikeData[0])
                 .padding()
             Spacer()
         }
