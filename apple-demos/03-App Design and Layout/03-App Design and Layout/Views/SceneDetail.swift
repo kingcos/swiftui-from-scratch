@@ -10,12 +10,12 @@ import SwiftUI
 
 // 视图结构
 struct SceneDetail: View {
-    @EnvironmentObject var userData: UserData
+    @EnvironmentObject var modelData: ModelData
     
     var scene: Scene
     
     var sceneIndex: Int {
-        userData.scenes.firstIndex(where: { $0.id == scene.id })!
+        modelData.sceneData.firstIndex(where: { $0.id == scene.id })!
     }
     
     var body: some View {
@@ -34,9 +34,9 @@ struct SceneDetail: View {
                         .font(.title)
                     
                     Button(action: {
-                        self.userData.scenes[self.sceneIndex].isFavorite.toggle()
+                        self.modelData.sceneData[self.sceneIndex].isFavorite.toggle()
                     }) {
-                        if self.userData.scenes[self.sceneIndex].isFavorite {
+                        if self.modelData.sceneData[self.sceneIndex].isFavorite {
                             Image(systemName: "star.fill")
                                 .foregroundColor(Color.yellow)
                         } else {
@@ -65,6 +65,6 @@ struct SceneDetail: View {
 // 便于预览使用 => 点击右侧 Resume 即可预览
 struct SceneDetail_Previews: PreviewProvider {
     static var previews: some View {
-        SceneDetail(scene: sceneData[0])
+        SceneDetail(scene: ModelData().sceneData[0])
     }
 }

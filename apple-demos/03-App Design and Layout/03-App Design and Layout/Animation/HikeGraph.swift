@@ -63,11 +63,11 @@ struct HikeGraph: View {
 struct HikeGraph_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            HikeGraph(hike: hikeData[0], path: \.elevation)
+            HikeGraph(hike: ModelData().hikeData[0], path: \.elevation)
                 .frame(height: 200)
-            HikeGraph(hike: hikeData[0], path: \.heartRate)
+            HikeGraph(hike: ModelData().hikeData[0], path: \.heartRate)
                 .frame(height: 200)
-            HikeGraph(hike: hikeData[0], path: \.pace)
+            HikeGraph(hike: ModelData().hikeData[0], path: \.pace)
                 .frame(height: 200)
         }
     }

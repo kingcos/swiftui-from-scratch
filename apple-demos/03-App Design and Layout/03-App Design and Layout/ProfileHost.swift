@@ -11,7 +11,7 @@ import SwiftUI
 struct ProfileHost: View {
     // 可编辑状态
     @Environment(\.editMode) var mode
-    @EnvironmentObject var userData: UserData
+    @EnvironmentObject var modelData: ModelData
     @State var draftProfile = Profile.default
     
     var body: some View {
@@ -19,7 +19,7 @@ struct ProfileHost: View {
             HStack {
                 if self.mode?.wrappedValue == .active {
                     Button("Cancel") {
-                        self.draftProfile = self.userData.profile
+                        self.draftProfile = self.modelData.profile
                         self.mode?.animation().wrappedValue = .inactive
                     }
                 }
@@ -30,14 +30,14 @@ struct ProfileHost: View {
             }
             
             if self.mode?.wrappedValue == .inactive {
-                ProfileSummary(profile: userData.profile)
+                ProfileSummary(profile: modelData.profile)
             } else {
                 ProfileEditor(profile: $draftProfile)
                 .onAppear {
-                    self.draftProfile = self.userData.profile
+                    self.draftProfile = self.modelData.profile
                 }
                 .onDisappear {
-                    self.userData.profile = self.draftProfile
+                    self.modelData.profile = self.draftProfile
                 }
             }
         }
@@ -47,6 +47,6 @@ struct ProfileHost: View {
 
 struct ProfileHost_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileHost().environmentObject(UserData())
+        ProfileHost().environmentObject(ModelData())
     }
 }

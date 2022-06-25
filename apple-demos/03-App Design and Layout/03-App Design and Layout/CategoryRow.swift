@@ -14,15 +14,20 @@ struct CategoryRow: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text(self.categoryName)
+            Text(categoryName)
                 .font(.headline)
                 .padding(.leading, 15)
                 .padding(.top, 5)
             
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(alignment: .top, spacing: 0) {
-                    ForEach(self.items) { scene in
-                        NavigationLink(destination: SceneDetail(scene: scene)) {
+                    ForEach(items) { scene in
+//                        NavigationLink(destination: SceneDetail(scene: scene)) {
+//                            CategoryItem(scene: scene)
+//                        }
+                        NavigationLink {
+                            SceneDetail(scene: scene)
+                        } label: {
                             CategoryItem(scene: scene)
                         }
                     }
@@ -34,10 +39,12 @@ struct CategoryRow: View {
 }
 
 struct CategoryRow_Previews: PreviewProvider {
+    static var sceneData = ModelData().sceneData
+    
     static var previews: some View {
         CategoryRow(
             categoryName: sceneData[0].category.rawValue,
-            items: Array(sceneData.prefix(3))
+            items: Array(sceneData.prefix(4))
         )
     }
 }

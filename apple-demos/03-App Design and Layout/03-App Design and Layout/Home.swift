@@ -9,19 +9,13 @@
 import SwiftUI
 
 struct CategoryHome: View {
-    var categories: [String: [Scene]] {
-        Dictionary(
-            grouping: sceneData,
-            by: { $0.category.rawValue }
-        )
-    }
+    @EnvironmentObject var modelData: ModelData
     
     var featured: [Scene] {
-        sceneData.filter { $0.isFavorite }
+        modelData.sceneData.filter { $0.isFavorite }
     }
     
     @State var showingProfile = false
-    @EnvironmentObject var userData: UserData
     
     var profileButton: some View {
         Button(action: { self.showingProfile.toggle() }) {
@@ -35,14 +29,20 @@ struct CategoryHome: View {
     var body: some View {
         NavigationView {
             List {
-                FeaturedScenes(scenes: featured)
+//                FeaturedScenes(scenes: featured)
+//                    .scaledToFill()
+//                    .frame(height: 200)
+//                    .clipped()
+//                    .listRowInsets(EdgeInsets())
+                modelData.features[0].image
+                    .resizable()
                     .scaledToFill()
                     .frame(height: 200)
                     .clipped()
                     .listRowInsets(EdgeInsets())
                 
-                ForEach(categories.keys.sorted(), id: \.self) { key in
-                    CategoryRow(categoryName: key, items: self.categories[key]!)
+                ForEach(modelData.categories.keys.sorted(), id: \.self) { key in
+                    CategoryRow(categoryName: key, items: modelData.categories[key]!)
                 }
                 .listRowInsets(EdgeInsets())
                 
@@ -50,11 +50,12 @@ struct CategoryHome: View {
                     Text("See All")
                 }
             }
-            .navigationBarTitle(Text("Featured"))
+//            .navigationBarTitle(Text("Featured"))
+            .navigationBarTitle("Featured")
             .navigationBarItems(trailing: profileButton)
             .sheet(isPresented: $showingProfile) {
                 ProfileHost()
-                    .environmentObject(self.userData) // 注入
+                    .environmentObject(self.modelData) // 注入
             }
         }
     }
@@ -63,6 +64,7 @@ struct CategoryHome: View {
 struct CategoryHome_Previews: PreviewProvider {
     static var previews: some View {
         CategoryHome()
+            .environmentObject(ModelData())
     }
 }
 

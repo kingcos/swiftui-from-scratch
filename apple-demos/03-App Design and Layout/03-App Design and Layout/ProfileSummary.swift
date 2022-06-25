@@ -9,6 +9,8 @@
 import SwiftUI
 
 struct ProfileSummary: View {
+    @EnvironmentObject var modelData: ModelData
+    
     var profile: Profile
     
     static let goalFormat: DateFormatter = {
@@ -53,7 +55,7 @@ struct ProfileSummary: View {
                 Text("Recent Hikes")
                     .font(.headline)
                 
-                HikeView(hike: hikeData[0])
+                HikeView(hike: modelData.hikeData[0])
             }
         }
     }

@@ -13,8 +13,7 @@ struct SceneRow: View {
     
     var body: some View {
         HStack {
-            scene
-                .image
+            scene.image
                 .resizable()
                 .frame(width: 50, height: 50)
             Text(scene.name)
@@ -30,11 +29,13 @@ struct SceneRow: View {
 }
 
 struct SceneRow_Previews: PreviewProvider {
+    static var scenes = ModelData().sceneData
+    
     static var previews: some View {
         Group {
-            SceneRow(scene: sceneData[0])
+            SceneRow(scene: scenes[0])
                 // .previewLayout(.fixed(width: 300, height: 70))
-            SceneRow(scene: sceneData[1])
+            SceneRow(scene: scenes[1])
         }
         .previewLayout(.fixed(width: 300, height: 70))
     }
