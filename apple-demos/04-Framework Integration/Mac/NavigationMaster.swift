@@ -20,8 +20,8 @@ struct NavigationMaster: View {
               .padding(.trailing, 4)
             
             SceneList(
-                selectedScene: $selectedScene,
-                filter: $filter
+//                selectedScene: $selectedScene,
+//                filter: $filter
             )
             .listStyle(SidebarListStyle())
         }

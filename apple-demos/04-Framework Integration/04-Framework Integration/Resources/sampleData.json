@@ -33,7 +33,7 @@
         "category":"自然",
         "state":"北京",
         "isFavorite": true,
-        "isFeatured": false,
+        "isFeatured": true,
         "coordinates":{
             "longitude":116.320023,
             "latitude":39.916603

@@ -35,18 +35,21 @@ struct CategoryHome: View {
     var body: some View {
         NavigationView {
             List {
-                FeaturedScenes(scenes: featured)
-                    .scaledToFill()
-                    .frame(height: 200)
-                    .clipped()
-                    .listRowInsets(EdgeInsets())
+                PageViewV2(pages: sceneData.map { FeatureCard(scene: $0) })
+                                    .aspectRatio(3 / 2, contentMode: .fit)
+                                    .listRowInsets(EdgeInsets())
+//                FeaturedScenes(scenes: featured)
+//                    .scaledToFill()
+//                    .frame(height: 200)
+//                    .clipped()
+//                    .listRowInsets(EdgeInsets())
                 
                 ForEach(categories.keys.sorted(), id: \.self) { key in
                     CategoryRow(categoryName: key, items: self.categories[key]!)
                 }
                 .listRowInsets(EdgeInsets())
                 
-                NavigationLink(destination: SceneList { SceneDetail(scene: $0) }) {
+                NavigationLink(destination: SceneList()) {
                     Text("See All")
                 }
             }

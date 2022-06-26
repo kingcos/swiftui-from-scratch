@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8411A470286786230004DD2F /* SceneDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8411A46F286786230004DD2F /* SceneDetail.swift */; };
+		8411A472286786D00004DD2F /* FavoriteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8411A471286786D00004DD2F /* FavoriteButton.swift */; };
+		8411A473286816280004DD2F /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CF27C323EBC1FB00262DA5 /* MapView.swift */; };
+		8411A4762868224B0004DD2F /* FavoriteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8411A471286786D00004DD2F /* FavoriteButton.swift */; };
+		8411A47728682CA60004DD2F /* SceneRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CF27BC23EBC1D600262DA5 /* SceneRow.swift */; };
+		8411A47928682CCF0004DD2F /* SceneList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8411A47828682CCF0004DD2F /* SceneList.swift */; };
+		8411A47A28682E200004DD2F /* SceneList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CF27BD23EBC1D600262DA5 /* SceneList.swift */; };
+		8411A47C2868311E0004DD2F /* SceneCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8411A47B2868311E0004DD2F /* SceneCommands.swift */; };
+		8411A47D2868311E0004DD2F /* SceneCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8411A47B2868311E0004DD2F /* SceneCommands.swift */; };
 		84CF275E23EB389F00262DA5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CF275D23EB389F00262DA5 /* AppDelegate.swift */; };
 		84CF276023EB389F00262DA5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CF275F23EB389F00262DA5 /* SceneDelegate.swift */; };
 		84CF276223EB389F00262DA5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CF276123EB389F00262DA5 /* ContentView.swift */; };
@@ -72,7 +81,6 @@
 		84CF27F923EBE44600262DA5 /* Hike.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CF27F123EBE40B00262DA5 /* Hike.swift */; };
 		84CF27FB23EBE49000262DA5 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CF27FA23EBE49000262DA5 /* Home.swift */; };
 		84CF27FD23EBE4BA00262DA5 /* CategoryRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CF27FC23EBE4BA00262DA5 /* CategoryRow.swift */; };
-		84CF27FF23EBE65A00262DA5 /* SceneList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CF27BD23EBC1D600262DA5 /* SceneList.swift */; };
 		84CF280723EBFFD300262DA5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CF280623EBFFD300262DA5 /* AppDelegate.swift */; };
 		84CF280923EBFFD300262DA5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CF280823EBFFD300262DA5 /* ContentView.swift */; };
 		84CF280B23EBFFD500262DA5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84CF280A23EBFFD500262DA5 /* Assets.xcassets */; };
@@ -89,8 +97,6 @@
 		84CF281F23EC016300262DA5 /* yuyuantangongyuan.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 84CF278423EB3BAD00262DA5 /* yuyuantangongyuan.jpg */; };
 		84CF282023EC016300262DA5 /* sampleData.json in Resources */ = {isa = PBXBuildFile; fileRef = 84CF278523EB3BAD00262DA5 /* sampleData.json */; };
 		84CF282123EC016800262DA5 /* hikeData.json in Resources */ = {isa = PBXBuildFile; fileRef = 84CF27F023EBE40B00262DA5 /* hikeData.json */; };
-		84CF282323EC041E00262DA5 /* SceneRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CF282223EC041E00262DA5 /* SceneRow.swift */; };
-		84CF282523EC06F200262DA5 /* SceneList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CF282423EC06F200262DA5 /* SceneList.swift */; };
 		84CF282723EC084C00262DA5 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CF282623EC084C00262DA5 /* Filter.swift */; };
 		84CF282923EC1BC200262DA5 /* NavigationMaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CF282823EC1BC200262DA5 /* NavigationMaster.swift */; };
 		84CF282A23EC1C4C00262DA5 /* CircleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CF27C223EBC1FB00262DA5 /* CircleImage.swift */; };
@@ -141,6 +147,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		8411A46F286786230004DD2F /* SceneDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDetail.swift; sourceTree = "<group>"; };
+		8411A471286786D00004DD2F /* FavoriteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteButton.swift; sourceTree = "<group>"; };
+		8411A47828682CCF0004DD2F /* SceneList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneList.swift; sourceTree = "<group>"; };
+		8411A47B2868311E0004DD2F /* SceneCommands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneCommands.swift; sourceTree = "<group>"; };
 		84CF275A23EB389F00262DA5 /* 04-Framework Integration.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "04-Framework Integration.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		84CF275D23EB389F00262DA5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84CF275F23EB389F00262DA5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -207,7 +217,6 @@
 		84CF281023EBFFD500262DA5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		84CF281223EBFFD500262DA5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84CF281323EBFFD500262DA5 /* Mac.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Mac.entitlements; sourceTree = "<group>"; };
-		84CF282223EC041E00262DA5 /* SceneRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneRow.swift; sourceTree = "<group>"; };
 		84CF282423EC06F200262DA5 /* SceneList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneList.swift; sourceTree = "<group>"; };
 		84CF282623EC084C00262DA5 /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
 		84CF282823EC1BC200262DA5 /* NavigationMaster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationMaster.swift; sourceTree = "<group>"; };
@@ -349,6 +358,7 @@
 				84CF27AB23EBC0C700262DA5 /* Preview Content */,
 				84CF27CE23EBC36700262DA5 /* WatchSceneDetail.swift */,
 				84CF27D423EBDC6E00262DA5 /* WatchMapView.swift */,
+				8411A47828682CCF0004DD2F /* SceneList.swift */,
 			);
 			path = "Watch Extension";
 			sourceTree = "<group>";
@@ -427,11 +437,13 @@
 				84CF281223EBFFD500262DA5 /* Info.plist */,
 				84CF281323EBFFD500262DA5 /* Mac.entitlements */,
 				84CF280C23EBFFD500262DA5 /* Preview Content */,
-				84CF282223EC041E00262DA5 /* SceneRow.swift */,
 				84CF282423EC06F200262DA5 /* SceneList.swift */,
 				84CF282623EC084C00262DA5 /* Filter.swift */,
 				84CF282823EC1BC200262DA5 /* NavigationMaster.swift */,
 				84CF282C23EC1DC700262DA5 /* NavigationDetail.swift */,
+				8411A46F286786230004DD2F /* SceneDetail.swift */,
+				8411A471286786D00004DD2F /* FavoriteButton.swift */,
+				8411A47B2868311E0004DD2F /* SceneCommands.swift */,
 			);
 			path = Mac;
 			sourceTree = "<group>";
@@ -653,6 +665,7 @@
 				84CF27E823EBE33E00262DA5 /* BadgeBackground.swift in Sources */,
 				84CF278023EB3B2200262DA5 /* UserData.swift in Sources */,
 				84CF27DE23EBE32400262DA5 /* ProfileHost.swift in Sources */,
+				8411A47C2868311E0004DD2F /* SceneCommands.swift in Sources */,
 				84CF277E23EB3B2200262DA5 /* Data.swift in Sources */,
 				84CF27BF23EBC1D600262DA5 /* SceneRow.swift in Sources */,
 				84CF27C423EBC1FB00262DA5 /* CircleImage.swift in Sources */,
@@ -664,17 +677,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				84CF27A223EBC0C600262DA5 /* HostingController.swift in Sources */,
+				8411A473286816280004DD2F /* MapView.swift in Sources */,
 				84CF27A023EBC0C600262DA5 /* ContentView.swift in Sources */,
 				84CF27A623EBC0C600262DA5 /* NotificationController.swift in Sources */,
 				84CF27D523EBDC6E00262DA5 /* WatchMapView.swift in Sources */,
-				84CF27FF23EBE65A00262DA5 /* SceneList.swift in Sources */,
 				84CF27A423EBC0C600262DA5 /* ExtensionDelegate.swift in Sources */,
 				84CF27C723EBC2A000262DA5 /* Scene.swift in Sources */,
 				84CF27CF23EBC36700262DA5 /* WatchSceneDetail.swift in Sources */,
 				84CF27A823EBC0C600262DA5 /* NotificationView.swift in Sources */,
+				8411A47928682CCF0004DD2F /* SceneList.swift in Sources */,
 				84CF27C623EBC2A000262DA5 /* SceneRow.swift in Sources */,
 				84CF27C923EBC2A000262DA5 /* Profile.swift in Sources */,
 				84CF27F923EBE44600262DA5 /* Hike.swift in Sources */,
+				8411A4762868224B0004DD2F /* FavoriteButton.swift in Sources */,
 				84CF27CB23EBC2A000262DA5 /* CircleImage.swift in Sources */,
 				84CF27CA23EBC2A000262DA5 /* UserData.swift in Sources */,
 				84CF27C823EBC2A000262DA5 /* Data.swift in Sources */,
@@ -686,19 +701,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				84CF282D23EC1DC700262DA5 /* NavigationDetail.swift in Sources */,
+				8411A47D2868311E0004DD2F /* SceneCommands.swift in Sources */,
 				84CF281823EC015200262DA5 /* Scene.swift in Sources */,
 				84CF282723EC084C00262DA5 /* Filter.swift in Sources */,
-				84CF282523EC06F200262DA5 /* SceneList.swift in Sources */,
 				84CF281A23EC015200262DA5 /* Profile.swift in Sources */,
+				8411A47A28682E200004DD2F /* SceneList.swift in Sources */,
 				84CF282B23EC1D0B00262DA5 /* MapView.swift in Sources */,
 				84CF281B23EC015200262DA5 /* UserData.swift in Sources */,
 				84CF282A23EC1C4C00262DA5 /* CircleImage.swift in Sources */,
+				8411A470286786230004DD2F /* SceneDetail.swift in Sources */,
 				84CF281923EC015200262DA5 /* Data.swift in Sources */,
 				84CF281723EC015200262DA5 /* Hike.swift in Sources */,
+				8411A472286786D00004DD2F /* FavoriteButton.swift in Sources */,
 				84CF280923EBFFD300262DA5 /* ContentView.swift in Sources */,
 				84CF280723EBFFD300262DA5 /* AppDelegate.swift in Sources */,
 				84CF282923EC1BC200262DA5 /* NavigationMaster.swift in Sources */,
-				84CF282323EC041E00262DA5 /* SceneRow.swift in Sources */,
+				8411A47728682CA60004DD2F /* SceneRow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -868,6 +886,7 @@
 				DEVELOPMENT_TEAM = LEG7CXMPKJ;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "04-Framework Integration/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -888,6 +907,7 @@
 				DEVELOPMENT_TEAM = LEG7CXMPKJ;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "04-Framework Integration/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -919,7 +939,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 6.1;
+				WATCHOS_DEPLOYMENT_TARGET = 7.0;
 			};
 			name = Debug;
 		};
@@ -943,7 +963,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 6.1;
+				WATCHOS_DEPLOYMENT_TARGET = 7.0;
 			};
 			name = Release;
 		};
@@ -962,7 +982,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 6.1;
+				WATCHOS_DEPLOYMENT_TARGET = 7.0;
 			};
 			name = Debug;
 		};
@@ -981,7 +1001,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 6.1;
+				WATCHOS_DEPLOYMENT_TARGET = 7.0;
 			};
 			name = Release;
 		};
@@ -1001,7 +1021,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.15.2;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				PRODUCT_BUNDLE_IDENTIFIER = me.kingcos.Mac;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
@@ -1025,7 +1045,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.15.2;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				PRODUCT_BUNDLE_IDENTIFIER = me.kingcos.Mac;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;

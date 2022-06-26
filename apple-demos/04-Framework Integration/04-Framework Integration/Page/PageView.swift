@@ -8,6 +8,22 @@
 
 import SwiftUI
 
+struct PageViewV2<Page: View>: View {
+    var pages: [Page]
+    
+    @State private var currentPage = 0
+
+    var body: some View {
+        ZStack(alignment: .bottomTrailing) {
+            PageViewControllerV2(pages: pages, currentPage: $currentPage)
+//            Text("Current Page: \(currentPage)")
+            PageControl(numberOfPages: pages.count, currentPage: $currentPage)
+                .frame(width: CGFloat(pages.count * 18))
+                .padding(.trailing)
+        }
+    }
+}
+
 struct PageView<Page: View>: View {
     @State var currentPage = 1 // 可改变起始页
     
@@ -34,7 +50,9 @@ struct PageView<Page: View>: View {
 
 struct PageView_Previews: PreviewProvider {
     static var previews: some View {
-        PageView(features.map { FeatureCard(scene: $0) })
+//        PageView(features.map { FeatureCard(scene: $0) })
+//            .aspectRatio(3/2, contentMode: .fit)
+        PageViewV2(pages: features.map { FeatureCard(scene: $0) })
             .aspectRatio(3/2, contentMode: .fit)
     }
 }

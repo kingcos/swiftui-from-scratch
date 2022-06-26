@@ -12,14 +12,17 @@ struct ContentView: View {
     @State private var selectedScene: Scene?
 
     var body: some View {
-        NavigationView {
-            NavigationMaster(selectedScene: $selectedScene)
-            
-            if selectedScene != nil {
-                NavigationDetail(scene: selectedScene!)
-            }
-        }
-        .frame(minWidth: 700, minHeight: 300)
+        SceneList()
+            .frame(minWidth: 700, minHeight: 300)
+        
+//        NavigationView {
+//            NavigationMaster(selectedScene: $selectedScene)
+//
+//            if selectedScene != nil {
+//                NavigationDetail(scene: selectedScene!)
+//            }
+//        }
+//        .frame(minWidth: 700, minHeight: 300)
     }
 }
 

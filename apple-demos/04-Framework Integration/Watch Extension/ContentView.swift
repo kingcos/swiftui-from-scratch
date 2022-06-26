@@ -10,13 +10,13 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        SceneList { WatchSceneDetail(scene: $0) }
-            .environmentObject(UserData())
+        SceneList()
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .environmentObject(UserData())
     }
 }

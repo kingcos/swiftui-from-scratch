@@ -28,24 +28,13 @@ struct SceneList: View {
                 ForEach(filteredScenes) { scene in
                     NavigationLink {
                         SceneDetail(scene: scene)
+                            .environmentObject(userData)
                     } label: {
                         SceneRow(scene: scene)
                     }
                 }
             }
-            .navigationTitle("Scenes")
-            .frame(minWidth: 300)
-            .toolbar {
-                ToolbarItem {
-                    Menu {
-                        Toggle(isOn: $showFavoritesOnly) {
-                            Label("Favorites only", systemImage: "star.fill")
-                        }
-                    } label: {
-                        Label("Filter", systemImage: "slider.horizontal.3")
-                    }
-                }
-            }
+            .navigationBarTitle("Scenes")
         }
     }
 }
@@ -56,7 +45,7 @@ struct SceneList_Previews: PreviewProvider {
             SceneList()
                 .environmentObject(UserData())
                 .previewDevice(PreviewDevice(rawValue: "iPhone SE"))
-            
+
             ForEach(["iPhone SE", "iPhone XS Max"], id: \.self) { deviceName in
                 SceneList()
                     .environmentObject(UserData())
