@@ -9,6 +9,8 @@
 import SwiftUI
 import KingfisherSwiftUI
 
+// 自定义 ViewModifier
+// .modifier(ToolButtonModifier()) 即可使用
 struct ToolButtonModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
@@ -103,8 +105,9 @@ struct PokemonInfoRow: View {
         .padding(.leading, 23)
         .padding(.trailing, 15)
         .background(
+            // 渐变色背景
             ZStack {
-                RoundedRectangle(cornerRadius: 20) // 遵守 Shape 协议
+                RoundedRectangle(cornerRadius: 20) // Shape >> View 遵守 Shape 协议
                     // 边框
                     .stroke(model.color, style: StrokeStyle(lineWidth: 4))
                 RoundedRectangle(cornerRadius: 20) // 遵守 Shape 协议
@@ -132,7 +135,9 @@ struct PokemonInfoRow: View {
 //            .spring(response: 0.55,
 //                    dampingFraction: 0.425,
 //                    blendDuration: 0)
-//        ) // 隐式动画
+//        )
+        // 隐式动画
+        // 其作用范围很大：只要这个 View 甚至是它的子 View 上的可动画属性发生变化，这个动画就将适用。
         
 //        .onTapGesture {
 //            self.expanded.toggle()
@@ -142,7 +147,7 @@ struct PokemonInfoRow: View {
 ////                .linear(duration: 0.5)
 ////                .delay(0.2)
 ////                .repeatForever(autoreverses: true)
-////            withAnimation(animation) {
+////            withAnimation(animation) { // 显式动画
 ////                self.expanded.toggle()
 ////            }
 //        }
