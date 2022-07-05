@@ -31,12 +31,12 @@ struct ContentView: View {
             
             // 2
             HStack {
-                // 左侧有空隙（frame center）
+                // 左侧有空隙（默认 frame center）
                 Image(systemName: "person.circle")
                     .background(Color.yellow)
                 Text("User:")
                     .background(Color.red)
-                // 右侧有空隙（frame center）
+                // 右侧有空隙（默认 frame center），且空隙不足以展示一个字符
                 Text("kingcos | kingcos.me")
                     .background(Color.green)
             }
@@ -54,11 +54,12 @@ struct ContentView: View {
                 Text("User:")
                     .background(Color.red)
                 Text("kingcos | kingcos.me")
-                    .layoutPriority(1) // 默认优先级为 0；优先决定自身尺寸
+                    .layoutPriority(1) // 默认优先级为 0；设置 1 时优先决定自身尺寸
                     .background(Color.green)
             }
             .lineLimit(1)
             .frame(width: 200)
+            .border(.blue, width: 1)
             
             Spacer()
             
@@ -69,7 +70,6 @@ struct ContentView: View {
                 Text("User:")
                     .background(Color.red)
                 Text("kingcos | kingcos.me")
-                    .layoutPriority(1)
                     .background(Color.green)
             }
             .lineLimit(1)
