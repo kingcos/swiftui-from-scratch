@@ -15,6 +15,7 @@
 		31DD6CA228758B500070F4BD /* TCADemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DD6CA128758B500070F4BD /* TCADemoUITests.swift */; };
 		31DD6CA428758B500070F4BD /* TCADemoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DD6CA328758B500070F4BD /* TCADemoUITestsLaunchTests.swift */; };
 		31DD6CB228758C6E0070F4BD /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 31DD6CB128758C6E0070F4BD /* ComposableArchitecture */; };
+		84F5DAD72875F780006BE170 /* MultiBindingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F5DAD62875F780006BE170 /* MultiBindingsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +46,7 @@
 		31DD6C9D28758B500070F4BD /* TCADemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TCADemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		31DD6CA128758B500070F4BD /* TCADemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TCADemoUITests.swift; sourceTree = "<group>"; };
 		31DD6CA328758B500070F4BD /* TCADemoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TCADemoUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		84F5DAD62875F780006BE170 /* MultiBindingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiBindingsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 				31DD6C8828758B4E0070F4BD /* ContentView.swift */,
 				31DD6C8A28758B500070F4BD /* Assets.xcassets */,
 				31DD6C8C28758B500070F4BD /* Preview Content */,
+				84F5DAD62875F780006BE170 /* MultiBindingsView.swift */,
 			);
 			path = TCADemo;
 			sourceTree = "<group>";
@@ -266,6 +269,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				31DD6C8928758B4E0070F4BD /* ContentView.swift in Sources */,
+				84F5DAD72875F780006BE170 /* MultiBindingsView.swift in Sources */,
 				31DD6C8728758B4E0070F4BD /* TCADemoApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

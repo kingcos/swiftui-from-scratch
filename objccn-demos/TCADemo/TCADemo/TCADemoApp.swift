@@ -12,9 +12,15 @@ import ComposableArchitecture
 struct TCADemoApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView(store: Store(initialState: Counter(),
-                                     reducer: counterReducer,
-                                     environment: CounterEnvironment()))
+//            ContentView(store: Store(initialState: Counter(),
+//                                     reducer: counterReducer,
+//                                     environment: CounterEnvironment()))
+            
+                MultiBindingsView(store: Store(
+                    initialState: MyState(),
+                    reducer: myReducer,
+                    environment: MyEnvironment())
+                )
         }
     }
 }

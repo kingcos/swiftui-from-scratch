@@ -40,13 +40,21 @@ let counterReducer = Reducer<Counter, CounterAction, CounterEnvironment> { state
         return .none
         
     case .setCount(let text):
-        if let value = Int(text) {
-            state.count = value
-        }
+//        if let value = Int(text) {
+//            state.count = value
+//        }
+        state.countString = text
         return .none
     }
 }
     .debug()
+
+extension Counter {
+    var countString: String {
+        get { String(count) }
+        set { count = Int(newValue) ?? count }
+    }
+}
 
 struct ContentView: View {
     let store: Store<Counter, CounterAction>
@@ -70,9 +78,13 @@ struct ContentView: View {
                 TextField(String(viewStore.count),
                           text: viewStore.binding(
                             // 负责为 View 提供数据
-                            get: { String($0.count) },
+//                            get: { String($0.count) },
+                            // 简化：keyPath 作为函数，即 (Counter) -> String
+                            get: \.countString,
                             // 将 View 新产生的值转换为 Action，并触发 Reducer
-                            send: { CounterAction.setCount($0) }
+//                            send: { CounterAction.setCount($0) }
+                            // 简化：enum case 可作为函数，即 (String) -> CounterAction
+                            send: CounterAction.setCount
                 ))
                 .monospacedDigit()
                 .frame(width: 100)
