@@ -12,6 +12,9 @@ struct GameState: Equatable {
     // 组合 State
     var counter: Counter = .init()
     var timer: TimerState = .init()
+    
+    var results: [GameResult] = []
+    var lastTimestamp = 0.0
 }
 
 enum GameAction {
@@ -47,7 +50,22 @@ struct GameEnvironment {
 let gameReducer = Reducer<GameState,
                           GameAction,
                           GameEnvironment>
-    .combine(counterReducer.pullback( // 将子组件 reducer 拉回作为父组件的一部分
+    .combine(
+        .init { state, action, env in
+            switch action {
+            case .counter(.playNext):
+              let result = GameResult(secret: state.counter.secret,
+                                      guess: state.counter.count,
+                                      timeSpent: state.timer.duration - state.lastTimestamp)
+              state.results.append(result)
+              state.lastTimestamp = state.timer.duration
+              return .none
+            default:
+              return .none
+            }
+        },
+        
+        counterReducer.pullback( // 将子组件 reducer 拉回作为父组件的一部分
         state: \.counter,
         action: /GameAction.counter, // 转换为 CasePath struct；负责从父组件 Action 将子组件 Action 提取出
 //        environment: { _ in .live }),
@@ -60,8 +78,15 @@ let gameReducer = Reducer<GameState,
        )
     )
 
-// ---
+struct GameResult: Equatable {
+  let secret: Int
+  let guess: Int
+  let timeSpent: TimeInterval
+    
+  var correct: Bool { secret == guess }
+}
 
+// ---
 
 struct GameView: View {
     let store: Store<GameState, GameAction>
@@ -69,8 +94,11 @@ struct GameView: View {
     var body: some View {
         // stateless：GameView 本身不依赖 state，因此不需要订阅 store 的变更，避免无意义的刷新
         // 相当于用用 Void 对原来的 store 进行切分：store.scope(state: { _ in () })
-        WithViewStore(store.stateless) { viewStore in
+        WithViewStore(store.scope(state: \.results)) { viewStore in
               VStack {
+                  resultLabel(viewStore.state)
+                  Divider()
+                  
                   // 切分 store
                   // 子 Action => 父 Action => 父 reducer => 子 reducer（CasePath）
                   TimerView(store: store.scope(state: \.timer, action: GameAction.timer))
@@ -95,6 +123,10 @@ struct GameView: View {
                   }
             }
         }
+    }
+    
+    func resultLabel(_ results: [GameResult]) -> some View {
+      Text("Result: \(results.filter(\.correct).count)/\(results.count) correct")
     }
 }
 
