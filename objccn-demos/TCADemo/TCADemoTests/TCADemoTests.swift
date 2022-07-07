@@ -2,7 +2,7 @@
 //  TCADemoTests.swift
 //  TCADemoTests
 //
-//  Created by 买明 on 2022/7/6.
+//  Created by kingcos on 2022/7/6.
 //
 
 import XCTest
@@ -10,9 +10,23 @@ import ComposableArchitecture
 @testable import TCADemo
 
 class TCADemoTests: XCTestCase {
+    
+    var store: TestStore<Counter, Counter, CounterAction, CounterAction, CounterEnvironment>!
+    var testStore: TestStore<Counter, Counter, CounterAction, CounterAction, CounterEnvironment>!
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
+        store = TestStore(
+            initialState: Counter(count: Int.random(in: -100...100)),
+            reducer: counterReducer,
+            environment: .live // CounterEnvironment()
+        )
+        
+        testStore = TestStore(
+            initialState: Counter(count: Int.random(in: -100...100)),
+            reducer: counterReducer,
+            environment: .test // CounterEnvironment()
+        )
     }
 
     override func tearDownWithError() throws {
@@ -28,49 +42,50 @@ class TCADemoTests: XCTestCase {
     }
     
     func testCounterIncrement() throws {
-        let store = TestStore(
-            initialState: Counter(count: Int.random(in: -100...100)),
-            reducer: counterReducer,
-            environment: CounterEnvironment()
-        )
         store.send(.increment) { state in
             state.count += 1
         }
     }
     
     func testCounterDecrement() throws {
-        let store = TestStore(
-            initialState: Counter(count: Int.random(in: -100...100)),
-            reducer: counterReducer,
-            environment: CounterEnvironment()
-        )
         store.send(.decrement) { state in
             state.count -= 1
         }
     }
     
     func testCounterReset() throws {
-        let store = TestStore(
-            initialState: Counter(count: Int.random(in: -100...100)),
-            reducer: counterReducer,
-            environment: CounterEnvironment()
-        )
-        store.send(.reset) { state in
-            state.count = 0
-        }
-    }
-    
-    func testCounterSetCount() throws {
-        let store = TestStore(
-            initialState: Counter(count: Int.random(in: -100...100)),
-            reducer: counterReducer,
-            environment: CounterEnvironment()
-        )
-        store.send(.setCount("1")) { state in
-            state.count = 1
+        /*
+         // 初始为 16，-19 => playNext => 0，5
+         CounterAction.playNext
+         Counter(
+       -   count: 16,
+       +   count: 0,
+       -   secret: -19
+       +   secret: 5
+         )
+         */
+//        store.send(.reset) { state in
+//            state.count = 0
+//        }
+        testStore.send(.playNext) { state in
+//            state.count = 0
+//            state = Counter(count: 0, secret: 5, id: UUID.init(uuidString: "7D0E1EA1-4FDF-4769-B6CC-0931BB03087B")!)
+            state = Counter(count: 0, secret: 5, id: .dummy)
         }
     }
 
+    func testSlider() {
+        testStore.send(.setSliderCount(20.5)) { state in
+            state.sliderCount = 20
+        }
+    }
+    
+    func testSetCount() {
+        testStore.send(.setCount("50")) { state in
+            state.count = 50
+        }
+    }
+    
     func testPerformanceExample() throws {
         // This is an example of a performance test case.
         self.measure {
@@ -78,4 +93,14 @@ class TCADemoTests: XCTestCase {
         }
     }
 
+}
+
+extension CounterEnvironment {
+    static let test = CounterEnvironment(generateRandom: { _ in 5 }, generateUUID: { .dummy })
+//                                         generateUUID: { UUID.init(uuidString: "7D0E1EA1-4FDF-4769-B6CC-0931BB03087B")! })
+                                         
+}
+
+extension UUID {
+    static let dummy = UUID.init(uuidString: "7D0E1EA1-4FDF-4769-B6CC-0931BB03087B")!
 }

@@ -2,7 +2,7 @@
 //  TCADemoUITestsLaunchTests.swift
 //  TCADemoUITests
 //
-//  Created by 买明 on 2022/7/6.
+//  Created by kingcos on 2022/7/6.
 //
 
 import XCTest
